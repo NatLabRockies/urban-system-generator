@@ -3,59 +3,129 @@ Model Attributes Schema
 
 This file defines all the attributes that the inference model expects.
 These must be in the exact order and format that the model was trained with.
+
+Auto-generated from the pretrained model files.
 """
 
 # Complete list of all model attributes
-# This should match your trained model's expected input schema
+# This matches the trained model's expected input schema
 all_model_attributes = [
-    # Building geometry
+    # Categorical attributes
+    'Bathroom Spot Vent Hour',
+    'Dehumidifier',
+    'Door Area',
+    'Doors',
+    'Eaves',
+    'Electric Vehicle',
+    'Ground Thermal Conductivity',
+    'HVAC Secondary Heating Efficiency',
+    'HVAC Secondary Heating Fuel',
+    'HVAC Secondary Heating Partial Space Conditioning',
+    'HVAC System Is Faulted',
+    'Holiday Lighting',
+    'Hot Water Distribution',
+    'Interior Shading',
+    'Lighting Interior Use',
+    'Lighting Other Use',
+    'Mechanical Ventilation',
+    'Misc Gas Fireplace',
+    'Misc Gas Grill',
+    'Misc Gas Lighting',
+    'Misc Well Pump',
+    'Natural Ventilation',
+    'Orientation',
+    'Overhangs',
+    'Geometry Building Type ACS',
+    'Geometry Building Number Units SFA',
+    'Geometry Building Horizontal Location SFA',
     'Geometry Building Type RECS',
+    'Cooling Setpoint Has Offset',
+    'Cooling Setpoint Offset Magnitude',
+    'Cooling Setpoint Offset Period',
+    'Corridor',
+    'Neighbors',
+    'Range Spot Vent Hour',
+    'Solar Hot Water',
+    'Lighting',
+    'Plug Loads',
+    'Usage Level',
+    'Clothes Dryer Usage Level',
+    'Clothes Washer Usage Level',
+    'Cooking Range Usage Level',
+    'Dishwasher Usage Level',
+    'Hot Water Fixtures',
+    'Plug Load Diversity',
+    'Refrigerator Usage Level',
+    'Ceiling Fan',
+    'Vintage',
+    'Heating Fuel',
+    'HVAC Heating Type',
+    'Vintage ACS',
+    'Geometry Foundation Type',
+    'HVAC Cooling Type',
+    'Cooling Setpoint',
+    'HVAC Has Shared System',
+    'HVAC Cooling Efficiency',
+    'HVAC Has Ducts',
+    'HVAC Heating Efficiency',
+    'HVAC Has Zonal Electric Heating',
+    'HVAC Heating Type And Fuel',
+    'HVAC Shared Efficiencies',
+    'HVAC System Single Speed AC Airflow',
+    'HVAC System Single Speed AC Charge',
+    'HVAC System Single Speed ASHP Airflow',
+    'HVAC System Single Speed ASHP Charge',
+    'Heating Setpoint',
+    'Heating Setpoint Has Offset',
+    'Heating Setpoint Offset Magnitude',
+    'Heating Setpoint Offset Period',
     'Geometry Floor Area',
+    'Bedrooms',
     'Geometry Floor Area Bin',
     'Geometry Stories',
-    'Geometry Foundation Type',
+    'Geometry Building Level MF',
+    'Geometry Building Number Units MF',
+    'Geometry Building Horizontal Location MF',
+    'Geometry Building Type Height',
+    'Geometry Stories Low Rise',
     'Geometry Attic Type',
-    'Geometry Building Number Units SFA',
-    
-    # Building age
-    'Vintage',
-    'Vintage ACS',
-    
-    # Occupancy
-    'Bedrooms',
-    
-    # HVAC Systems
-    'HVAC Cooling Type',
-    'HVAC Heating Type',
-    'HVAC Heating Efficiency',
-    'HVAC Cooling Efficiency',
-    'Heating Fuel',
-    
-    # Insulation
-    'Insulation Wall',
+    'Geometry Garage',
+    'Geometry Space Combination',
+    'Duct Location',
+    'Duct Leakage and Insulation',
+    'Geometry Wall Type',
+    'Geometry Wall Exterior Finish',
+    'HVAC Cooling Partial Space Conditioning',
+    'Infiltration',
+    'Insulation Ceiling',
+    'Insulation Floor',
+    'Insulation Foundation Wall',
+    'Insulation Rim Joist',
     'Insulation Roof',
-    'Insulation Foundation',
-    
-    # Windows
-    'Windows',
-    'Window Areas',
-    
-    # Appliances
-    'Water Heater',
-    'Cooking Range',
-    'Refrigerator',
-    'Dishwasher',
-    'Clothes Washer',
-    'Clothes Dryer',
-    
-    # Lighting
-    'Lighting',
-    
-    # Other
-    'Orientation',
-    'Neighbors',
+    'Insulation Slab',
+    'Insulation Wall',
     'Occupants',
+    'Clothes Washer Presence',
+    'Clothes Dryer',
+    'Clothes Washer',
+    'Cooking Range',
+    'Dishwasher',
+    'Household Has Tribal Persons',
+    'Misc Extra Refrigerator',
+    'Misc Freezer',
+    'Misc Hot Tub Spa',
+    'Misc Pool',
+    'Misc Pool Heater',
+    'Misc Pool Pump',
+    'Refrigerator',
+    'Roof Material',
+    'Water Heater Fuel',
+    'Water Heater Efficiency',
+    'Water Heater In Unit',
+    'Water Heater Location',
+    'Window Areas',
+    'Windows',
+    
+    # Numerical attributes
+    'site_energy.total.energy_consumption.kwh',
 ]
-
-# Note: Replace this list with your actual model's expected attributes
-# The order and names must match exactly what the model was trained with

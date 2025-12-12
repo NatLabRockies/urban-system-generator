@@ -327,9 +327,13 @@ class GeoJSONProcessor:
         
         # If all_model_attributes provided, ensure all columns exist
         if all_model_attributes:
-            for attr in all_model_attributes:
-                if attr not in df.columns:
-                    df[attr] = None
+            # Find missing columns
+            missing_cols = [attr for attr in all_model_attributes if attr not in df.columns]
+            
+            # Add all missing columns at once (more efficient)
+            if missing_cols:
+                missing_df = pd.DataFrame({col: [None] * len(df) for col in missing_cols})
+                df = pd.concat([df, missing_df], axis=1)
             
             # Reorder columns: Building ID first, then model attributes
             cols = ['Building'] + [c for c in all_model_attributes if c in df.columns]

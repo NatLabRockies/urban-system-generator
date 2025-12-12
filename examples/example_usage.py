@@ -7,6 +7,10 @@ This script demonstrates how to use the USG package to:
 3. Process buildings for simulation
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from pathlib import Path
 from usg.geojson_processor import GeoJSONProcessor
 from usg.inference import USGInference
@@ -96,11 +100,12 @@ def example_end_to_end():
     # Step 1: Convert GeoJSON to CSV
     print("\nStep 1: Converting GeoJSON to CSV...")
     processor = GeoJSONProcessor()
-    processor.geojson_to_csv(
+    status = processor.geojson_to_csv(
         geojson_path="examples/example_geojson.json",
         output_csv_path="examples/temp_incomplete.csv",
         all_model_attributes=all_model_attributes,
     )
+    print(status)
     
     # Step 2: Complete missing attributes
     print("\nStep 2: Predicting missing attributes...")

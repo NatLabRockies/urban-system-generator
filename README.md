@@ -86,8 +86,7 @@ urban-system-generator/
 ├── usg/                      # Main package
 │   ├── inference.py          # Inference engine
 │   ├── geojson_processor.py  # GeoJSON processing
-│   ├── model.py              # Neural network model
-│   └── utils.py              # Utility functions
+│   └── model.py              # Neural network model
 ├── resources/                # Model resources
 │   ├── pretrained_model/     # Trained model files
 │   └── model_attributes.py   # Model schema
@@ -196,7 +195,7 @@ If you use this software in your research, please cite:
 
 ## Acknowledgments
 
-This work was supported by the U.S. Department of Energy's Building Technologies Office.
+This work was authored by the National Renewable Energy Laboratory (NREL), operated by Alliance for Sustainable Energy, LLC, for the U.S. Department of Energy (DOE) under Contract No. DE-AC36-08GO28308. Funding provided by NREL’s Laboratory Directed Research and Development program, and the DOE Office of Science. The views expressed in the article do not necessarily represent the views of the DOE or the U.S. Government. The U.S. Government retains and the publisher, by accepting the article for publication, acknowledges that the U.S. Government retains a nonexclusive, paid-up, irrevocable, worldwide license to publish or reproduce the published form of this work, or allow others to do so, for U.S. Government purposes.
 
 ## Contact
 
