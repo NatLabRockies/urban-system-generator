@@ -1,0 +1,4630 @@
+{
+  "type": "FeatureCollection",
+  "project": {
+    "id": "b8526e16-44a5-471e-a281-0735b81da675",
+    "name": "New Project",
+    "begin_date": "2017-01-01T07:00:00.000Z",
+    "end_date": "2017-12-31T07:00:00.000Z",
+    "cec_climate_zone": null,
+    "climate_zone": "4A",
+    "default_template": "90.1-2013",
+    "import_surrounding_buildings_as_shading": null,
+    "surface_elevation": null,
+    "tariff_filename": null,
+    "timesteps_per_hour": 1,
+    "weather_filename": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+    "emissions": true,
+    "electricity_emissions_future_subregion": "NYSTc",
+    "electricity_emissions_hourly_historical_subregion": "New York",
+    "electricity_emissions_annual_historical_subregion": "NYCW",
+    "electricity_emissions_future_year": "2030",
+    "electricity_emissions_hourly_historical_year": "2019",
+    "electricity_emissions_annual_historical_year": "2019"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ae8afc64-975f-41cc-83e7-6bf744cd43b4",
+        "type": "Site Origin",
+        "name": "Site Origin",
+        "surface_elevation": null,
+        "import_surrounding_buildings_as_shading": null,
+        "timesteps_per_hour": 1,
+        "begin_date": "2017-01-01T07:00:00.000Z",
+        "end_date": "2017-12-31T07:00:00.000Z",
+        "climate_zone": "4A",
+        "cec_climate_zone": null,
+        "default_template": "90.1-2013",
+        "weather_filename": "USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw",
+        "tariff_filename": null,
+        "only_lv_customers": null,
+        "underground_cables_ratio": null,
+        "max_number_of_lv_nodes_per_building": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6056777,
+          39.302104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340156",
+        "footprint_area": 637,
+        "name": "1021_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1274,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062603,
+              39.302195
+            ],
+            [
+              -76.6061299,
+              39.3021998
+            ],
+            [
+              -76.6061313,
+              39.3022237
+            ],
+            [
+              -76.6061401,
+              39.3022234
+            ],
+            [
+              -76.6061415,
+              39.3022486
+            ],
+            [
+              -76.6062633,
+              39.3022439
+            ],
+            [
+              -76.6062603,
+              39.302195
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340153",
+        "footprint_area": 669,
+        "name": "1003_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1338,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6061064,
+              39.3018049
+            ],
+            [
+              -76.6062364,
+              39.3018002
+            ],
+            [
+              -76.6062333,
+              39.3017489
+            ],
+            [
+              -76.60611,
+              39.3017535
+            ],
+            [
+              -76.6061116,
+              39.3017796
+            ],
+            [
+              -76.606105,
+              39.3017798
+            ],
+            [
+              -76.6061064,
+              39.3018049
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340325",
+        "footprint_area": 661,
+        "name": "802_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1322,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.606195,
+              39.3014847
+            ],
+            [
+              -76.6061293,
+              39.3014874
+            ],
+            [
+              -76.6061349,
+              39.3015816
+            ],
+            [
+              -76.6061658,
+              39.3015804
+            ],
+            [
+              -76.6061653,
+              39.301586
+            ],
+            [
+              -76.606201,
+              39.3015851
+            ],
+            [
+              -76.606195,
+              39.3014847
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340320",
+        "footprint_area": 612,
+        "name": "804_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1224,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6061293,
+              39.3014874
+            ],
+            [
+              -76.6060683,
+              39.3014898
+            ],
+            [
+              -76.6060742,
+              39.3015902
+            ],
+            [
+              -76.6061017,
+              39.3015893
+            ],
+            [
+              -76.606103,
+              39.3015829
+            ],
+            [
+              -76.6061349,
+              39.3015816
+            ],
+            [
+              -76.6061293,
+              39.3014874
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340143",
+        "footprint_area": 671,
+        "name": "1019_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1342,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062572,
+              39.3021429
+            ],
+            [
+              -76.6061358,
+              39.3021481
+            ],
+            [
+              -76.6061373,
+              39.3021747
+            ],
+            [
+              -76.6061285,
+              39.3021752
+            ],
+            [
+              -76.6061299,
+              39.3021998
+            ],
+            [
+              -76.6062603,
+              39.302195
+            ],
+            [
+              -76.6062572,
+              39.3021429
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340142",
+        "footprint_area": 657,
+        "name": "1011_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1314,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062453,
+              39.3019465
+            ],
+            [
+              -76.6061237,
+              39.3019518
+            ],
+            [
+              -76.6061251,
+              39.3019775
+            ],
+            [
+              -76.6061172,
+              39.3019778
+            ],
+            [
+              -76.6061186,
+              39.3020023
+            ],
+            [
+              -76.6062484,
+              39.3019977
+            ],
+            [
+              -76.6062453,
+              39.3019465
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340150",
+        "footprint_area": 655,
+        "name": "1007_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1310,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062394,
+              39.3018488
+            ],
+            [
+              -76.6061169,
+              39.3018529
+            ],
+            [
+              -76.6061186,
+              39.3018784
+            ],
+            [
+              -76.6061102,
+              39.3018788
+            ],
+            [
+              -76.6061118,
+              39.3019035
+            ],
+            [
+              -76.6062424,
+              39.3018989
+            ],
+            [
+              -76.6062394,
+              39.3018488
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340146",
+        "footprint_area": 610,
+        "name": "1017_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1220,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062543,
+              39.3020962
+            ],
+            [
+              -76.6061251,
+              39.3021009
+            ],
+            [
+              -76.6061265,
+              39.3021252
+            ],
+            [
+              -76.6061345,
+              39.3021249
+            ],
+            [
+              -76.6061358,
+              39.3021481
+            ],
+            [
+              -76.6062572,
+              39.3021429
+            ],
+            [
+              -76.6062543,
+              39.3020962
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340137",
+        "footprint_area": 646,
+        "name": "1025_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1292,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062663,
+              39.3022937
+            ],
+            [
+              -76.6061364,
+              39.3022983
+            ],
+            [
+              -76.6061378,
+              39.302323
+            ],
+            [
+              -76.6061466,
+              39.3023226
+            ],
+            [
+              -76.6061482,
+              39.3023479
+            ],
+            [
+              -76.6062693,
+              39.3023435
+            ],
+            [
+              -76.6062685,
+              39.302329
+            ],
+            [
+              -76.6062663,
+              39.3022937
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340136",
+        "footprint_area": 626,
+        "name": "1013_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1252,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062484,
+              39.3019977
+            ],
+            [
+              -76.6061186,
+              39.3020023
+            ],
+            [
+              -76.60612,
+              39.3020259
+            ],
+            [
+              -76.6061275,
+              39.3020256
+            ],
+            [
+              -76.6061289,
+              39.3020501
+            ],
+            [
+              -76.6062513,
+              39.302046
+            ],
+            [
+              -76.6062484,
+              39.3019977
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340141",
+        "footprint_area": 631,
+        "name": "1005_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1262,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062364,
+              39.3018002
+            ],
+            [
+              -76.6061064,
+              39.3018049
+            ],
+            [
+              -76.6061078,
+              39.3018295
+            ],
+            [
+              -76.6061154,
+              39.3018292
+            ],
+            [
+              -76.6061169,
+              39.3018529
+            ],
+            [
+              -76.6062394,
+              39.3018488
+            ],
+            [
+              -76.6062364,
+              39.3018002
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340140",
+        "footprint_area": 644,
+        "name": "1023_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1288,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062633,
+              39.3022439
+            ],
+            [
+              -76.6061415,
+              39.3022486
+            ],
+            [
+              -76.6061429,
+              39.3022732
+            ],
+            [
+              -76.606135,
+              39.3022735
+            ],
+            [
+              -76.6061364,
+              39.3022983
+            ],
+            [
+              -76.6062663,
+              39.3022937
+            ],
+            [
+              -76.6062633,
+              39.3022439
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340135",
+        "footprint_area": 626,
+        "name": "1009_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1252,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062424,
+              39.3018989
+            ],
+            [
+              -76.6061118,
+              39.3019035
+            ],
+            [
+              -76.6061135,
+              39.3019282
+            ],
+            [
+              -76.6061223,
+              39.3019279
+            ],
+            [
+              -76.6061237,
+              39.3019518
+            ],
+            [
+              -76.6062453,
+              39.3019465
+            ],
+            [
+              -76.6062424,
+              39.3018989
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340134",
+        "footprint_area": 654,
+        "name": "1015_HOMEWOOD AVE",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1308,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6062513,
+              39.302046
+            ],
+            [
+              -76.6061289,
+              39.3020501
+            ],
+            [
+              -76.6061303,
+              39.3020757
+            ],
+            [
+              -76.6061237,
+              39.3020758
+            ],
+            [
+              -76.6061251,
+              39.3021009
+            ],
+            [
+              -76.6062543,
+              39.3020962
+            ],
+            [
+              -76.6062513,
+              39.302046
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340342",
+        "footprint_area": 669,
+        "name": "810_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1338,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059411,
+              39.3014949
+            ],
+            [
+              -76.6058752,
+              39.3014976
+            ],
+            [
+              -76.6058809,
+              39.301593
+            ],
+            [
+              -76.6059121,
+              39.3015919
+            ],
+            [
+              -76.6059117,
+              39.3015975
+            ],
+            [
+              -76.6059471,
+              39.3015956
+            ],
+            [
+              -76.6059411,
+              39.3014949
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340331",
+        "footprint_area": 1293,
+        "name": "812_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 2586,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6058752,
+              39.3014976
+            ],
+            [
+              -76.6057408,
+              39.3015029
+            ],
+            [
+              -76.6057425,
+              39.3015254
+            ],
+            [
+              -76.605746,
+              39.3015253
+            ],
+            [
+              -76.6057496,
+              39.3015975
+            ],
+            [
+              -76.6058809,
+              39.301593
+            ],
+            [
+              -76.6058752,
+              39.3014976
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340328",
+        "footprint_area": 613,
+        "name": "808_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1226,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6060016,
+              39.3014925
+            ],
+            [
+              -76.6059411,
+              39.3014949
+            ],
+            [
+              -76.6059471,
+              39.3015956
+            ],
+            [
+              -76.605974,
+              39.3015942
+            ],
+            [
+              -76.6059745,
+              39.301588
+            ],
+            [
+              -76.6060086,
+              39.3015868
+            ],
+            [
+              -76.6060016,
+              39.3014925
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340338",
+        "footprint_area": 665,
+        "name": "806_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1330,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6060683,
+              39.3014898
+            ],
+            [
+              -76.6060016,
+              39.3014925
+            ],
+            [
+              -76.6060086,
+              39.3015868
+            ],
+            [
+              -76.6060381,
+              39.3015858
+            ],
+            [
+              -76.6060385,
+              39.3015915
+            ],
+            [
+              -76.6060742,
+              39.3015902
+            ],
+            [
+              -76.6060683,
+              39.3014898
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336340335",
+        "footprint_area": 627,
+        "name": "800_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1254,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.606195,
+              39.3014847
+            ],
+            [
+              -76.606201,
+              39.3015851
+            ],
+            [
+              -76.6062276,
+              39.3015844
+            ],
+            [
+              -76.6062281,
+              39.3015782
+            ],
+            [
+              -76.6062621,
+              39.3015769
+            ],
+            [
+              -76.6062586,
+              39.3014822
+            ],
+            [
+              -76.606195,
+              39.3014847
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339526",
+        "footprint_area": 642,
+        "name": "1018_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1284,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059115,
+              39.3021565
+            ],
+            [
+              -76.6057901,
+              39.3021621
+            ],
+            [
+              -76.605793,
+              39.3022109
+            ],
+            [
+              -76.605922,
+              39.3022068
+            ],
+            [
+              -76.6059205,
+              39.3021822
+            ],
+            [
+              -76.605913,
+              39.3021824
+            ],
+            [
+              -76.6059115,
+              39.3021565
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339525",
+        "footprint_area": 635,
+        "name": "1004_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1270,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6058989,
+              39.301812
+            ],
+            [
+              -76.6057693,
+              39.3018161
+            ],
+            [
+              -76.6057723,
+              39.3018653
+            ],
+            [
+              -76.6058941,
+              39.301861
+            ],
+            [
+              -76.6058926,
+              39.3018363
+            ],
+            [
+              -76.6059003,
+              39.301836
+            ],
+            [
+              -76.6058989,
+              39.301812
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339528",
+        "footprint_area": 640,
+        "name": "1010_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1280,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059003,
+              39.3019603
+            ],
+            [
+              -76.6057782,
+              39.3019636
+            ],
+            [
+              -76.6057811,
+              39.3020134
+            ],
+            [
+              -76.6059099,
+              39.3020093
+            ],
+            [
+              -76.6059085,
+              39.3019859
+            ],
+            [
+              -76.6059019,
+              39.3019861
+            ],
+            [
+              -76.6059003,
+              39.3019603
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339527",
+        "footprint_area": 678,
+        "name": "1024_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1356,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059276,
+              39.3023045
+            ],
+            [
+              -76.6057988,
+              39.3023086
+            ],
+            [
+              -76.6058016,
+              39.302361
+            ],
+            [
+              -76.6059236,
+              39.3023572
+            ],
+            [
+              -76.6059223,
+              39.302331
+            ],
+            [
+              -76.605929,
+              39.3023308
+            ],
+            [
+              -76.6059276,
+              39.3023045
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339522",
+        "footprint_area": 629,
+        "name": "1012_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1258,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059099,
+              39.3020093
+            ],
+            [
+              -76.6057811,
+              39.3020134
+            ],
+            [
+              -76.6057841,
+              39.3020626
+            ],
+            [
+              -76.6059056,
+              39.3020575
+            ],
+            [
+              -76.6059042,
+              39.3020357
+            ],
+            [
+              -76.6059115,
+              39.3020354
+            ],
+            [
+              -76.6059099,
+              39.3020093
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339521",
+        "footprint_area": 630,
+        "name": "1022_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1260,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059174,
+              39.302256
+            ],
+            [
+              -76.6057959,
+              39.3022595
+            ],
+            [
+              -76.6057988,
+              39.3023086
+            ],
+            [
+              -76.6059276,
+              39.3023045
+            ],
+            [
+              -76.605926,
+              39.3022811
+            ],
+            [
+              -76.6059189,
+              39.3022814
+            ],
+            [
+              -76.6059174,
+              39.302256
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339524",
+        "footprint_area": 640,
+        "name": "1006_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1280,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6058941,
+              39.301861
+            ],
+            [
+              -76.6057723,
+              39.3018653
+            ],
+            [
+              -76.6057752,
+              39.3019146
+            ],
+            [
+              -76.6059041,
+              39.3019105
+            ],
+            [
+              -76.6059026,
+              39.301886
+            ],
+            [
+              -76.6058956,
+              39.3018863
+            ],
+            [
+              -76.6058941,
+              39.301861
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339523",
+        "footprint_area": 639,
+        "name": "1008_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1278,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059041,
+              39.3019105
+            ],
+            [
+              -76.6057752,
+              39.3019146
+            ],
+            [
+              -76.6057782,
+              39.3019636
+            ],
+            [
+              -76.6059003,
+              39.3019603
+            ],
+            [
+              -76.6058989,
+              39.3019361
+            ],
+            [
+              -76.6059056,
+              39.3019358
+            ],
+            [
+              -76.6059041,
+              39.3019105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339518",
+        "footprint_area": 631,
+        "name": "1020_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1262,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605922,
+              39.3022068
+            ],
+            [
+              -76.605793,
+              39.3022109
+            ],
+            [
+              -76.6057959,
+              39.3022595
+            ],
+            [
+              -76.6059174,
+              39.302256
+            ],
+            [
+              -76.6059159,
+              39.302232
+            ],
+            [
+              -76.6059235,
+              39.3022317
+            ],
+            [
+              -76.605922,
+              39.3022068
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339517",
+        "footprint_area": 644,
+        "name": "1002_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1288,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6057693,
+              39.3018161
+            ],
+            [
+              -76.6058989,
+              39.301812
+            ],
+            [
+              -76.6058974,
+              39.3017874
+            ],
+            [
+              -76.6058893,
+              39.3017877
+            ],
+            [
+              -76.6058877,
+              39.3017622
+            ],
+            [
+              -76.6057663,
+              39.3017666
+            ],
+            [
+              -76.6057693,
+              39.3018161
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339520",
+        "footprint_area": 647,
+        "name": "1014_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1294,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059056,
+              39.3020575
+            ],
+            [
+              -76.6057841,
+              39.3020626
+            ],
+            [
+              -76.6057871,
+              39.3021121
+            ],
+            [
+              -76.6059161,
+              39.302108
+            ],
+            [
+              -76.6059146,
+              39.3020835
+            ],
+            [
+              -76.6059071,
+              39.3020838
+            ],
+            [
+              -76.6059056,
+              39.3020575
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336339519",
+        "footprint_area": 634,
+        "name": "1016_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1268,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059161,
+              39.302108
+            ],
+            [
+              -76.6057871,
+              39.3021121
+            ],
+            [
+              -76.6057901,
+              39.3021621
+            ],
+            [
+              -76.6059115,
+              39.3021565
+            ],
+            [
+              -76.60591,
+              39.3021324
+            ],
+            [
+              -76.6059175,
+              39.3021321
+            ],
+            [
+              -76.6059161,
+              39.302108
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338823",
+        "footprint_area": 770,
+        "name": "801_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2310,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.606266,
+              39.302549
+            ],
+            [
+              -76.6062741,
+              39.3026799
+            ],
+            [
+              -76.6063311,
+              39.3026777
+            ],
+            [
+              -76.606323,
+              39.3025469
+            ],
+            [
+              -76.606266,
+              39.302549
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338822",
+        "footprint_area": 598,
+        "name": "813_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1794,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059958,
+              39.3026011
+            ],
+            [
+              -76.6059875,
+              39.3026014
+            ],
+            [
+              -76.605985,
+              39.3025611
+            ],
+            [
+              -76.6059459,
+              39.3025625
+            ],
+            [
+              -76.605954,
+              39.3026919
+            ],
+            [
+              -76.6060014,
+              39.3026901
+            ],
+            [
+              -76.6059958,
+              39.3026011
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338825",
+        "footprint_area": 893,
+        "name": "809_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2679,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6061008,
+              39.3025961
+            ],
+            [
+              -76.6060843,
+              39.3025967
+            ],
+            [
+              -76.606079,
+              39.3025106
+            ],
+            [
+              -76.6060423,
+              39.302512
+            ],
+            [
+              -76.6060418,
+              39.3025039
+            ],
+            [
+              -76.606038,
+              39.302504
+            ],
+            [
+              -76.6060494,
+              39.3026883
+            ],
+            [
+              -76.6061064,
+              39.3026862
+            ],
+            [
+              -76.6061008,
+              39.3025961
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338824",
+        "footprint_area": 662,
+        "name": "807_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1986,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6061495,
+              39.302552
+            ],
+            [
+              -76.6061085,
+              39.3025536
+            ],
+            [
+              -76.6061111,
+              39.3025957
+            ],
+            [
+              -76.6061008,
+              39.3025961
+            ],
+            [
+              -76.6061064,
+              39.3026862
+            ],
+            [
+              -76.6061586,
+              39.3026842
+            ],
+            [
+              -76.6061495,
+              39.302552
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338821",
+        "footprint_area": 851,
+        "name": "819_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2553,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6058359,
+              39.3025312
+            ],
+            [
+              -76.605835,
+              39.3025313
+            ],
+            [
+              -76.6058347,
+              39.3025262
+            ],
+            [
+              -76.605787,
+              39.302528
+            ],
+            [
+              -76.6057975,
+              39.3026977
+            ],
+            [
+              -76.6058461,
+              39.3026959
+            ],
+            [
+              -76.6058359,
+              39.3025312
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338831",
+        "footprint_area": 898,
+        "name": "817_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2694,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6058947,
+              39.3025734
+            ],
+            [
+              -76.6058826,
+              39.3025738
+            ],
+            [
+              -76.6058798,
+              39.3025296
+            ],
+            [
+              -76.6058359,
+              39.3025312
+            ],
+            [
+              -76.6058461,
+              39.3026959
+            ],
+            [
+              -76.6059022,
+              39.3026938
+            ],
+            [
+              -76.6058947,
+              39.3025734
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338830",
+        "footprint_area": 1037,
+        "name": "821_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 3111,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6057975,
+              39.3026977
+            ],
+            [
+              -76.605787,
+              39.302528
+            ],
+            [
+              -76.6057862,
+              39.302528
+            ],
+            [
+              -76.6057852,
+              39.3025131
+            ],
+            [
+              -76.6057316,
+              39.3025151
+            ],
+            [
+              -76.6057431,
+              39.3026998
+            ],
+            [
+              -76.6057975,
+              39.3026977
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338827",
+        "footprint_area": 737,
+        "name": "803_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2211,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.606266,
+              39.302549
+            ],
+            [
+              -76.6062199,
+              39.3025508
+            ],
+            [
+              -76.6062226,
+              39.3025935
+            ],
+            [
+              -76.60621,
+              39.302594
+            ],
+            [
+              -76.6062154,
+              39.3026821
+            ],
+            [
+              -76.6062741,
+              39.3026799
+            ],
+            [
+              -76.606266,
+              39.302549
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338826",
+        "footprint_area": 833,
+        "name": "815_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2499,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6059459,
+              39.3025625
+            ],
+            [
+              -76.6059451,
+              39.3025626
+            ],
+            [
+              -76.6059428,
+              39.3025251
+            ],
+            [
+              -76.6059031,
+              39.3025273
+            ],
+            [
+              -76.605906,
+              39.302573
+            ],
+            [
+              -76.6058947,
+              39.3025734
+            ],
+            [
+              -76.6059022,
+              39.3026938
+            ],
+            [
+              -76.605954,
+              39.3026919
+            ],
+            [
+              -76.6059459,
+              39.3025625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338829",
+        "footprint_area": 776,
+        "name": "811_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2328,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.606038,
+              39.302504
+            ],
+            [
+              -76.6060039,
+              39.3025053
+            ],
+            [
+              -76.6060099,
+              39.3026005
+            ],
+            [
+              -76.6059958,
+              39.3026011
+            ],
+            [
+              -76.6060014,
+              39.3026901
+            ],
+            [
+              -76.6060494,
+              39.3026883
+            ],
+            [
+              -76.606038,
+              39.302504
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338828",
+        "footprint_area": 841,
+        "name": "805_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2523,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.60621,
+              39.302594
+            ],
+            [
+              -76.6061975,
+              39.3025944
+            ],
+            [
+              -76.6061933,
+              39.3025255
+            ],
+            [
+              -76.6061479,
+              39.3025272
+            ],
+            [
+              -76.6061495,
+              39.302552
+            ],
+            [
+              -76.6061586,
+              39.3026842
+            ],
+            [
+              -76.6062154,
+              39.3026821
+            ],
+            [
+              -76.60621,
+              39.302594
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338310",
+        "footprint_area": 677,
+        "name": "1011_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1354,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055795,
+              39.3019971
+            ],
+            [
+              -76.6054575,
+              39.3020022
+            ],
+            [
+              -76.6054492,
+              39.3020025
+            ],
+            [
+              -76.6054512,
+              39.3020276
+            ],
+            [
+              -76.6054587,
+              39.3020272
+            ],
+            [
+              -76.6054604,
+              39.3020542
+            ],
+            [
+              -76.6055832,
+              39.3020489
+            ],
+            [
+              -76.6055795,
+              39.3019971
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338307",
+        "footprint_area": 733,
+        "name": "1007_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1466,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055726,
+              39.3018985
+            ],
+            [
+              -76.6054505,
+              39.3019036
+            ],
+            [
+              -76.6054506,
+              39.3019047
+            ],
+            [
+              -76.605424,
+              39.3019064
+            ],
+            [
+              -76.605428,
+              39.3019517
+            ],
+            [
+              -76.605447,
+              39.3019506
+            ],
+            [
+              -76.6054471,
+              39.3019518
+            ],
+            [
+              -76.605576,
+              39.3019472
+            ],
+            [
+              -76.6055726,
+              39.3018985
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338351",
+        "footprint_area": 857,
+        "name": "835_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1714,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6052999,
+              39.3025474
+            ],
+            [
+              -76.605254,
+              39.3025492
+            ],
+            [
+              -76.6052605,
+              39.3026508
+            ],
+            [
+              -76.605253,
+              39.3026511
+            ],
+            [
+              -76.6052574,
+              39.302719
+            ],
+            [
+              -76.6053109,
+              39.3027169
+            ],
+            [
+              -76.6052999,
+              39.3025474
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338313",
+        "footprint_area": 630,
+        "name": "1003_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1260,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6054412,
+              39.3018533
+            ],
+            [
+              -76.6055691,
+              39.3018487
+            ],
+            [
+              -76.6055656,
+              39.301799
+            ],
+            [
+              -76.6054454,
+              39.3018041
+            ],
+            [
+              -76.6054475,
+              39.30183
+            ],
+            [
+              -76.6054395,
+              39.3018304
+            ],
+            [
+              -76.6054412,
+              39.3018533
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338305",
+        "footprint_area": 652,
+        "name": "1009_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1304,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605576,
+              39.3019472
+            ],
+            [
+              -76.6054471,
+              39.3019518
+            ],
+            [
+              -76.6054488,
+              39.3019785
+            ],
+            [
+              -76.6054559,
+              39.3019782
+            ],
+            [
+              -76.6054575,
+              39.3020022
+            ],
+            [
+              -76.6055795,
+              39.3019971
+            ],
+            [
+              -76.605576,
+              39.3019472
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338304",
+        "footprint_area": 648,
+        "name": "1005_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1296,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055691,
+              39.3018487
+            ],
+            [
+              -76.6054412,
+              39.3018533
+            ],
+            [
+              -76.6054432,
+              39.3018807
+            ],
+            [
+              -76.605449,
+              39.3018803
+            ],
+            [
+              -76.6054505,
+              39.3019036
+            ],
+            [
+              -76.6055726,
+              39.3018985
+            ],
+            [
+              -76.6055691,
+              39.3018487
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338036",
+        "footprint_area": 661,
+        "name": "1017_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1322,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055914,
+              39.3022034
+            ],
+            [
+              -76.605462,
+              39.3022081
+            ],
+            [
+              -76.6054638,
+              39.3022354
+            ],
+            [
+              -76.6054704,
+              39.3022351
+            ],
+            [
+              -76.6054719,
+              39.3022583
+            ],
+            [
+              -76.6055944,
+              39.3022545
+            ],
+            [
+              -76.6055914,
+              39.3022034
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338035",
+        "footprint_area": 609,
+        "name": "1015_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1218,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055885,
+              39.3021553
+            ],
+            [
+              -76.6054677,
+              39.3021615
+            ],
+            [
+              -76.6054689,
+              39.3021857
+            ],
+            [
+              -76.6054605,
+              39.302186
+            ],
+            [
+              -76.605462,
+              39.3022081
+            ],
+            [
+              -76.6055914,
+              39.3022034
+            ],
+            [
+              -76.6055885,
+              39.3021553
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338037",
+        "footprint_area": 653,
+        "name": "1013_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1306,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6054677,
+              39.3021615
+            ],
+            [
+              -76.6055885,
+              39.3021553
+            ],
+            [
+              -76.6055855,
+              39.3021056
+            ],
+            [
+              -76.6054645,
+              39.3021098
+            ],
+            [
+              -76.6054661,
+              39.3021366
+            ],
+            [
+              -76.6054581,
+              39.3021369
+            ],
+            [
+              -76.6054598,
+              39.3021618
+            ],
+            [
+              -76.6054677,
+              39.3021615
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338360",
+        "footprint_area": 789,
+        "name": "825_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2367,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6056025,
+              39.30255
+            ],
+            [
+              -76.6055981,
+              39.3025502
+            ],
+            [
+              -76.6055993,
+              39.3025679
+            ],
+            [
+              -76.6055574,
+              39.3025695
+            ],
+            [
+              -76.6055598,
+              39.3026067
+            ],
+            [
+              -76.6055474,
+              39.3026072
+            ],
+            [
+              -76.6055486,
+              39.3026264
+            ],
+            [
+              -76.6055547,
+              39.3027074
+            ],
+            [
+              -76.6056125,
+              39.3027051
+            ],
+            [
+              -76.6056025,
+              39.30255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338357",
+        "footprint_area": 762,
+        "name": "837_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2286,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605253,
+              39.3026511
+            ],
+            [
+              -76.6052521,
+              39.3026511
+            ],
+            [
+              -76.6052505,
+              39.3026264
+            ],
+            [
+              -76.6052368,
+              39.3026269
+            ],
+            [
+              -76.6052338,
+              39.3025803
+            ],
+            [
+              -76.6051903,
+              39.302582
+            ],
+            [
+              -76.6051994,
+              39.3027213
+            ],
+            [
+              -76.6052574,
+              39.302719
+            ],
+            [
+              -76.605253,
+              39.3026511
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338356",
+        "footprint_area": 761,
+        "name": "839_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2283,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051903,
+              39.302582
+            ],
+            [
+              -76.6051829,
+              39.3025822
+            ],
+            [
+              -76.6051839,
+              39.3025972
+            ],
+            [
+              -76.6051329,
+              39.3025992
+            ],
+            [
+              -76.605141,
+              39.3027236
+            ],
+            [
+              -76.6051994,
+              39.3027213
+            ],
+            [
+              -76.6051903,
+              39.302582
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338359",
+        "footprint_area": 921,
+        "name": "823_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2763,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6056025,
+              39.30255
+            ],
+            [
+              -76.6056125,
+              39.3027051
+            ],
+            [
+              -76.6056736,
+              39.3027028
+            ],
+            [
+              -76.6056661,
+              39.3025872
+            ],
+            [
+              -76.6056522,
+              39.3025877
+            ],
+            [
+              -76.6056496,
+              39.3025482
+            ],
+            [
+              -76.6056025,
+              39.30255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338358",
+        "footprint_area": 1530,
+        "name": "841_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 4590,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605141,
+              39.3027236
+            ],
+            [
+              -76.6051329,
+              39.3025992
+            ],
+            [
+              -76.605132,
+              39.3025993
+            ],
+            [
+              -76.6051222,
+              39.3024469
+            ],
+            [
+              -76.6050671,
+              39.3024491
+            ],
+            [
+              -76.6050707,
+              39.3025043
+            ],
+            [
+              -76.6050863,
+              39.3025037
+            ],
+            [
+              -76.6050883,
+              39.3025344
+            ],
+            [
+              -76.6050729,
+              39.302535
+            ],
+            [
+              -76.6050853,
+              39.3027258
+            ],
+            [
+              -76.605141,
+              39.3027236
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338353",
+        "footprint_area": 1102,
+        "name": "833_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 3306,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6053614,
+              39.302545
+            ],
+            [
+              -76.6052999,
+              39.3025474
+            ],
+            [
+              -76.6053109,
+              39.3027169
+            ],
+            [
+              -76.6053753,
+              39.3027144
+            ],
+            [
+              -76.6053614,
+              39.302545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338352",
+        "footprint_area": 981,
+        "name": "827_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2943,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055486,
+              39.3026264
+            ],
+            [
+              -76.6055381,
+              39.3026268
+            ],
+            [
+              -76.6055316,
+              39.3025254
+            ],
+            [
+              -76.6054854,
+              39.3025272
+            ],
+            [
+              -76.6054885,
+              39.3025588
+            ],
+            [
+              -76.6054861,
+              39.3025591
+            ],
+            [
+              -76.6054958,
+              39.3027097
+            ],
+            [
+              -76.6055547,
+              39.3027074
+            ],
+            [
+              -76.6055486,
+              39.3026264
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338355",
+        "footprint_area": 1121,
+        "name": "831_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 3363,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6054316,
+              39.3026118
+            ],
+            [
+              -76.6054171,
+              39.3026123
+            ],
+            [
+              -76.6054136,
+              39.3025579
+            ],
+            [
+              -76.605408,
+              39.3025228
+            ],
+            [
+              -76.6053619,
+              39.3025244
+            ],
+            [
+              -76.6053614,
+              39.302545
+            ],
+            [
+              -76.6053753,
+              39.3027144
+            ],
+            [
+              -76.6054381,
+              39.302712
+            ],
+            [
+              -76.6054316,
+              39.3026118
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338354",
+        "footprint_area": 827,
+        "name": "829_E CHASE ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2481,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "crawlspace - vented",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6054861,
+              39.3025591
+            ],
+            [
+              -76.6054409,
+              39.3025637
+            ],
+            [
+              -76.6054439,
+              39.3026113
+            ],
+            [
+              -76.6054316,
+              39.3026118
+            ],
+            [
+              -76.6054381,
+              39.302712
+            ],
+            [
+              -76.6054958,
+              39.3027097
+            ],
+            [
+              -76.6054861,
+              39.3025591
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337258",
+        "footprint_area": 848,
+        "name": "1022_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2544,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051465,
+              39.3019167
+            ],
+            [
+              -76.6050309,
+              39.3019231
+            ],
+            [
+              -76.6050333,
+              39.3019624
+            ],
+            [
+              -76.605238,
+              39.3019544
+            ],
+            [
+              -76.605238,
+              39.301954
+            ],
+            [
+              -76.605259,
+              39.3019523
+            ],
+            [
+              -76.6052563,
+              39.301919
+            ],
+            [
+              -76.605196,
+              39.3019222
+            ],
+            [
+              -76.6051968,
+              39.3019248
+            ],
+            [
+              -76.6051478,
+              39.3019279
+            ],
+            [
+              -76.6051465,
+              39.3019167
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337257",
+        "footprint_area": 733,
+        "name": "1024_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2199,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605238,
+              39.3019544
+            ],
+            [
+              -76.6050333,
+              39.3019624
+            ],
+            [
+              -76.6050385,
+              39.3020022
+            ],
+            [
+              -76.6051685,
+              39.3019961
+            ],
+            [
+              -76.6051683,
+              39.3019939
+            ],
+            [
+              -76.6051526,
+              39.3019946
+            ],
+            [
+              -76.6051524,
+              39.3019873
+            ],
+            [
+              -76.6052404,
+              39.3019818
+            ],
+            [
+              -76.605238,
+              39.3019544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337768",
+        "footprint_area": 1293,
+        "name": "816_E EAGER ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 2586,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "natural gas",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - furnace and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6054055,
+              39.3015176
+            ],
+            [
+              -76.6054068,
+              39.3015224
+            ],
+            [
+              -76.6054142,
+              39.3016129
+            ],
+            [
+              -76.6055446,
+              39.3016063
+            ],
+            [
+              -76.6055384,
+              39.301534
+            ],
+            [
+              -76.6055423,
+              39.3015337
+            ],
+            [
+              -76.6055402,
+              39.3015109
+            ],
+            [
+              -76.6054055,
+              39.3015176
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338034",
+        "footprint_area": 702,
+        "name": "1021_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 2,
+        "floor_area": 1404,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv",
+        "number_of_stories_above_ground": 2,
+        "number_of_bedrooms": 3,
+        "foundation_type": "slab",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055973,
+              39.3023022
+            ],
+            [
+              -76.6054674,
+              39.3023068
+            ],
+            [
+              -76.6054685,
+              39.3023264
+            ],
+            [
+              -76.6054689,
+              39.302335
+            ],
+            [
+              -76.605476,
+              39.3023346
+            ],
+            [
+              -76.6054776,
+              39.3023604
+            ],
+            [
+              -76.6056005,
+              39.3023558
+            ],
+            [
+              -76.6055988,
+              39.3023268
+            ],
+            [
+              -76.6055973,
+              39.3023022
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336338033",
+        "footprint_area": 623,
+        "name": "1019_HILLMAN ST",
+        "year_built": 1994,
+        "building_type": "Single-Family Attached",
+        "attic_type": "attic - vented",
+        "number_of_bedrooms": 3,
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "heating_system_fuel_type": "electricity",
+        "number_of_stories": 2,
+        "number_of_stories_above_ground": 2,
+        "foundation_type": "slab",
+        "roof_type": "Hip",
+        "floor_area": 1246,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6055944,
+              39.3022545
+            ],
+            [
+              -76.6054719,
+              39.3022583
+            ],
+            [
+              -76.6054736,
+              39.302285
+            ],
+            [
+              -76.6054661,
+              39.3022853
+            ],
+            [
+              -76.6054674,
+              39.3023068
+            ],
+            [
+              -76.6055973,
+              39.3023022
+            ],
+            [
+              -76.6055944,
+              39.3022545
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337270",
+        "footprint_area": 933,
+        "name": "1044_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2799,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6052596,
+              39.3023737
+            ],
+            [
+              -76.6052596,
+              39.3023714
+            ],
+            [
+              -76.6052857,
+              39.3023708
+            ],
+            [
+              -76.6052849,
+              39.3023412
+            ],
+            [
+              -76.6052053,
+              39.3023439
+            ],
+            [
+              -76.6052039,
+              39.3023303
+            ],
+            [
+              -76.6050569,
+              39.3023355
+            ],
+            [
+              -76.6050571,
+              39.3023386
+            ],
+            [
+              -76.6050605,
+              39.3023801
+            ],
+            [
+              -76.6052596,
+              39.3023737
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337269",
+        "footprint_area": 645,
+        "name": "1016_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1935,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6050266,
+              39.3018529
+            ],
+            [
+              -76.6051373,
+              39.3018478
+            ],
+            [
+              -76.6051367,
+              39.3018401
+            ],
+            [
+              -76.6051909,
+              39.3018379
+            ],
+            [
+              -76.6051899,
+              39.3018051
+            ],
+            [
+              -76.6050303,
+              39.301812
+            ],
+            [
+              -76.6050305,
+              39.3018153
+            ],
+            [
+              -76.6050243,
+              39.3018156
+            ],
+            [
+              -76.6050266,
+              39.3018529
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337272",
+        "footprint_area": 642,
+        "name": "1036_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1926,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605193,
+              39.3021912
+            ],
+            [
+              -76.6050529,
+              39.3021979
+            ],
+            [
+              -76.6050547,
+              39.3022304
+            ],
+            [
+              -76.6050492,
+              39.3022308
+            ],
+            [
+              -76.6050493,
+              39.3022327
+            ],
+            [
+              -76.6052453,
+              39.3022243
+            ],
+            [
+              -76.6052441,
+              39.3021978
+            ],
+            [
+              -76.6051932,
+              39.3022006
+            ],
+            [
+              -76.605193,
+              39.3021912
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337271",
+        "footprint_area": 564,
+        "name": "1018_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1692,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051373,
+              39.3018478
+            ],
+            [
+              -76.6050266,
+              39.3018529
+            ],
+            [
+              -76.6050289,
+              39.3018894
+            ],
+            [
+              -76.6051946,
+              39.3018795
+            ],
+            [
+              -76.6051925,
+              39.3018524
+            ],
+            [
+              -76.6051379,
+              39.3018551
+            ],
+            [
+              -76.6051373,
+              39.3018478
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337266",
+        "footprint_area": 860,
+        "name": "1028_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2580,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051855,
+              39.3020374
+            ],
+            [
+              -76.6050417,
+              39.3020441
+            ],
+            [
+              -76.6050422,
+              39.3020898
+            ],
+            [
+              -76.6052345,
+              39.3020816
+            ],
+            [
+              -76.6052324,
+              39.3020447
+            ],
+            [
+              -76.6051862,
+              39.3020479
+            ],
+            [
+              -76.6051855,
+              39.3020374
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337264",
+        "footprint_area": 777,
+        "name": "1026_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2331,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051685,
+              39.3019961
+            ],
+            [
+              -76.6050385,
+              39.3020022
+            ],
+            [
+              -76.6050417,
+              39.3020441
+            ],
+            [
+              -76.6051855,
+              39.3020374
+            ],
+            [
+              -76.6052293,
+              39.3020353
+            ],
+            [
+              -76.6052265,
+              39.3019994
+            ],
+            [
+              -76.605169,
+              39.3020021
+            ],
+            [
+              -76.6051685,
+              39.3019961
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337268",
+        "footprint_area": 756,
+        "name": "1030_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2268,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6052345,
+              39.3020816
+            ],
+            [
+              -76.6050422,
+              39.3020898
+            ],
+            [
+              -76.6050434,
+              39.3021297
+            ],
+            [
+              -76.6051883,
+              39.3021242
+            ],
+            [
+              -76.6051877,
+              39.3021157
+            ],
+            [
+              -76.6052362,
+              39.3021126
+            ],
+            [
+              -76.6052345,
+              39.3020816
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337267",
+        "footprint_area": 615,
+        "name": "1038_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1845,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6052453,
+              39.3022243
+            ],
+            [
+              -76.6050493,
+              39.3022327
+            ],
+            [
+              -76.6050517,
+              39.3022653
+            ],
+            [
+              -76.605199,
+              39.3022589
+            ],
+            [
+              -76.6051987,
+              39.3022503
+            ],
+            [
+              -76.6052464,
+              39.3022482
+            ],
+            [
+              -76.6052453,
+              39.3022243
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337260",
+        "footprint_area": 635,
+        "name": "1020_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 1905,
+        "number_of_bedrooms": 4,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051946,
+              39.3018795
+            ],
+            [
+              -76.6050289,
+              39.3018894
+            ],
+            [
+              -76.6050309,
+              39.3019231
+            ],
+            [
+              -76.6051465,
+              39.3019167
+            ],
+            [
+              -76.6051465,
+              39.3019164
+            ],
+            [
+              -76.6051407,
+              39.3019168
+            ],
+            [
+              -76.6051403,
+              39.3019116
+            ],
+            [
+              -76.6052256,
+              39.3019067
+            ],
+            [
+              -76.6052232,
+              39.3018788
+            ],
+            [
+              -76.6051947,
+              39.3018808
+            ],
+            [
+              -76.6051946,
+              39.3018795
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337259",
+        "footprint_area": 736,
+        "name": "1034_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "attic_type": "attic - vented",
+        "number_of_stories": 3,
+        "number_of_stories_above_ground": 3,
+        "foundation_type": "basement - conditioned",
+        "number_of_bedrooms": 4,
+        "roof_type": "Hip",
+        "floor_area": 2208,
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "heating_system_fuel_type": "electricity",
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.605275,
+              39.3021544
+            ],
+            [
+              -76.6050444,
+              39.302165
+            ],
+            [
+              -76.6050444,
+              39.3021664
+            ],
+            [
+              -76.605051,
+              39.302166
+            ],
+            [
+              -76.6050529,
+              39.3021979
+            ],
+            [
+              -76.605193,
+              39.3021912
+            ],
+            [
+              -76.6051928,
+              39.3021858
+            ],
+            [
+              -76.6052767,
+              39.3021818
+            ],
+            [
+              -76.6052768,
+              39.3021794
+            ],
+            [
+              -76.605286,
+              39.3021785
+            ],
+            [
+              -76.605285,
+              39.30216
+            ],
+            [
+              -76.6052754,
+              39.3021605
+            ],
+            [
+              -76.605275,
+              39.3021544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337263",
+        "footprint_area": 726,
+        "name": "1032_VALLEY ST",
+        "year_built": 1880,
+        "attic_type": "attic - vented",
+        "building_type": "Single-Family Attached",
+        "foundation_type": "basement - conditioned",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "number_of_stories": 3,
+        "roof_type": "Hip",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "heating_system_fuel_type": "electricity",
+        "floor_area": 2178,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6051883,
+              39.3021242
+            ],
+            [
+              -76.6050434,
+              39.3021297
+            ],
+            [
+              -76.6050444,
+              39.302165
+            ],
+            [
+              -76.605275,
+              39.3021544
+            ],
+            [
+              -76.6052735,
+              39.3021313
+            ],
+            [
+              -76.6051889,
+              39.3021344
+            ],
+            [
+              -76.6051883,
+              39.3021242
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "336337261",
+        "footprint_area": 858,
+        "name": "1046_VALLEY ST",
+        "year_built": 1880,
+        "building_type": "Single-Family Attached",
+        "number_of_stories": 3,
+        "floor_area": 2574,
+        "number_of_residential_units": 1,
+        "type": "Building",
+        "number_of_stories_above_ground": 3,
+        "number_of_bedrooms": 4,
+        "foundation_type": "basement - conditioned",
+        "heating_system_fuel_type": "electricity",
+        "attic_type": "attic - vented",
+        "system_type": "Residential - electric resistance and central air conditioner",
+        "characterize_residential_buildings_from_buildstock_csv": true,
+        "uo_buildstock_mapping_csv_path": "resources/uo_buildstock_mapping.csv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.6052596,
+              39.3023737
+            ],
+            [
+              -76.6050605,
+              39.3023801
+            ],
+            [
+              -76.6050639,
+              39.3024218
+            ],
+            [
+              -76.60526,
+              39.3024162
+            ],
+            [
+              -76.6052596,
+              39.3023737
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "mappers": [],
+  "scenarios": [
+    {
+      "feature_mappings": [],
+      "id": "2c28478b-73e6-4065-ab77-6272bc4d8d2b",
+      "name": "New Scenario"
+    }
+  ]
+}

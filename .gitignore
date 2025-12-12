@@ -46,17 +46,6 @@ env/
 htmlcov/
 *.cover
 
-# Model files (large files - consider using Git LFS)
-*.keras
-*.h5
-*.pkl
-*.joblib
-
-# Data files
-*.csv
-*.json
-!examples/example_geojson.json
-
 # Logs
 *.log
 

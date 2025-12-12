@@ -158,6 +158,12 @@ pytest tests/
 pytest --cov=usg tests/
 ```
 
+## Authors & Contributors
+
+**Lead Developer:** Rawad El Kontar (NREL)
+
+**Organization:** National Renewable Energy Laboratory (NREL)
+
 ## Contributing
 
 Contributions are welcome! Please:
@@ -181,7 +187,8 @@ If you use this software in your research, please cite:
 ```bibtex
 @software{urban_system_generator,
   title={Urban System Generator},
-  author={NREL},
+  author={El Kontar, Rawad},
+  organization={National Renewable Energy Laboratory},
   year={2025},
   url={https://github.com/NREL/urban-system-generator}
 }
@@ -193,7 +200,7 @@ This work was supported by the U.S. Department of Energy's Building Technologies
 
 ## Contact
 
-For questions or support, please open an issue on GitHub.
+For questions or support, please contact Rawad El Kontar (rawad.elkontar@nrel.gov) or open an issue on GitHub.
 
 ---
 
