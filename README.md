@@ -86,8 +86,7 @@ urban-system-generator/
 ├── usg/                      # Main package
 │   ├── inference.py          # Inference engine
 │   ├── geojson_processor.py  # GeoJSON processing
-│   ├── model.py              # Neural network model
-│   └── utils.py              # Utility functions
+│   └── model.py              # Neural network model
 ├── resources/                # Model resources
 │   ├── pretrained_model/     # Trained model files
 │   └── model_attributes.py   # Model schema
