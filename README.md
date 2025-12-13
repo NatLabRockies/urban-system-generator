@@ -54,7 +54,7 @@ inference = USGInference(
     cat_scaler_path="resources/pretrained_model/cat_scaler.pkl",
     num_scaler_path="resources/pretrained_model/num_scaler.pkl",
     encoding_dict_path="resources/pretrained_model/encoding_mapper.json",
-    all_model_attributes=all_model_attributes,
+    # all_model_attributes is now optional - will auto-detect from model files
 )
 
 # Process buildings
@@ -63,6 +63,8 @@ inference.process_buildings_batch(
     output_csv_path="buildings_complete.csv",
 )
 ```
+
+**Note:** The model attributes are now automatically detected from the pretrained model files. You no longer need to manually maintain a `model_attributes.py` file.
 
 ### 3. Single Building Prediction
 
@@ -149,13 +151,34 @@ See the `examples/` directory for complete usage examples:
 
 ## Testing
 
+The repository includes comprehensive unit and integration tests.
+
 ```bash
-# Run tests
+# Run all tests
+python run_tests.py
+
+# Run only unit tests
+python run_tests.py unit
+
+# Run integration tests
+python run_tests.py integration
+
+# Run specific test module
+python run_tests.py inference
+python run_tests.py geojson
+
+# Using pytest (alternative)
 pytest tests/
 
 # Run with coverage
 pytest --cov=usg tests/
 ```
+
+### Test Structure
+
+- `tests/test_inference.py` - Unit tests for the inference engine
+- `tests/test_geojson_processor.py` - Unit tests for GeoJSON processing
+- `tests/test_integration.py` - End-to-end integration tests
 
 ## Authors & Contributors
 

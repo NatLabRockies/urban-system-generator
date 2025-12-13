@@ -27,7 +27,7 @@ class USGInference:
         cat_scaler_path: str,
         num_scaler_path: str,
         encoding_dict_path: str,
-        all_model_attributes: list,
+        all_model_attributes: list = None,  # Made optional - will auto-detect if None
     ):
         """
         Initialize the inference engine with model and preprocessing artifacts.
@@ -37,16 +37,38 @@ class USGInference:
             cat_scaler_path: Path to categorical feature scaler (.pkl)
             num_scaler_path: Path to numerical feature scaler (.pkl)
             encoding_dict_path: Path to encoding dictionary (.json or .pkl)
-            all_model_attributes: List of all feature names the model expects
+            all_model_attributes: List of all feature names (optional - will auto-detect if None)
         """
         self.model_path = Path(model_path)
         self.cat_scaler_path = Path(cat_scaler_path)
         self.num_scaler_path = Path(num_scaler_path)
         self.encoding_dict_path = Path(encoding_dict_path)
-        self.all_model_attributes = all_model_attributes
         
         # Load model and scalers
         self._load_artifacts()
+        
+        # Auto-detect model attributes if not provided
+        if all_model_attributes is None:
+            self.all_model_attributes = self._detect_model_attributes()
+        else:
+            self.all_model_attributes = all_model_attributes
+    
+    def _detect_model_attributes(self):
+        """
+        Automatically detect model attributes from the scalers and encoding dictionary.
+        Returns the correct ordered list of all model attributes.
+        """
+        # Categorical columns from encoding dictionary
+        cat_cols = list(self.enc_dict.keys())
+        
+        # Numerical columns from scaler
+        num_cols = list(self.num_scaler.feature_names_in_)
+        
+        # Combined list - categorical first, then numerical
+        # This is the standard order for most models
+        all_attributes = cat_cols + num_cols
+        
+        return all_attributes
     
     def _load_artifacts(self):
         """Load model, scalers, and encoding dictionary."""
@@ -93,8 +115,16 @@ class USGInference:
         Returns:
             Complete dictionary of building attributes (known + predicted)
         """
-        # Build one-row DataFrame
+        # Build one-row DataFrame with proper dtype handling
         df = pd.DataFrame([{c: np.nan for c in self.all_model_attributes}])
+        
+        # Set dtypes appropriately to avoid FutureWarnings
+        for col in self.cat_cols:
+            df[col] = df[col].astype('object')
+        for col in self.num_cols:
+            df[col] = df[col].astype('float64')
+            
+        # Fill in known attributes
         for k, v in known_attrs.items():
             if k in df.columns:
                 df.at[0, k] = v
