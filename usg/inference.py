@@ -12,8 +12,9 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import layers
-
 from .model import ScaledInputMaskedNN
+import logging
+logger = logging.getLogger(__name__)
 
 
 class USGInference:
@@ -153,22 +154,58 @@ class USGInference:
         df_enc[self.num_cols] = self.num_scaler.inverse_transform(df_enc[self.num_cols])
         df_enc[self.cat_cols] = self.cat_scaler.inverse_transform(df_enc[self.cat_cols])
         
-        # Decode categorical values
-        for col in self.cat_cols:
-            fmap_inv = {
-                v: k for k, v in (
-                    self.enc_dict[col]["forward"]
-                    if isinstance(self.enc_dict[col], dict) and "forward" in self.enc_dict[col]
-                    else self.enc_dict[col]
-                ).items()
-            }
-            code = int(round(df_enc.at[0, col]))
-            if code not in fmap_inv:
-                # Clamp to nearest valid code
-                code = min(fmap_inv, key=lambda k: (abs(k - code), k))
-            df_enc.at[0, col] = fmap_inv[code]
         
-        return df_enc.iloc[0].to_dict()
+        # Decode categorical values WITHOUT writing strings into df_enc
+        result = df_enc.iloc[0].to_dict()
+        decode_warnings = []
+
+        for col in self.cat_cols:
+            entry = self.enc_dict[col]
+            fmap = entry["forward"] if isinstance(entry, dict) and "forward" in entry else entry
+            fmap_inv = {v: k for k, v in fmap.items()}
+
+            raw_val = result.get(col, np.nan)
+            if pd.isna(raw_val):
+                continue
+
+            code = int(round(float(raw_val)))
+
+            if code not in fmap_inv:
+                nearest_code = min(fmap_inv, key=lambda k: (abs(k - code), k))
+                msg = (
+                    f"[USGInference] Column '{col}': predicted code {code} "
+                    f"not valid, snapped to nearest {nearest_code} "
+                    f"('{fmap_inv[nearest_code]}')"
+                )
+                decode_warnings.append(msg)
+                logger.warning(msg)
+                code = nearest_code
+
+            result[col] = fmap_inv[code]
+
+        if decode_warnings:
+            result["_decode_warnings"] = decode_warnings
+
+        return result
+
+        
+
+        # Decode categorical values
+        # for col in self.cat_cols:
+        #     fmap_inv = {
+        #         v: k for k, v in (
+        #             self.enc_dict[col]["forward"]
+        #             if isinstance(self.enc_dict[col], dict) and "forward" in self.enc_dict[col]
+        #             else self.enc_dict[col]
+        #         ).items()
+        #     }
+        #     code = int(round(df_enc.at[0, col]))
+        #     if code not in fmap_inv:
+        #         # Clamp to nearest valid code
+        #         code = min(fmap_inv, key=lambda k: (abs(k - code), k))
+        #     df_enc.at[0, col] = fmap_inv[code]
+        
+        # return df_enc.iloc[0].to_dict()
     
     def process_buildings_batch(
         self,

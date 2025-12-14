@@ -20,11 +20,18 @@ Urban System Generator (USG) is a machine learning-based tool for completing mis
 git clone https://github.com/NREL/urban-system-generator.git
 cd urban-system-generator
 
-# Install dependencies
-pip install -r requirements.txt
+# Create a virtual environment
+python3 -m venv .venv  # Or try `python -m venv .venv` if `python3` doesn't work
 
-# Install the package
+# Activate the virtual environment
+source .venv/bin/activate
+
+# Upgrade packaging tools
+pip install --upgrade pip setuptools wheel
+
+# Install the package and dependencies
 pip install -e .
+
 ```
 
 ## Quick Start

@@ -16,6 +16,10 @@ from usg.geojson_processor import GeoJSONProcessor
 from usg.inference import USGInference
 from resources.model_attributes import all_model_attributes
 
+import logging
+logging.basicConfig(level=logging.ERROR)
+#logging.basicConfig(level=logging.WARNING)
+
 
 def example_geojson_to_csv():
     """Example: Convert GeoJSON to CSV"""
