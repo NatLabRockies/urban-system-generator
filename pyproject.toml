@@ -15,7 +15,7 @@ authors = [
 maintainers = [
   { name = "Rawad El Kontar", email = "rawad.elkontar@nrel.gov" }
 ]
-keywords = ["urban", "energy", "buildings", "machine-learning", "data-completion"]
+keywords = ["urban", "energy", "buildings", "machine-learning", "artificial-intelligence", "GenAI", "data-completion"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
@@ -32,7 +32,12 @@ dependencies = [
   "pandas>=1.3.0",
   "tensorflow>=2.10.0",
   "scikit-learn>=1.0.0",
+  "click>=8.0.0",
 ]
+
+[project.scripts]
+usg = "usg.cli:cli"
+urban-system-generator = "usg.cli:cli"
 
 [project.optional-dependencies]
 dev = [

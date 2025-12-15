@@ -34,7 +34,30 @@ pip install -e .
 
 ```
 
-## Quick Start
+## Command Line Interface (CLI)
+
+After installation, the `usg` command will be available. The CLI provides easy access to all functionality:
+
+```bash
+# Convert GeoJSON to CSV
+usg geojson2csv -i buildings.json -o buildings.csv
+
+# Predict missing attributes for a single building
+usg predict-single -a "Vintage" "2000s" -a "Bedrooms" "3"
+
+# Process batch of buildings
+usg batch-predict -i incomplete.csv -o completed.csv --progress
+
+# Run complete workflow
+usg workflow -i buildings.json -o simulation_ready.csv --verbose
+
+# Get help
+usg --help
+```
+
+For detailed CLI documentation, see [docs/cli_usage.md](docs/cli_usage.md).
+
+## Quick Start (Python API)
 
 ### 1. Convert GeoJSON to CSV
 
