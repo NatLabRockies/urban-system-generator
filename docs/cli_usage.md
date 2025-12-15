@@ -14,14 +14,20 @@ pip install -e .
 
 ### 1. Convert GeoJSON to CSV
 
-Convert building data from GeoJSON format to CSV:
+Convert building data from GeoJSON format to CSV with all model attribute columns:
 
 ```bash
+# Basic usage - creates CSV with all 115 model attributes as columns
 usg geojson2csv -i buildings.json -o buildings.csv
 
 # With verbose output
 usg geojson2csv -i buildings.json -o buildings.csv --verbose
+
+# With custom model directory (to get attribute list)
+usg geojson2csv -i buildings.json -o buildings.csv -m path/to/model/dir
 ```
+
+**Note:** The output CSV will contain ALL model attributes as columns, with mapped properties filled in and unmapped attributes left empty for later prediction. Users can fill in empty columns manually with known inputs.
 
 ### 2. Predict Single Building
 
@@ -77,7 +83,7 @@ usg workflow -i buildings.json -o simulation_ready.csv
 usg workflow -i buildings.json -o simulation_ready.csv --verbose --keep-intermediate
 
 # Custom model directory
-usg workflow -i buildings.json -o simulation_ready.csv -m path/to/model/dir
+usg workflow -i buildings.json -o simulation_ready.csv -d path/to/model/dir
 ```
 
 ### 5. Model Information
@@ -92,7 +98,7 @@ usg info
 usg info --export attributes.json
 
 # Custom model directory
-usg info -m path/to/model/dir
+usg info -d path/to/model/dir
 ```
 
 ## Command Options

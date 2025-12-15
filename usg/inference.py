@@ -15,6 +15,7 @@ from tensorflow.keras import layers
 from .model import ScaledInputMaskedNN
 import logging
 logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
 
 
 class USGInference:

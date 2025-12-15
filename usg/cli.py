@@ -20,6 +20,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from usg.inference import USGInference
 from usg.geojson_processor import GeoJSONProcessor
 
+# CLI default: suppress library warnings to keep command-line output clean.
+import logging
+logging.basicConfig(level=logging.ERROR)
+
 # Context settings for help options
 CONTEXT_SETTINGS = {"help_option_names": ["-h", "--help"]}
 
@@ -57,17 +61,24 @@ def cli():
     help="Path to output CSV file (default: input_name.csv)"
 )
 @click.option(
+    "-d", "--model-dir",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, resolve_path=True),
+    default="resources/pretrained_model",
+    help="Directory containing model files (to get all attribute columns)"
+)
+@click.option(
     "-v", "--verbose",
     is_flag=True,
     help="Enable verbose output"
 )
-def geojson2csv(geojson_file, csv_file, verbose):
+def geojson2csv(geojson_file, csv_file, model_dir, verbose):
     """
     Convert a GeoJSON file containing building data to CSV format.
     
     \b
     This command extracts building properties from a GeoJSON file and
-    converts them to a CSV format suitable for the inference model.
+    converts them to a CSV format with ALL model attributes as columns.
+    Missing attributes will have empty values.
     
     \b
     Example:
@@ -81,13 +92,37 @@ def geojson2csv(geojson_file, csv_file, verbose):
         if csv_file is None:
             csv_file = Path(geojson_file).with_suffix('.csv')
         
+        # Load model to get all attributes
+        model_path = Path(model_dir) / "adaptive_model_1.keras"
+        cat_scaler = Path(model_dir) / "cat_scaler.pkl"
+        num_scaler = Path(model_dir) / "num_scaler.pkl"
+        encoding = Path(model_dir) / "encoding_mapper.json"
+        
+        if verbose:
+            click.echo("Loading model to get all attribute columns...")
+        
+        # Initialize inference to get all model attributes
+        from usg.inference import USGInference
+        inference = USGInference(
+            model_path=str(model_path),
+            cat_scaler_path=str(cat_scaler),
+            num_scaler_path=str(num_scaler),
+            encoding_dict_path=str(encoding),
+        )
+        
+        all_model_attributes = inference.all_model_attributes
+        
+        if verbose:
+            click.echo(f"Model expects {len(all_model_attributes)} attributes")
+        
         # Initialize processor
         processor = GeoJSONProcessor()
         
-        # Convert GeoJSON to CSV
+        # Convert GeoJSON to CSV with all model attributes
         status = processor.geojson_to_csv(
             geojson_path=geojson_file,
             output_csv_path=str(csv_file),
+            all_model_attributes=all_model_attributes,  # Pass all attributes
         )
         
         click.echo(click.style(f"✓ {status}", fg="green"))
@@ -95,7 +130,9 @@ def geojson2csv(geojson_file, csv_file, verbose):
         if verbose:
             # Show sample of the output
             df = pd.read_csv(csv_file)
-            click.echo(f"\nOutput contains {len(df)} buildings with {len(df.columns)} attributes")
+            click.echo(f"\nOutput contains {len(df)} buildings with {len(df.columns)} columns")
+            click.echo(f"Columns with data: {sum(df[col].notna().any() for col in df.columns if col != 'Building')}")
+            click.echo(f"Empty columns (to be predicted): {sum(df[col].isna().all() for col in df.columns if col != 'Building')}")
             click.echo(f"First 5 building IDs: {df['Building'].head().tolist()}")
             
     except Exception as e:
@@ -343,7 +380,7 @@ def batch_predict(input_csv, output_csv, model_path, cat_scaler, num_scaler,
     help="Path to final output CSV (default: input_simulation_ready.csv)"
 )
 @click.option(
-    "-m", "--model-dir",
+    "-d", "--model-dir",
     type=click.Path(exists=True, file_okay=False, dir_okay=True, resolve_path=True),
     default="resources/pretrained_model",
     help="Directory containing model files"
@@ -380,20 +417,6 @@ def workflow(geojson_file, output_csv, model_dir, keep_intermediate, verbose):
         
         intermediate_csv = geojson_path.parent / f"{geojson_path.stem}_intermediate.csv"
         
-        # Step 1: Convert GeoJSON to CSV
-        click.echo("Step 1: Converting GeoJSON to CSV...")
-        processor = GeoJSONProcessor()
-        status = processor.geojson_to_csv(
-            geojson_path=str(geojson_file),
-            output_csv_path=str(intermediate_csv),
-        )
-        
-        if verbose:
-            click.echo(f"  {status}")
-        
-        # Step 2: Complete missing attributes
-        click.echo("\nStep 2: Predicting missing attributes...")
-        
         # Build model paths
         model_path = Path(model_dir) / "adaptive_model_1.keras"
         cat_scaler = Path(model_dir) / "cat_scaler.pkl"
@@ -406,6 +429,8 @@ def workflow(geojson_file, output_csv, model_dir, keep_intermediate, verbose):
             if not file_path.exists():
                 raise FileNotFoundError(f"Model file not found: {file_path}")
         
+        # Load model to get all attributes
+        click.echo("Loading model to get all attribute columns...")
         inference = USGInference(
             model_path=str(model_path),
             cat_scaler_path=str(cat_scaler),
@@ -413,6 +438,26 @@ def workflow(geojson_file, output_csv, model_dir, keep_intermediate, verbose):
             encoding_dict_path=str(encoding),
         )
         
+        all_model_attributes = inference.all_model_attributes
+        
+        # Step 1: Convert GeoJSON to CSV with all model attributes
+        click.echo("Step 1: Converting GeoJSON to CSV with all model attributes...")
+        processor = GeoJSONProcessor()
+        status = processor.geojson_to_csv(
+            geojson_path=str(geojson_file),
+            output_csv_path=str(intermediate_csv),
+            all_model_attributes=all_model_attributes,  # Pass all attributes
+        )
+        
+        if verbose:
+            click.echo(f"  {status}")
+            df_temp = pd.read_csv(intermediate_csv)
+            click.echo(f"  Created CSV with {len(df_temp.columns)} columns")
+        
+        # Step 2: Complete missing attributes
+        click.echo("\nStep 2: Predicting missing attributes...")
+        
+        # Use the already initialized inference engine
         status = inference.process_buildings_batch(
             input_csv_path=str(intermediate_csv),
             output_csv_path=str(output_csv),
@@ -444,7 +489,7 @@ def workflow(geojson_file, output_csv, model_dir, keep_intermediate, verbose):
 
 @cli.command(short_help="Show information about model attributes")
 @click.option(
-    "-m", "--model-dir",
+    "-d", "--model-dir",
     type=click.Path(exists=True, file_okay=False, dir_okay=True, resolve_path=True),
     default="resources/pretrained_model",
     help="Directory containing model files"
