@@ -136,7 +136,26 @@ class USGInference:
         for col in self.cat_cols:
             entry = self.enc_dict[col]
             fmap = entry["forward"] if isinstance(entry, dict) and "forward" in entry else entry
-            df_enc[col] = df_enc[col].map(lambda x: fmap.get(x, fmap.get("nan", 0)))
+            # Convert values to string for lookup since encoding dict has string keys
+            # This handles cases where CSV reads numeric values (e.g., 3) but dict has string keys (e.g., "3")
+            def encode_value(x, fmap=fmap):
+                if pd.isna(x):
+                    return fmap.get("nan", 0)
+                # Try direct lookup first
+                if x in fmap:
+                    return fmap[x]
+                # Try string conversion for numeric values
+                str_x = str(x)
+                if str_x in fmap:
+                    return fmap[str_x]
+                # Try removing trailing .0 for float-like strings (e.g., "3.0" -> "3")
+                if isinstance(x, float) and x == int(x):
+                    int_str = str(int(x))
+                    if int_str in fmap:
+                        return fmap[int_str]
+                # Fallback to nan encoding
+                return fmap.get("nan", 0)
+            df_enc[col] = df_enc[col].map(encode_value)
         
         df_enc[self.cat_cols] = self.cat_scaler.transform(df_enc[self.cat_cols])
         df_enc[self.num_cols] = self.num_scaler.transform(df_enc[self.num_cols])
@@ -188,25 +207,6 @@ class USGInference:
             result["_decode_warnings"] = decode_warnings
 
         return result
-
-        
-
-        # Decode categorical values
-        # for col in self.cat_cols:
-        #     fmap_inv = {
-        #         v: k for k, v in (
-        #             self.enc_dict[col]["forward"]
-        #             if isinstance(self.enc_dict[col], dict) and "forward" in self.enc_dict[col]
-        #             else self.enc_dict[col]
-        #         ).items()
-        #     }
-        #     code = int(round(df_enc.at[0, col]))
-        #     if code not in fmap_inv:
-        #         # Clamp to nearest valid code
-        #         code = min(fmap_inv, key=lambda k: (abs(k - code), k))
-        #     df_enc.at[0, col] = fmap_inv[code]
-        
-        # return df_enc.iloc[0].to_dict()
     
     def process_buildings_batch(
         self,
