@@ -120,7 +120,7 @@ def build_allowed_sets(allowed_options: Dict[str, List[str]]) -> Dict[str, Tuple
 # STEP 1: MISSING COLUMN FILLER
 # ============================================================================
 
-# Parameters that need to be added for URBANopt-BuildStock compatibility
+# Parameters that need to be added for URBANopt-BuildStock compatibility (this temporary fix to updated the old usg model to the new buildstock schema )
 MISSING_PARAMETERS: List[str] = [
     "AHS Region", "AIANNH Area", "ASHRAE IECC Climate Zone 2004",
     "ASHRAE IECC Climate Zone 2004 - Sub-CZ Split", "Area Median Income",

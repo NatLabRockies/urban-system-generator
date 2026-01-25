@@ -1,6 +1,6 @@
 {
-  "version": "1.5",
-  "description": "Cross-field consistency rules (deterministic invariants + safe fixes). Uses 'None' and sometimes 'Void' as empty tokens depending on field allowed options. Designed for multi-pass enforcement. Includes HVAC cooling/duct consistency to prevent multiple central cooling systems in BuildResidentialModel. Added generalized heat-pump vs Central AC consistency rules to prevent multiple central cooling systems Added foundation-primary basement location rules to prevent 'basement - conditioned' surface mismatch errors. (Patched foundation primary fixes to use supported set_if action.)",
+  "version": "1.6",
+  "description": "Cross-field consistency rules (deterministic invariants + safe fixes). Uses 'None' and sometimes 'Void' as empty tokens depending on field allowed options. Designed for multi-pass enforcement. Includes HVAC cooling/duct consistency to prevent multiple central cooling systems in BuildResidentialModel. Added generalized heat-pump vs Central AC consistency rules to prevent multiple central cooling systems Added foundation-primary basement location rules to prevent 'basement - conditioned' surface mismatch errors. (Patched foundation primary fixes to use supported set_if action.) Added HVAC/Duct consistency rules to ensure ducted systems have HVAC Has Ducts = Yes and valid Duct Location.",
   "empty_like_values": [
     "None",
     "Void",
@@ -11,6 +11,214 @@
     "stop_when_no_changes": true
   },
   "rules": [
+    {
+      "id": "ducted_heating_requires_hvac_has_ducts_yes",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Heating Type",
+        "op": "in",
+        "value": [
+          "Ducted Heat Pump",
+          "Ducted Heating"
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Has Ducts",
+          "op": "equals",
+          "value": "Yes"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Has Ducts",
+          "value": "Yes"
+        }
+      ],
+      "note": "Ducted heating systems (Ducted Heat Pump, Ducted Heating) require HVAC Has Ducts = Yes."
+    },
+    {
+      "id": "ducted_cooling_requires_hvac_has_ducts_yes",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Cooling Type",
+        "op": "in",
+        "value": [
+          "Central AC",
+          "Ducted Heat Pump"
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Has Ducts",
+          "op": "equals",
+          "value": "Yes"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Has Ducts",
+          "value": "Yes"
+        }
+      ],
+      "note": "Ducted cooling systems (Central AC, Ducted Heat Pump) require HVAC Has Ducts = Yes."
+    },
+    {
+      "id": "hvac_has_ducts_yes_requires_duct_location",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "field": "Duct Location",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Duct Location",
+          "value": "Living Space"
+        }
+      ],
+      "note": "When HVAC Has Ducts = Yes, Duct Location must be specified. Default to Living Space."
+    },
+    {
+      "id": "hvac_has_ducts_yes_requires_duct_leakage",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "field": "Duct Leakage and Insulation",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Duct Leakage and Insulation",
+          "value": "10% Leakage to Outside, R-8"
+        }
+      ],
+      "note": "When HVAC Has Ducts = Yes, Duct Leakage and Insulation must be specified. Default to 10% Leakage, R-8."
+    },
+    {
+      "id": "hvac_has_ducts_no_requires_duct_location_none",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "Duct Location",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Duct Location",
+          "value": "None"
+        }
+      ],
+      "note": "When HVAC Has Ducts = No, Duct Location should be None."
+    },
+    {
+      "id": "hvac_has_ducts_no_requires_duct_leakage_none",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "Duct Leakage and Insulation",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Duct Leakage and Insulation",
+          "value": "None"
+        }
+      ],
+      "note": "When HVAC Has Ducts = No, Duct Leakage and Insulation should be None."
+    },
+    {
+      "id": "non_ducted_hvac_requires_hvac_has_ducts_no",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "HVAC Heating Type",
+            "op": "in",
+            "value": [
+              "Non-Ducted Heat Pump",
+              "Non-Ducted Heating",
+              "None"
+            ]
+          },
+          {
+            "field": "HVAC Cooling Type",
+            "op": "in",
+            "value": [
+              "Non-Ducted Heat Pump",
+              "Room AC",
+              "Evaporative or Swamp Cooler",
+              "None"
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Has Ducts",
+          "op": "equals",
+          "value": "No"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Has Ducts",
+          "value": "No"
+        }
+      ],
+      "note": "When both heating and cooling are non-ducted types, HVAC Has Ducts should be No."
+    },
     {
       "id": "secondary_heating_equipment_absent_resets_fuel_and_efficiency",
       "severity": "error",
