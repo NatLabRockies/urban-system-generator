@@ -1,0 +1,1363 @@
+{
+  "version": "1.5",
+  "description": "Cross-field consistency rules (deterministic invariants + safe fixes). Uses 'None' and sometimes 'Void' as empty tokens depending on field allowed options. Designed for multi-pass enforcement. Includes HVAC cooling/duct consistency to prevent multiple central cooling systems in BuildResidentialModel. Added generalized heat-pump vs Central AC consistency rules to prevent multiple central cooling systems Added foundation-primary basement location rules to prevent 'basement - conditioned' surface mismatch errors. (Patched foundation primary fixes to use supported set_if action.)",
+  "empty_like_values": [
+    "None",
+    "Void",
+    ""
+  ],
+  "execution": {
+    "max_passes": 5,
+    "stop_when_no_changes": true
+  },
+  "rules": [
+    {
+      "id": "secondary_heating_equipment_absent_resets_fuel_and_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Secondary Heating Type",
+        "op": "in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Secondary Heating Fuel",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        },
+        {
+          "field": "HVAC Secondary Heating Efficiency",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Secondary Heating Fuel",
+          "value": "None"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Secondary Heating Efficiency",
+          "value": "None"
+        }
+      ],
+      "note": "Hierarchy: equipment exists \u2192 fuel exists \u2192 efficiency exists. If no secondary heating equipment, fuel & efficiency must be None."
+    },
+    {
+      "id": "secondary_heating_equipment_present_requires_fuel",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Secondary Heating Type",
+        "op": "not_in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Secondary Heating Fuel",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "note": "If secondary heating equipment exists, a fuel must be specified. (No deterministic fix here without equipment/fuel mapping.)"
+    },
+    {
+      "id": "secondary_heating_fuel_present_requires_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Secondary Heating Fuel",
+        "op": "not_in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Secondary Heating Efficiency",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "note": "If secondary heating fuel exists, efficiency must be specified. (Fix requires mapping type/fuel to efficiency choice.)"
+    },
+    {
+      "id": "secondary_heating_fuel_absent_implies_efficiency_absent",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Secondary Heating Fuel",
+        "op": "in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Secondary Heating Efficiency",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Secondary Heating Efficiency",
+          "value": "None"
+        }
+      ],
+      "note": "Fuel controls efficiency existence: if fuel is None, efficiency must be None."
+    },
+    {
+      "id": "cooling_offset_disabled_resets_offset_fields",
+      "severity": "error",
+      "when": {
+        "field": "Cooling Setpoint Has Offset",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "Cooling Setpoint Offset Magnitude",
+          "op": "equals",
+          "value": "0F"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Cooling Setpoint Offset Magnitude",
+          "value": "0F"
+        },
+        {
+          "action": "set",
+          "field": "Cooling Setpoint Offset Period",
+          "value": "Day Setup"
+        }
+      ],
+      "note": "Options do not include None for Cooling Setpoint Offset Period; neutral choice is Day Setup with 0F."
+    },
+    {
+      "id": "heating_offset_disabled_resets_offset_fields",
+      "severity": "error",
+      "when": {
+        "field": "Heating Setpoint Has Offset",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "Heating Setpoint Offset Magnitude",
+          "op": "equals",
+          "value": "0F"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Heating Setpoint Offset Magnitude",
+          "value": "0F"
+        },
+        {
+          "action": "set",
+          "field": "Heating Setpoint Offset Period",
+          "value": "Day"
+        }
+      ],
+      "note": "Options do not include None for Heating Setpoint Offset Period; neutral choice is Day with 0F."
+    },
+    {
+      "id": "hvac_shared_efficiencies_must_be_empty_if_no_shared_system",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Shared System",
+        "op": "in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Shared Efficiencies",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Shared Efficiencies",
+          "value": "None"
+        }
+      ],
+      "note": "If building does not have a shared HVAC system, shared efficiencies must be None/Void."
+    },
+    {
+      "id": "hvac_shared_efficiencies_required_if_shared_system_present",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Shared System",
+        "op": "not_in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Shared Efficiencies",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "note": "If shared system is present, shared efficiencies cannot be None/Void. No deterministic fix."
+    },
+    {
+      "id": "central_ac_requires_ducts_and_ac_efficiency_and_duct_location",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Cooling Type",
+        "op": "equals",
+        "value": "Central AC"
+      },
+      "then": [
+        {
+          "field": "HVAC Has Ducts",
+          "op": "equals",
+          "value": "Yes"
+        },
+        {
+          "field": "HVAC Cooling Efficiency",
+          "op": "starts_with_any",
+          "value": [
+            "AC, SEER",
+            "AC, SEER2"
+          ]
+        },
+        {
+          "field": "Duct Location",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Has Ducts",
+          "value": "Yes"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Cooling Efficiency",
+          "value": "AC, SEER 13"
+        },
+        {
+          "action": "set",
+          "field": "Duct Location",
+          "value": "Living Space"
+        }
+      ],
+      "note": "Central AC must be ducted with an AC efficiency. This prevents BuildResidentialModel from constructing multiple central cooling systems due to inconsistent inputs."
+    },
+    {
+      "id": "no_ducts_cannot_have_central_ac",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "HVAC Cooling Type",
+          "op": "in",
+          "value": [
+            "Room AC",
+            "Non-Ducted Heat Pump",
+            "None",
+            "Void"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Cooling Type",
+          "value": "Room AC"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Cooling Efficiency",
+          "value": "Room AC, EER 12.0"
+        }
+      ],
+      "note": "If no ducts, cooling cannot be Central AC."
+    },
+    {
+      "id": "room_ac_requires_room_ac_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Cooling Type",
+        "op": "equals",
+        "value": "Room AC"
+      },
+      "then": [
+        {
+          "field": "HVAC Cooling Efficiency",
+          "op": "starts_with_any",
+          "value": [
+            "Room AC, EER"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Cooling Efficiency",
+          "value": "Room AC, EER 12.0"
+        }
+      ],
+      "note": "Cooling efficiency must match Room AC type."
+    },
+    {
+      "id": "central_ac_cannot_have_room_ac_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Cooling Type",
+        "op": "equals",
+        "value": "Central AC"
+      },
+      "then": [
+        {
+          "field": "HVAC Cooling Efficiency",
+          "op": "not_starts_with_any",
+          "value": [
+            "Room AC, EER"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Cooling Efficiency",
+          "value": "AC, SEER 13"
+        }
+      ],
+      "note": "Cooling efficiency must match Central AC type."
+    },
+    {
+      "id": "nonducted_heating_implies_no_ducts_scoped",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "HVAC Heating Type",
+            "op": "equals",
+            "value": "Non-Ducted Heating"
+          },
+          {
+            "field": "HVAC Cooling Type",
+            "op": "in",
+            "value": [
+              "Room AC",
+              "Non-Ducted Heat Pump",
+              "None",
+              "Void"
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Has Ducts",
+          "op": "equals",
+          "value": "No"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Has Ducts",
+          "value": "No"
+        }
+      ],
+      "note": "Only force ducts=No for non-ducted heating when cooling is also non-ducted."
+    },
+    {
+      "id": "nonducted_heat_pump_implies_no_ducts_scoped",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "HVAC Heating Type",
+            "op": "equals",
+            "value": "Non-Ducted Heat Pump"
+          },
+          {
+            "field": "HVAC Cooling Type",
+            "op": "in",
+            "value": [
+              "Room AC",
+              "Non-Ducted Heat Pump",
+              "None",
+              "Void"
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Has Ducts",
+          "op": "equals",
+          "value": "No"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Has Ducts",
+          "value": "No"
+        }
+      ],
+      "note": "Only force ducts=No for non-ducted HP when cooling is also non-ducted."
+    },
+    {
+      "id": "no_ducts_implies_duct_location_none",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "Duct Location",
+          "op": "equals",
+          "value": "None"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Duct Location",
+          "value": "None"
+        }
+      ],
+      "note": "If there are no ducts, duct location must be None."
+    },
+    {
+      "id": "ducts_yes_requires_location_not_none",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Has Ducts",
+        "op": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "field": "Duct Location",
+          "op": "not_in",
+          "value": [
+            "None",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Duct Location",
+          "value": "Living Space"
+        }
+      ],
+      "note": "If ducts exist, duct location must be specified. Default fix uses Living Space."
+    },
+    {
+      "id": "foundation_primary_no_basement_forbids_basement_locations",
+      "severity": "error",
+      "when": {
+        "field": "Geometry Foundation Type",
+        "op": "not_in",
+        "value": [
+          "Heated Basement",
+          "Unheated Basement"
+        ]
+      },
+      "then": [
+        {
+          "field": "Water Heater Location",
+          "op": "not_in",
+          "value": [
+            "Heated Basement",
+            "Unheated Basement"
+          ]
+        },
+        {
+          "field": "Duct Location",
+          "op": "not_in",
+          "value": [
+            "Heated Basement",
+            "Unheated Basement"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_if",
+          "when": {
+            "field": "Water Heater Location",
+            "op": "in",
+            "value": [
+              "Heated Basement",
+              "Unheated Basement"
+            ]
+          },
+          "field": "Water Heater Location",
+          "value": "Living Space"
+        },
+        {
+          "action": "set_if",
+          "when": {
+            "field": "Duct Location",
+            "op": "in",
+            "value": [
+              "Heated Basement",
+              "Unheated Basement"
+            ]
+          },
+          "field": "Duct Location",
+          "value": "Living Space"
+        }
+      ],
+      "note": "Geometry Foundation Type is primary. If no basement foundation, disallow basement locations for water heater and ducts (prevents 'basement - conditioned'/'basement - unconditioned' surfaces-missing errors)."
+    },
+    {
+      "id": "foundation_primary_unheated_basement_forbids_heated_basement_locations",
+      "severity": "error",
+      "when": {
+        "field": "Geometry Foundation Type",
+        "op": "equals",
+        "value": "Unheated Basement"
+      },
+      "then": [
+        {
+          "field": "Water Heater Location",
+          "op": "not_equals",
+          "value": "Heated Basement"
+        },
+        {
+          "field": "Duct Location",
+          "op": "not_equals",
+          "value": "Heated Basement"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_if",
+          "when": {
+            "field": "Water Heater Location",
+            "op": "equals",
+            "value": "Heated Basement"
+          },
+          "field": "Water Heater Location",
+          "value": "Unheated Basement"
+        },
+        {
+          "action": "set_if",
+          "when": {
+            "field": "Duct Location",
+            "op": "equals",
+            "value": "Heated Basement"
+          },
+          "field": "Duct Location",
+          "value": "Unheated Basement"
+        }
+      ],
+      "note": "If foundation is Unheated Basement, components cannot be located in a Heated Basement (conditioned basement)."
+    },
+    {
+      "id": "foundation_primary_heated_basement_forbids_unheated_basement_locations",
+      "severity": "error",
+      "when": {
+        "field": "Geometry Foundation Type",
+        "op": "equals",
+        "value": "Heated Basement"
+      },
+      "then": [
+        {
+          "field": "Water Heater Location",
+          "op": "not_equals",
+          "value": "Unheated Basement"
+        },
+        {
+          "field": "Duct Location",
+          "op": "not_equals",
+          "value": "Unheated Basement"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_if",
+          "when": {
+            "field": "Water Heater Location",
+            "op": "equals",
+            "value": "Unheated Basement"
+          },
+          "field": "Water Heater Location",
+          "value": "Heated Basement"
+        },
+        {
+          "action": "set_if",
+          "when": {
+            "field": "Duct Location",
+            "op": "equals",
+            "value": "Unheated Basement"
+          },
+          "field": "Duct Location",
+          "value": "Heated Basement"
+        }
+      ],
+      "note": "If foundation is Heated Basement (conditioned), components cannot be located in an Unheated Basement."
+    },
+    {
+      "id": "duct_location_basement_consistent_with_foundation",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "Duct Location",
+            "op": "in",
+            "value": [
+              "Heated Basement",
+              "Unheated Basement"
+            ]
+          },
+          {
+            "field": "Geometry Foundation Type",
+            "op": "in",
+            "value": [
+              "Heated Basement",
+              "Unheated Basement"
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "Duct Location",
+          "op": "equals_field_mapped",
+          "value": {
+            "Heated Basement": "Heated Basement",
+            "Unheated Basement": "Unheated Basement"
+          },
+          "source_field": "Geometry Foundation Type"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_field_mapped",
+          "source_field": "Geometry Foundation Type",
+          "field": "Duct Location",
+          "map": {
+            "Heated Basement": "Heated Basement",
+            "Unheated Basement": "Unheated Basement"
+          }
+        }
+      ],
+      "note": "Foundation is primary. If both are basement types, force Duct Location to match Geometry Foundation Type."
+    },
+    {
+      "id": "water_heater_location_basement_consistent_with_foundation",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "Water Heater Location",
+            "op": "in",
+            "value": [
+              "Heated Basement",
+              "Unheated Basement"
+            ]
+          },
+          {
+            "field": "Geometry Foundation Type",
+            "op": "in",
+            "value": [
+              "Heated Basement",
+              "Unheated Basement"
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "Water Heater Location",
+          "op": "equals_field_mapped",
+          "value": {
+            "Heated Basement": "Heated Basement",
+            "Unheated Basement": "Unheated Basement"
+          },
+          "source_field": "Geometry Foundation Type"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_field_mapped",
+          "source_field": "Geometry Foundation Type",
+          "field": "Water Heater Location",
+          "map": {
+            "Heated Basement": "Heated Basement",
+            "Unheated Basement": "Unheated Basement"
+          }
+        }
+      ],
+      "note": "Foundation is primary. If both are basement types, force Water Heater Location to match Geometry Foundation Type."
+    },
+    {
+      "id": "washer_absent_implies_washer_none",
+      "severity": "error",
+      "when": {
+        "field": "Clothes Washer Presence",
+        "op": "in",
+        "value": [
+          "None",
+          "Void",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "Clothes Washer",
+          "op": "in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Clothes Washer",
+          "value": "None"
+        }
+      ],
+      "note": "If clothes washer is not present, washer option must be None/Void."
+    },
+    {
+      "id": "washer_present_requires_washer_option",
+      "severity": "error",
+      "when": {
+        "field": "Clothes Washer Presence",
+        "op": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "field": "Clothes Washer",
+          "op": "not_in",
+          "value": [
+            "None",
+            "Void",
+            ""
+          ]
+        }
+      ],
+      "note": "If clothes washer is present, washer option cannot be None/Void. No deterministic fix."
+    },
+    {
+      "id": "pv_no_implies_pv_fields_none",
+      "severity": "error",
+      "when": {
+        "field": "Has PV",
+        "op": "equals",
+        "value": "No"
+      },
+      "then": [
+        {
+          "field": "PV System Size",
+          "op": "equals",
+          "value": "None"
+        },
+        {
+          "field": "PV Orientation",
+          "op": "equals",
+          "value": "None"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "PV System Size",
+          "value": "None"
+        },
+        {
+          "action": "set",
+          "field": "PV Orientation",
+          "value": "None"
+        }
+      ],
+      "note": "If Has PV = No, PV size and orientation must be None."
+    },
+    {
+      "id": "pv_size_none_implies_has_pv_no",
+      "severity": "error",
+      "when": {
+        "field": "PV System Size",
+        "op": "equals",
+        "value": "None"
+      },
+      "then": [
+        {
+          "field": "Has PV",
+          "op": "equals",
+          "value": "No"
+        },
+        {
+          "field": "PV Orientation",
+          "op": "equals",
+          "value": "None"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Has PV",
+          "value": "No"
+        },
+        {
+          "action": "set",
+          "field": "PV Orientation",
+          "value": "None"
+        }
+      ],
+      "note": "If PV system size is None, PV is absent."
+    },
+    {
+      "id": "pv_size_present_implies_has_pv_yes",
+      "severity": "error",
+      "when": {
+        "field": "PV System Size",
+        "op": "not_in",
+        "value": [
+          "None",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "Has PV",
+          "op": "equals",
+          "value": "Yes"
+        },
+        {
+          "field": "PV Orientation",
+          "op": "not_in",
+          "value": [
+            "None",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Has PV",
+          "value": "Yes"
+        },
+        {
+          "action": "set",
+          "field": "PV Orientation",
+          "value": "South"
+        }
+      ],
+      "note": "If PV size is present, Has PV must be Yes and orientation must be specified. Default orientation fix uses South."
+    },
+    {
+      "id": "primary_hvac_equipment_absent_resets_fuel_and_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Heating Type",
+        "op": "in",
+        "value": [
+          "None",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "Heating Fuel",
+          "op": "in",
+          "value": [
+            "None",
+            ""
+          ]
+        },
+        {
+          "field": "HVAC Heating Type And Fuel",
+          "op": "in",
+          "value": [
+            "None",
+            ""
+          ]
+        },
+        {
+          "field": "HVAC Heating Efficiency",
+          "op": "in",
+          "value": [
+            "None",
+            ""
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Heating Fuel",
+          "value": "None"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Heating Type And Fuel",
+          "value": "None"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Heating Efficiency",
+          "value": "None"
+        }
+      ],
+      "note": "Hierarchy: equipment exists \u2192 fuel exists \u2192 efficiency exists. If no primary heating equipment, set related fields to None."
+    },
+    {
+      "id": "heating_fuel_none_implies_hvac_heating_fields_none",
+      "severity": "error",
+      "when": {
+        "field": "Heating Fuel",
+        "op": "equals",
+        "value": "None"
+      },
+      "then": [
+        {
+          "field": "HVAC Heating Type And Fuel",
+          "op": "equals",
+          "value": "None"
+        },
+        {
+          "field": "HVAC Heating Efficiency",
+          "op": "equals",
+          "value": "None"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Heating Type And Fuel",
+          "value": "None"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Heating Efficiency",
+          "value": "None"
+        }
+      ],
+      "note": "If Heating Fuel is None, HVAC Heating Type/Fuel and HVAC Heating Efficiency must also be None."
+    },
+    {
+      "id": "heating_fuel_present_requires_hvac_heating_fields_present",
+      "severity": "error",
+      "when": {
+        "field": "Heating Fuel",
+        "op": "not_in",
+        "value": [
+          "None",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Heating Type And Fuel",
+          "op": "not_in",
+          "value": [
+            "None",
+            ""
+          ]
+        },
+        {
+          "field": "HVAC Heating Efficiency",
+          "op": "not_in",
+          "value": [
+            "None",
+            ""
+          ]
+        }
+      ],
+      "note": "If Heating Fuel is specified, HVAC Heating Type And Fuel and HVAC Heating Efficiency must also be specified."
+    },
+    {
+      "id": "electric_heating_fuel_cannot_have_fuel_furnace_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "Heating Fuel",
+        "op": "equals",
+        "value": "Electricity"
+      },
+      "then": [
+        {
+          "field": "HVAC Heating Efficiency",
+          "op": "not_starts_with_any",
+          "value": [
+            "Fuel Boiler",
+            "Fuel Furnace",
+            "Fuel Wall/Floor Furnace"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Heating Efficiency",
+          "value": "ASHP, SEER 10, 6.2 HSPF"
+        }
+      ],
+      "note": "If Heating Fuel is Electricity, HVAC Heating Efficiency cannot be a fuel-fired furnace/boiler option."
+    },
+    {
+      "id": "non_electric_heating_fuel_cannot_have_pure_electric_efficiency",
+      "severity": "error",
+      "when": {
+        "field": "Heating Fuel",
+        "op": "in",
+        "value": [
+          "Natural Gas",
+          "Propane",
+          "Fuel Oil",
+          "Wood",
+          "Other Fuel"
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Heating Efficiency",
+          "op": "not_starts_with_any",
+          "value": [
+            "Electric Baseboard",
+            "Electric Boiler",
+            "Electric Furnace",
+            "Electric Wall Furnace",
+            "GSHP",
+            "MSHP"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Heating Efficiency",
+          "value": "Fuel Furnace, 80% AFUE"
+        }
+      ],
+      "note": "If Heating Fuel is non-electric, HVAC Heating Efficiency cannot be an all-electric equipment efficiency."
+    },
+    {
+      "id": "heating_fuel_aligns_hvac_heating_type_and_fuel_prefix",
+      "severity": "error",
+      "when": {
+        "field": "Heating Fuel",
+        "op": "not_in",
+        "value": [
+          "None",
+          ""
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Heating Type And Fuel",
+          "op": "starts_with_field",
+          "value": "Heating Fuel"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_by_prefix",
+          "field": "HVAC Heating Type And Fuel",
+          "prefix_field": "Heating Fuel",
+          "default_by_prefix": {
+            "Electricity": "Electricity ASHP",
+            "Natural Gas": "Natural Gas Fuel Furnace",
+            "Propane": "Propane Fuel Furnace",
+            "Fuel Oil": "Fuel Oil Fuel Furnace",
+            "Wood": "Other Fuel Fuel Furnace",
+            "Other Fuel": "Other Fuel Fuel Furnace"
+          }
+        }
+      ],
+      "note": "HVAC Heating Type And Fuel should start with the same fuel string as Heating Fuel. Fix resets to a fuel-consistent default."
+    },
+    {
+      "id": "heating_type_ducted_hp_requires_cooling_type_ducted_hp",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "HVAC Heating Type",
+            "op": "equals",
+            "value": "Ducted Heat Pump"
+          },
+          {
+            "field": "HVAC Cooling Type",
+            "op": "not_in",
+            "value": [
+              "Ducted Heat Pump",
+              "None",
+              "Void",
+              ""
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Cooling Type",
+          "op": "equals",
+          "value": "Ducted Heat Pump"
+        },
+        {
+          "field": "HVAC Cooling Efficiency",
+          "op": "equals",
+          "value": "Ducted Heat Pump"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Cooling Type",
+          "value": "Ducted Heat Pump"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Cooling Efficiency",
+          "value": "Ducted Heat Pump"
+        }
+      ],
+      "note": "If heating is a ducted heat pump, cooling must also be a ducted heat pump (avoid adding Central AC as a second central cooling system)."
+    },
+    {
+      "id": "heating_type_nonducted_hp_requires_cooling_type_nonducted_hp",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "HVAC Heating Type",
+            "op": "equals",
+            "value": "Non-Ducted Heat Pump"
+          },
+          {
+            "field": "HVAC Cooling Type",
+            "op": "not_in",
+            "value": [
+              "Non-Ducted Heat Pump",
+              "None",
+              "Void",
+              ""
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Cooling Type",
+          "op": "equals",
+          "value": "Non-Ducted Heat Pump"
+        },
+        {
+          "field": "HVAC Cooling Efficiency",
+          "op": "equals",
+          "value": "Non-Ducted Heat Pump"
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "HVAC Cooling Type",
+          "value": "Non-Ducted Heat Pump"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Cooling Efficiency",
+          "value": "Non-Ducted Heat Pump"
+        }
+      ],
+      "note": "If heating is a non-ducted heat pump, cooling must also be a non-ducted heat pump."
+    },
+    {
+      "id": "heat_pump_efficiency_implies_heat_pump_cooling_ductedness_from_ducts",
+      "severity": "error",
+      "when": {
+        "field": "HVAC Heating Efficiency",
+        "op": "starts_with_any",
+        "value": [
+          "ASHP",
+          "GSHP",
+          "MSHP"
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Cooling Type",
+          "op": "not_in",
+          "value": [
+            "Central AC"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set_field_mapped",
+          "source_field": "HVAC Has Ducts",
+          "field": "HVAC Heating Type",
+          "map": {
+            "Yes": "Ducted Heat Pump",
+            "No": "Non-Ducted Heat Pump",
+            "None": "Ducted Heat Pump",
+            "Void": "Ducted Heat Pump",
+            "": "Ducted Heat Pump"
+          }
+        },
+        {
+          "action": "set_field_mapped",
+          "source_field": "HVAC Has Ducts",
+          "field": "HVAC Cooling Type",
+          "map": {
+            "Yes": "Ducted Heat Pump",
+            "No": "Non-Ducted Heat Pump",
+            "None": "Ducted Heat Pump",
+            "Void": "Ducted Heat Pump",
+            "": "Ducted Heat Pump"
+          }
+        },
+        {
+          "action": "set_field_mapped",
+          "source_field": "HVAC Has Ducts",
+          "field": "HVAC Cooling Efficiency",
+          "map": {
+            "Yes": "Ducted Heat Pump",
+            "No": "Non-Ducted Heat Pump",
+            "None": "Ducted Heat Pump",
+            "Void": "Ducted Heat Pump",
+            "": "Ducted Heat Pump"
+          }
+        },
+        {
+          "action": "set",
+          "field": "Heating Fuel",
+          "value": "Electricity"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Heating Type And Fuel",
+          "value": "Electricity ASHP"
+        }
+      ],
+      "note": "If heating efficiency indicates a heat pump (ASHP/GSHP/MSHP), do not also specify Central AC. Align heating/cooling types to Heat Pump using duct presence."
+    },
+    {
+      "id": "nonducted_heating_cannot_use_heat_pump_efficiency",
+      "severity": "error",
+      "when": {
+        "all": [
+          {
+            "field": "HVAC Heating Type",
+            "op": "equals",
+            "value": "Non-Ducted Heating"
+          },
+          {
+            "field": "HVAC Heating Efficiency",
+            "op": "starts_with_any",
+            "value": [
+              "ASHP",
+              "GSHP",
+              "MSHP"
+            ]
+          }
+        ]
+      },
+      "then": [
+        {
+          "field": "HVAC Heating Efficiency",
+          "op": "not_starts_with_any",
+          "value": [
+            "ASHP",
+            "GSHP",
+            "MSHP"
+          ]
+        }
+      ],
+      "fix": [
+        {
+          "action": "set",
+          "field": "Heating Fuel",
+          "value": "Electricity"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Heating Type And Fuel",
+          "value": "Electricity Baseboard"
+        },
+        {
+          "action": "set",
+          "field": "HVAC Heating Efficiency",
+          "value": "Electric Baseboard, 100% Efficiency"
+        }
+      ],
+      "note": "Non-Ducted Heating is not a heat pump; if a heat pump efficiency was predicted, convert to a safe non-ducted electric baseboard configuration."
+    }
+  ]
+}

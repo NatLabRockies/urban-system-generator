@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "urban-system-generator"
-version = "0.1.0"
-description = "Machine learning tool for completing building attributes in urban energy models"
+version = "0.2.0"
+description = "Machine learning tool for completing building attributes in urban energy models with URBANopt-BuildStock post-processing"
 readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
@@ -15,7 +15,7 @@ authors = [
 maintainers = [
   { name = "Rawad El Kontar", email = "rawad.elkontar@nrel.gov" }
 ]
-keywords = ["urban", "energy", "buildings", "machine-learning", "artificial-intelligence", "GenAI", "data-completion"]
+keywords = ["urban", "energy", "buildings", "machine-learning", "artificial-intelligence", "GenAI", "data-completion", "URBANopt", "BuildStock"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
@@ -60,8 +60,8 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["usg*"]
+include = ["usg*", "resources*"]
 exclude = ["tests*", "docs*", "examples*"]
 
 [tool.setuptools.package-data]
-usg = ["*.py"]
+"*" = ["*.tsv", "*.json", "*.pkl", "*.keras"]

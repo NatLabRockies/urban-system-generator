@@ -4,14 +4,18 @@
 
 **NREL Software Record:** SWR 25-36
 
-Urban System Generator (USG) is a machine learning-based tool for completing missing building attributes in urban energy modeling workflows. Given partial building information from GeoJSON files, USG predicts missing characteristics like HVAC systems, insulation levels, and other energy-relevant properties.
+Urban System Generator (USG) is a machine learning-based tool for completing missing building attributes in urban energy modeling workflows. Given partial building information from GeoJSON files, USG predicts missing characteristics like HVAC systems, insulation levels, and other energy-relevant properties. The tool includes post-processing for URBANopt-BuildStock compatibility.
 
 ## Features
 
 - **GeoJSON Processing**: Extract and convert building data from GeoJSON files
 - **Attribute Prediction**: Use trained neural networks to predict missing building attributes
 - **Batch Processing**: Process multiple buildings efficiently
-- **Simulation Ready**: Output formatted for urban energy simulation tools
+- **Post-Processing Pipeline**: Validate and fix outputs for URBANopt-BuildStock compatibility
+  - Missing column filler for required URBANopt parameters
+  - Schema validation against options_lookup.tsv
+  - Cross-field consistency enforcement (HVAC, PV, foundations, etc.)
+- **Simulation Ready**: Output formatted for URBANopt and other urban energy simulation tools
 
 ## Installation
 
@@ -45,11 +49,14 @@ usg geojson2csv -i buildings.json -o buildings.csv
 # Predict missing attributes for a single building
 usg predict-single -a "Vintage" "2000s" -a "Bedrooms" "3"
 
-# Process batch of buildings
-usg batch-predict -i incomplete.csv -o completed.csv --progress
+# Process batch of buildings (ML inference)
+usg complete -i incomplete.csv -o completed.csv
 
-# Run complete workflow
-usg workflow -i buildings.json -o simulation_ready.csv --verbose
+# Post-process for URBANopt-BuildStock compatibility ⭐ NEW
+usg process -i completed.csv -o uo_buildstock_mapping.csv -g buildings.json
+
+# Run complete workflow (GeoJSON → Inference → Post-processing)
+usg workflow -i buildings.json -o uo_buildstock_mapping.csv --verbose
 
 # Get help
 usg --help
@@ -111,6 +118,31 @@ completed = inference.predict_missing_single(known_attrs)
 print(completed)
 ```
 
+### 4. Post-Process for URBANopt-BuildStock
+
+```python
+from usg.postprocessor import USGPostProcessor
+
+# Initialize post-processor with bundled resources
+postprocessor = USGPostProcessor(
+    options_lookup_path="resources/postprocessor/options_lookup.tsv",
+    consistency_rules_path="resources/postprocessor/consistency_rules.json",
+)
+
+# Process inference output for URBANopt compatibility
+postprocessor.process(
+    input_csv_path="buildings_complete.csv",
+    output_csv_path="uo_buildstock_mapping.csv",
+    geojson_path="buildings.json",  # Optional: for climate zone extraction
+    generate_reports=True,  # Generate validation reports
+)
+```
+
+The post-processor performs three steps:
+1. **Missing Column Filler**: Adds required URBANopt-BuildStock columns with appropriate defaults
+2. **Schema Validator**: Validates all values against options_lookup.tsv and fixes invalid entries
+3. **Consistency Processor**: Enforces cross-field constraints (HVAC configurations, PV systems, etc.)
+
 ## Repository Structure
 
 ```
@@ -118,11 +150,17 @@ urban-system-generator/
 ├── usg/                      # Main package
 │   ├── inference.py          # Inference engine
 │   ├── geojson_processor.py  # GeoJSON processing
-│   └── model.py              # Neural network model
-├── resources/                # Model resources
+│   ├── postprocessor.py      # URBANopt post-processing ⭐ NEW
+│   ├── model.py              # Neural network model
+│   └── cli.py                # Command-line interface
+├── resources/                # Model and post-processor resources
 │   ├── pretrained_model/     # Trained model files
+│   ├── postprocessor/        # Post-processor resources ⭐ NEW
+│   │   ├── options_lookup.tsv     # URBANopt-BuildStock schema
+│   │   └── consistency_rules.json # Cross-field constraints
 │   └── model_attributes.py   # Model schema
 ├── examples/                 # Usage examples
+├── docs/                     # Documentation
 └── tests/                    # Unit tests
 ```
 
