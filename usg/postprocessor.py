@@ -693,6 +693,8 @@ def eval_then_clause(clause: Dict[str, Any], row: pd.Series) -> bool:
 
     if op == "equals":
         return s == str(val)
+    if op == "not_equals":
+        return s != str(val)
     if op == "in":
         return s in [str(x) for x in val]
     if op == "not_in":
@@ -740,6 +742,29 @@ def set_value_if_allowed(
     return changed, f"Set to '{canonical}'."
 
 
+def _eval_fix_condition(cond: Dict[str, Any], row: pd.Series) -> bool:
+    """
+    Evaluate a condition for fix actions (set_if, set_if_in, set_if_equals).
+    Supports: equals, not_equals, in, not_in
+    """
+    field = cond.get("field", "")
+    op = cond.get("op", "")
+    val = cond.get("value")
+    s = _get(row, field)
+    
+    if op == "equals":
+        return s == str(val)
+    if op == "not_equals":
+        return s != str(val)
+    if op == "in":
+        return s in [str(x) for x in val]
+    if op == "not_in":
+        return s not in [str(x) for x in val]
+    
+    # Default: condition not met
+    return False
+
+
 def apply_fix_actions(
     df: pd.DataFrame,
     row_idx: int,
@@ -764,6 +789,46 @@ def apply_fix_actions(
             if changed:
                 changes.append((field, old_val, str(df.at[row_idx, field]), note))
 
+        elif action == "set_if":
+            # Conditional set: only apply if the "when" condition is met
+            # Format: {"action": "set_if", "when": {...condition...}, "field": "X", "value": "Y"}
+            when_cond = fx.get("when", {})
+            if when_cond and _eval_fix_condition(when_cond, row):
+                field = fx["field"]
+                new_val = str(fx["value"])
+                old_val = _get(row, field)
+                changed, note = set_value_if_allowed(df, row_idx, field, new_val, allowed_sets)
+                if changed:
+                    changes.append((field, old_val, str(df.at[row_idx, field]), note))
+
+        elif action == "set_if_in":
+            # Set field to value if current value is in a list
+            # Format: {"action": "set_if_in", "field": "X", "when_value_in": [...], "value": "Y"}
+            field = fx["field"]
+            when_vals = [str(v) for v in fx.get("when_value_in", [])]
+            cur_val = _get(row, field)
+            
+            if str(cur_val) in when_vals:
+                new_val = str(fx["value"])
+                old_val = cur_val
+                changed, note = set_value_if_allowed(df, row_idx, field, new_val, allowed_sets)
+                if changed:
+                    changes.append((field, old_val, str(df.at[row_idx, field]), note))
+
+        elif action == "set_if_equals":
+            # Set field to value if current value equals a specific value
+            # Format: {"action": "set_if_equals", "field": "X", "when_value_equals": "Z", "value": "Y"}
+            field = fx["field"]
+            when_val = str(fx.get("when_value_equals", ""))
+            cur_val = _get(row, field)
+            
+            if str(cur_val) == when_val:
+                new_val = str(fx["value"])
+                old_val = cur_val
+                changed, note = set_value_if_allowed(df, row_idx, field, new_val, allowed_sets)
+                if changed:
+                    changes.append((field, old_val, str(df.at[row_idx, field]), note))
+
         elif action == "set_field_mapped":
             source_field = fx["source_field"]
             field = fx["field"]
@@ -787,6 +852,12 @@ def apply_fix_actions(
                 changed, note = set_value_if_allowed(df, row_idx, field, new_val, allowed_sets)
                 if changed:
                     changes.append((field, old_val, str(df.at[row_idx, field]), note))
+
+        else:
+            # Unknown action - log warning but don't fail
+            if action:
+                import logging
+                logging.warning(f"Unknown fix action '{action}' in rule - skipping")
 
     return changes
 
