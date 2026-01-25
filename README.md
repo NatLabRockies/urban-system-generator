@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-**NREL Software Record:** SWR 25-36
+**NLR Software Record:** SWR 25-36
 
 Urban System Generator (USG) is a machine learning-based tool for completing missing building attributes in urban energy modeling workflows. Given partial building information from GeoJSON files, USG predicts missing characteristics like HVAC systems, insulation levels, and other energy-relevant properties. The tool includes post-processing for URBANopt-BuildStock compatibility.
 
@@ -21,7 +21,7 @@ Urban System Generator (USG) is a machine learning-based tool for completing mis
 
 ```bash
 # Clone the repository
-git clone https://github.com/NREL/urban-system-generator.git
+git clone https://github.com/NatLabRockies/urban-system-generator.git
 cd urban-system-generator
 
 # Create a virtual environment
@@ -52,7 +52,7 @@ usg predict-single -a "Vintage" "2000s" -a "Bedrooms" "3"
 # Process batch of buildings (ML inference)
 usg complete -i incomplete.csv -o completed.csv
 
-# Post-process for URBANopt-BuildStock compatibility ⭐ NEW
+# Post-process for URBANopt-BuildStock compatibility
 usg process -i completed.csv -o uo_buildstock_mapping.csv -g buildings.json
 
 # Run complete workflow (GeoJSON → Inference → Post-processing)
@@ -150,12 +150,12 @@ urban-system-generator/
 ├── usg/                      # Main package
 │   ├── inference.py          # Inference engine
 │   ├── geojson_processor.py  # GeoJSON processing
-│   ├── postprocessor.py      # URBANopt post-processing ⭐ NEW
+│   ├── postprocessor.py      # URBANopt post-processing
 │   ├── model.py              # Neural network model
 │   └── cli.py                # Command-line interface
 ├── resources/                # Model and post-processor resources
 │   ├── pretrained_model/     # Trained model files
-│   ├── postprocessor/        # Post-processor resources ⭐ NEW
+│   ├── postprocessor/        # Post-processor resources
 │   │   ├── options_lookup.tsv     # URBANopt-BuildStock schema
 │   │   └── consistency_rules.json # Cross-field constraints
 │   └── model_attributes.py   # Model schema
@@ -250,9 +250,9 @@ pytest --cov=usg tests/
 
 ## Authors & Contributors
 
-**Lead Developer:** Rawad El Kontar (NREL)
+**Lead Developer:** Rawad El Kontar
 
-**Organization:** National Renewable Energy Laboratory (NREL)
+**Organization:** National Laboratory of the Rockies (NLR)
 
 ## Contributing
 
@@ -278,20 +278,20 @@ If you use this software in your research, please cite:
 @software{urban_system_generator,
   title={Urban System Generator},
   author={El Kontar, Rawad},
-  organization={National Renewable Energy Laboratory},
+  organization={National Laboratory of the Rockies},
   year={2025},
-  url={https://github.com/NREL/urban-system-generator}
+  url={https://github.com/NatLabRockies/urban-system-generator}
 }
 ```
 
 ## Acknowledgments
 
-This work was authored by the National Renewable Energy Laboratory (NREL), operated by Alliance for Sustainable Energy, LLC, for the U.S. Department of Energy (DOE) under Contract No. DE-AC36-08GO28308. Funding provided by NREL’s Laboratory Directed Research and Development program, and the DOE Office of Science. The views expressed in the article do not necessarily represent the views of the DOE or the U.S. Government. The U.S. Government retains and the publisher, by accepting the article for publication, acknowledges that the U.S. Government retains a nonexclusive, paid-up, irrevocable, worldwide license to publish or reproduce the published form of this work, or allow others to do so, for U.S. Government purposes.
+This work was authored by the National Laboratory of the Rockies(NLR) for the U.S. Department of Energy (DOE), operated under Contract No. DE-AC36-08GO28308. Funding provided by NLR’s Laboratory Directed Research and Development program, and the DOE Office of Science. The views expressed in the article do not necessarily represent the views of the DOE or the U.S. Government. The U.S. Government retains and the publisher, by accepting the article for publication, acknowledges that the U.S. Government retains a nonexclusive, paid-up, irrevocable, worldwide license to publish or reproduce the published form of this work, or allow others to do so, for U.S. Government purposes.
 
 ## Contact
 
-For questions or support, please contact Rawad El Kontar (rawad.elkontar@nrel.gov) or open an issue on GitHub.
+For questions or support, please contact Rawad El Kontar (rawad.elkontar@nlr.gov) or open an issue on GitHub.
 
 ---
 
-**NREL Software Record:** SWR 25-36
+**NLR Software Record:** SWR 25-36
