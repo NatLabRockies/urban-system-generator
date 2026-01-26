@@ -4,16 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "urban-system-generator"
-version = "0.2.0"
+version = "0.1.0"
 description = "Machine learning tool for completing building attributes in urban energy models with URBANopt-BuildStock post-processing"
 readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
 authors = [
-  { name = "Rawad El Kontar", email = "rawad.elkontar@nrel.gov" }
+  { name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }
 ]
 maintainers = [
-  { name = "Rawad El Kontar", email = "rawad.elkontar@nrel.gov" }
+  { name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }
 ]
 keywords = ["urban", "energy", "buildings", "machine-learning", "artificial-intelligence", "GenAI", "data-completion", "URBANopt", "BuildStock"]
 classifiers = [
@@ -25,6 +25,7 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Topic :: Scientific/Engineering",
 ]
 dependencies = [
@@ -45,6 +46,8 @@ dev = [
   "pytest-cov>=3.0.0",
   "black>=22.0.0",
   "flake8>=4.0.0",
+  "build",
+  "twine",
 ]
 docs = [
   "sphinx>=4.0.0",
@@ -52,16 +55,25 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/NREL/urban-system-generator"
-Repository = "https://github.com/NREL/urban-system-generator"
+Homepage = "https://github.com/NatLabRockies/urban-system-generator" 
+Repository = "https://github.com/NatLabRockies/urban-system-generator"
+Documentation = "https://github.com/NatLabRockies/urban-system-generator#readme"
+"Bug Tracker" = "https://github.com/NatLabRockies/urban-system-generator/issues"
 
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["usg*", "resources*"]
+include = ["usg*"]
 exclude = ["tests*", "docs*", "examples*"]
 
 [tool.setuptools.package-data]
-"*" = ["*.tsv", "*.json", "*.pkl", "*.keras"]
+usg = [
+    "resources/pretrained_model/*.keras",
+    "resources/pretrained_model/*.pkl",
+    "resources/pretrained_model/*.json",
+    "resources/postprocessor/*.tsv",
+    "resources/postprocessor/*.json",
+    "resources/*.py",
+]

@@ -30,7 +30,7 @@ CONTEXT_SETTINGS = {"help_option_names": ["-h", "--help"]}
 
 def get_default_paths():
     """Get default paths relative to the package installation."""
-    module_dir = Path(__file__).parent.parent
+    module_dir = Path(__file__).parent  # usg/ directory
     return {
         "model_dir": module_dir / "resources" / "pretrained_model",
         "postprocessor_dir": module_dir / "resources" / "postprocessor",
@@ -38,7 +38,7 @@ def get_default_paths():
 
 
 @click.group(context_settings=CONTEXT_SETTINGS)
-@click.version_option(version="0.2.0", prog_name="Urban System Generator")
+@click.version_option(version="0.1.0", prog_name="Urban System Generator")
 def cli():
     """
     Urban System Generator - ML-based building attribute completion tool.

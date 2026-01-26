@@ -1148,7 +1148,7 @@ class USGPostProcessor:
 def get_default_resource_paths() -> Tuple[Path, Path]:
     """Get default paths to post-processor resources."""
     # Try to find resources relative to this file
-    module_dir = Path(__file__).parent.parent
+    module_dir = Path(__file__).parent  # usg/ directory
     options_lookup = module_dir / "resources" / "postprocessor" / "options_lookup.tsv"
     consistency_rules = module_dir / "resources" / "postprocessor" / "consistency_rules.json"
     return options_lookup, consistency_rules

@@ -70,7 +70,7 @@ For detailed CLI documentation, see [docs/cli_usage.md](docs/cli_usage.md).
 
 ```python
 from usg.geojson_processor import GeoJSONProcessor
-from resources.model_attributes import all_model_attributes
+from usg.resources.model_attributes import all_model_attributes
 
 processor = GeoJSONProcessor()
 processor.geojson_to_csv(
@@ -84,14 +84,17 @@ processor.geojson_to_csv(
 
 ```python
 from usg.inference import USGInference
+from pathlib import Path
+
+# Get the path to bundled resources
+usg_dir = Path(__file__).parent / "usg" / "resources" / "pretrained_model"
 
 # Initialize inference engine
 inference = USGInference(
-    model_path="resources/pretrained_model/adaptive_model_1.keras",
-    cat_scaler_path="resources/pretrained_model/cat_scaler.pkl",
-    num_scaler_path="resources/pretrained_model/num_scaler.pkl",
-    encoding_dict_path="resources/pretrained_model/encoding_mapper.json",
-    # all_model_attributes is now optional - will auto-detect from model files
+    model_path=usg_dir / "adaptive_model_1.keras",
+    cat_scaler_path=usg_dir / "cat_scaler.pkl",
+    num_scaler_path=usg_dir / "num_scaler.pkl",
+    encoding_dict_path=usg_dir / "encoding_mapper.json",
 )
 
 # Process buildings
@@ -101,7 +104,7 @@ inference.process_buildings_batch(
 )
 ```
 
-**Note:** The model attributes are now automatically detected from the pretrained model files. You no longer need to manually maintain a `model_attributes.py` file.
+**Note:** When using the CLI (`usg` command), resource paths are automatically resolved. The manual paths above are only needed for direct Python API usage.
 
 ### 3. Single Building Prediction
 
@@ -121,12 +124,15 @@ print(completed)
 ### 4. Post-Process for URBANopt-BuildStock
 
 ```python
-from usg.postprocessor import USGPostProcessor
+from usg.postprocessor import USGPostProcessor, get_default_resource_paths
 
-# Initialize post-processor with bundled resources
+# Get bundled resource paths (recommended)
+options_lookup, consistency_rules = get_default_resource_paths()
+
+# Initialize post-processor
 postprocessor = USGPostProcessor(
-    options_lookup_path="resources/postprocessor/options_lookup.tsv",
-    consistency_rules_path="resources/postprocessor/consistency_rules.json",
+    options_lookup_path=options_lookup,
+    consistency_rules_path=consistency_rules,
 )
 
 # Process inference output for URBANopt compatibility
@@ -147,21 +153,26 @@ The post-processor performs three steps:
 
 ```
 urban-system-generator/
-├── usg/                      # Main package
-│   ├── inference.py          # Inference engine
-│   ├── geojson_processor.py  # GeoJSON processing
-│   ├── postprocessor.py      # URBANopt post-processing
-│   ├── model.py              # Neural network model
-│   └── cli.py                # Command-line interface
-├── resources/                # Model and post-processor resources
-│   ├── pretrained_model/     # Trained model files
-│   ├── postprocessor/        # Post-processor resources
-│   │   ├── options_lookup.tsv     # URBANopt-BuildStock schema
-│   │   └── consistency_rules.json # Cross-field constraints
-│   └── model_attributes.py   # Model schema
-├── examples/                 # Usage examples
-├── docs/                     # Documentation
-└── tests/                    # Unit tests
+├── usg/                          # Main package
+│   ├── __init__.py               # Package initialization
+│   ├── inference.py              # Inference engine
+│   ├── geojson_processor.py      # GeoJSON processing
+│   ├── postprocessor.py          # URBANopt post-processing
+│   ├── model.py                  # Neural network model
+│   ├── cli.py                    # Command-line interface
+│   └── resources/                # Bundled model and post-processor resources
+│       ├── pretrained_model/     # Trained model files
+│       │   ├── adaptive_model_1.keras
+│       │   ├── cat_scaler.pkl
+│       │   ├── num_scaler.pkl
+│       │   └── encoding_mapper.json
+│       ├── postprocessor/        # Post-processor resources
+│       │   ├── options_lookup.tsv     # URBANopt-BuildStock schema
+│       │   └── consistency_rules.json # Cross-field constraints
+│       └── model_attributes.py   # Model schema
+├── examples/                     # Usage examples
+├── docs/                         # Documentation
+└── tests/                        # Unit tests
 ```
 
 ## Input Data Format
@@ -208,7 +219,7 @@ The model can predict the following building attributes:
 - Window characteristics
 - And more...
 
-See `resources/model_attributes.py` for the complete list.
+See `usg/resources/model_attributes.py` for the complete list.
 
 ## Examples
 
@@ -266,7 +277,8 @@ Contributions are welcome! Please:
 
 ## License
 
-Copyright (c) 2025 Alliance for Sustainable Energy, LLC
+Copyright (c) 2025-2026, Alliance for Energy Innovation, LLC
+
 
 This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
 
