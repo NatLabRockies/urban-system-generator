@@ -5,12 +5,25 @@ This module provides the main inference functionality for predicting missing
 building attributes using a trained neural network model.
 """
 
+import os
 import json
 import pickle
 from pathlib import Path
 import numpy as np
 import pandas as pd
+
+# Configure TensorFlow BEFORE importing it to prevent hanging in subprocess environments
+# This is critical when USG is called from other CLIs (e.g., URBANopt Ruby CLI)
+os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '2')  # Suppress TF warnings
+os.environ.setdefault('TF_ENABLE_ONEDNN_OPTS', '0')  # Disable oneDNN optimizations
+os.environ.setdefault('CUDA_VISIBLE_DEVICES', '-1')  # Force CPU-only (avoid GPU issues)
+
 import tensorflow as tf
+
+# Configure TensorFlow threading to prevent hanging in subprocess environments
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
 from tensorflow.keras import layers
 from .model import ScaledInputMaskedNN
 import logging
@@ -163,7 +176,10 @@ class USGInference:
         # Predict missing values
         X = df_enc.fillna(0).astype(np.float32).values
         M = df.notna().astype(np.float32).values  # 1 = known, 0 = missing
-        preds = self.model.predict((X, M), verbose=0)[0]
+        
+        # Use direct model call instead of predict() - more reliable in subprocess environments
+        # model.predict() can hang when called from external CLIs due to threading issues
+        preds = self.model((X, M), training=False).numpy()[0]
         
         # Fill only missing values
         for j, col in enumerate(self.all_model_attributes):

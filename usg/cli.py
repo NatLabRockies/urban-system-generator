@@ -38,7 +38,7 @@ def get_default_paths():
 
 
 @click.group(context_settings=CONTEXT_SETTINGS)
-@click.version_option(version="0.1.0", prog_name="Urban System Generator")
+@click.version_option(version="0.1.1", prog_name="Urban System Generator")
 def cli():
     """
     Urban System Generator - ML-based building attribute completion tool.

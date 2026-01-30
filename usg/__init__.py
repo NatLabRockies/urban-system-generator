@@ -12,7 +12,7 @@ from .geojson_processor import GeoJSONProcessor
 from .model import ScaledInputMaskedNN
 from .postprocessor import USGPostProcessor
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Rawad El Kontar (NREL)"
 __copyright__ = "Copyright (c) 2025 Alliance for Sustainable Energy, LLC"
 
