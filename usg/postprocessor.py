@@ -235,6 +235,219 @@ def read_project_climate_zone(geojson_path: Union[str, Path]) -> Optional[str]:
     return None
 
 
+def read_project_state(geojson_path: Union[str, Path]) -> Optional[str]:
+    """
+    Extract state abbreviation from GeoJSON weather_filename.
+    
+    Weather filenames follow the pattern: USA_NY_Buffalo-Greater.Buffalo.Intl.AP.725280_TMY3.epw
+    where NY is the state abbreviation.
+    
+    Args:
+        geojson_path: Path to GeoJSON file
+        
+    Returns:
+        Two-letter state abbreviation (e.g., 'NY') or None if not found
+    """
+    import re
+    
+    p = Path(geojson_path)
+    if not p.exists():
+        return None
+    data = json.loads(p.read_text(encoding="utf-8"))
+
+    if not isinstance(data, dict):
+        return None
+    
+    # Check project-level weather_filename first
+    proj = data.get("project", {})
+    weather_filename = proj.get("weather_filename", "")
+    
+    # Also check Site Origin feature if not in project
+    if not weather_filename:
+        feats = data.get("features", [])
+        for f in feats:
+            props = (f or {}).get("properties", {})
+            if props.get("type") == "Site Origin":
+                weather_filename = props.get("weather_filename", "")
+                if weather_filename:
+                    break
+    
+    if not weather_filename:
+        return None
+    
+    # Extract state from weather filename pattern: USA_XX_...
+    match = re.match(r'^USA_([A-Z]{2})_', weather_filename)
+    if match:
+        return match.group(1)
+    
+    return None
+
+
+# State-to-region mappings for location-based fields
+STATE_TO_CENSUS_DIVISION = {
+    # New England
+    "CT": "New England", "ME": "New England", "MA": "New England",
+    "NH": "New England", "RI": "New England", "VT": "New England",
+    # Middle Atlantic
+    "NJ": "Middle Atlantic", "NY": "Middle Atlantic", "PA": "Middle Atlantic",
+    # East North Central
+    "IL": "East North Central", "IN": "East North Central", "MI": "East North Central",
+    "OH": "East North Central", "WI": "East North Central",
+    # West North Central
+    "IA": "West North Central", "KS": "West North Central", "MN": "West North Central",
+    "MO": "West North Central", "NE": "West North Central", "ND": "West North Central",
+    "SD": "West North Central",
+    # South Atlantic
+    "DE": "South Atlantic", "FL": "South Atlantic", "GA": "South Atlantic",
+    "MD": "South Atlantic", "NC": "South Atlantic", "SC": "South Atlantic",
+    "VA": "South Atlantic", "WV": "South Atlantic", "DC": "South Atlantic",
+    # East South Central
+    "AL": "East South Central", "KY": "East South Central", "MS": "East South Central",
+    "TN": "East South Central",
+    # West South Central
+    "AR": "West South Central", "LA": "West South Central", "OK": "West South Central",
+    "TX": "West South Central",
+    # Mountain
+    "AZ": "Mountain", "CO": "Mountain", "ID": "Mountain", "MT": "Mountain",
+    "NV": "Mountain", "NM": "Mountain", "UT": "Mountain", "WY": "Mountain",
+    # Pacific
+    "AK": "Pacific", "CA": "Pacific", "HI": "Pacific", "OR": "Pacific", "WA": "Pacific",
+}
+
+STATE_TO_CENSUS_REGION = {
+    # Northeast
+    "CT": "Northeast", "ME": "Northeast", "MA": "Northeast", "NH": "Northeast",
+    "NJ": "Northeast", "NY": "Northeast", "PA": "Northeast", "RI": "Northeast",
+    "VT": "Northeast",
+    # Midwest
+    "IL": "Midwest", "IN": "Midwest", "IA": "Midwest", "KS": "Midwest",
+    "MI": "Midwest", "MN": "Midwest", "MO": "Midwest", "NE": "Midwest",
+    "ND": "Midwest", "OH": "Midwest", "SD": "Midwest", "WI": "Midwest",
+    # South
+    "AL": "South", "AR": "South", "DC": "South", "DE": "South", "FL": "South",
+    "GA": "South", "KY": "South", "LA": "South", "MD": "South", "MS": "South",
+    "NC": "South", "OK": "South", "SC": "South", "TN": "South", "TX": "South",
+    "VA": "South", "WV": "South",
+    # West
+    "AK": "West", "AZ": "West", "CA": "West", "CO": "West", "HI": "West",
+    "ID": "West", "MT": "West", "NM": "West", "NV": "West", "OR": "West",
+    "UT": "West", "WA": "West", "WY": "West",
+}
+
+STATE_TO_ISO_RTO = {
+    # CAISO - California
+    "CA": "CAISO",
+    # ERCOT - Texas
+    "TX": "ERCOT",
+    # NYISO - New York
+    "NY": "NYISO",
+    # NEISO - New England
+    "CT": "NEISO", "ME": "NEISO", "MA": "NEISO", "NH": "NEISO", "RI": "NEISO", "VT": "NEISO",
+    # PJM - Mid-Atlantic and some Midwest
+    "DC": "PJM", "DE": "PJM", "IL": "PJM", "IN": "PJM", "KY": "PJM", "MD": "PJM",
+    "MI": "PJM", "NC": "PJM", "NJ": "PJM", "OH": "PJM", "PA": "PJM", "TN": "PJM",
+    "VA": "PJM", "WV": "PJM",
+    # MISO - Midwest
+    "AR": "MISO", "IA": "MISO", "LA": "MISO", "MN": "MISO", "MO": "MISO",
+    "MS": "MISO", "MT": "MISO", "ND": "MISO", "SD": "MISO", "WI": "MISO",
+    # SPP - South Central
+    "KS": "SPP", "NE": "SPP", "NM": "SPP", "OK": "SPP",
+    # SERC - Southeast (not in RTO)
+    "AL": "SERC", "FL": "SERC", "GA": "SERC", "SC": "SERC",
+    # WECC - Western (not in RTO)
+    "AK": "None", "AZ": "WECC", "CO": "WECC", "HI": "None", "ID": "WECC",
+    "NV": "WECC", "OR": "WECC", "UT": "WECC", "WA": "WECC", "WY": "WECC",
+}
+
+# Location-related parameters that should be state-aware
+LOCATION_PARAMETERS = [
+    "State", "Custom State", "City", "County", "PUMA", 
+    "Census Division", "Census Division RECS", "Census Region",
+    "ISO RTO Region",
+]
+
+
+def get_state_aware_location_defaults(
+    state: str, 
+    allowed_options: Dict[str, List[str]]
+) -> Dict[str, str]:
+    """
+    Get location-related default values that match the given state.
+    
+    Args:
+        state: Two-letter state abbreviation (e.g., 'NY')
+        allowed_options: Dictionary of allowed options from options_lookup.tsv
+        
+    Returns:
+        Dictionary of parameter -> default value for location fields
+    """
+    defaults = {}
+    
+    if not state:
+        return defaults
+    
+    state = state.upper()
+    
+    # State and Custom State
+    if "State" in allowed_options and state in allowed_options["State"]:
+        defaults["State"] = state
+    
+    if "Custom State" in allowed_options:
+        if state in allowed_options["Custom State"]:
+            defaults["Custom State"] = state
+        elif "Others" in allowed_options["Custom State"]:
+            defaults["Custom State"] = "Others"
+    
+    # City - find first city matching the state (format: "NY, Buffalo")
+    if "City" in allowed_options:
+        state_cities = [c for c in allowed_options["City"] if c.startswith(f'"{state},') or c.startswith(f'{state},')]
+        if state_cities:
+            # Clean up quotes if present
+            defaults["City"] = state_cities[0].strip('"')
+    
+    # County - find first county matching the state (format: "NY, Erie County")
+    if "County" in allowed_options:
+        state_counties = [c for c in allowed_options["County"] if c.startswith(f'"{state},') or c.startswith(f'{state},')]
+        if state_counties:
+            defaults["County"] = state_counties[0].strip('"')
+    
+    # PUMA - find first PUMA matching the state (format: "NY, 00100")
+    if "PUMA" in allowed_options:
+        state_pumas = [p for p in allowed_options["PUMA"] if p.startswith(f'"{state},') or p.startswith(f'{state},')]
+        if state_pumas:
+            defaults["PUMA"] = state_pumas[0].strip('"')
+    
+    # Metropolitan and Micropolitan Statistical Area - find first matching state (format: "Albany-Schenectady-Troy, NY MSA")
+    if "Metropolitan and Micropolitan Statistical Area" in allowed_options:
+        # Match pattern: "..., NY MSA" or "..., NY MicroSA" or "..., NY-..."
+        state_metros = [
+            m for m in allowed_options["Metropolitan and Micropolitan Statistical Area"] 
+            if f', {state} ' in m or f', {state}-' in m
+        ]
+        if state_metros:
+            defaults["Metropolitan and Micropolitan Statistical Area"] = state_metros[0].strip('"')
+    
+    # Census Division
+    census_div = STATE_TO_CENSUS_DIVISION.get(state)
+    if census_div:
+        if "Census Division" in allowed_options and census_div in allowed_options["Census Division"]:
+            defaults["Census Division"] = census_div
+        if "Census Division RECS" in allowed_options and census_div in allowed_options["Census Division RECS"]:
+            defaults["Census Division RECS"] = census_div
+    
+    # Census Region
+    census_reg = STATE_TO_CENSUS_REGION.get(state)
+    if census_reg and "Census Region" in allowed_options and census_reg in allowed_options["Census Region"]:
+        defaults["Census Region"] = census_reg
+    
+    # ISO RTO Region
+    iso_rto = STATE_TO_ISO_RTO.get(state)
+    if iso_rto and "ISO RTO Region" in allowed_options and iso_rto in allowed_options["ISO RTO Region"]:
+        defaults["ISO RTO Region"] = iso_rto
+    
+    return defaults
+
+
 def force_none_string_everywhere(df: pd.DataFrame) -> pd.DataFrame:
     """Ensure OUTPUT CSV contains literal text 'None' for any missing value."""
     df = df.replace({None: pd.NA})
@@ -251,6 +464,7 @@ def fill_missing_columns(
     df: pd.DataFrame,
     allowed_options: Dict[str, List[str]],
     climate_zone: Optional[str] = None,
+    state: Optional[str] = None,
     missing_parameters: Optional[List[str]] = None,
     extra_cols_to_drop: Optional[List[str]] = None,
     write_literal_none: bool = True,
@@ -262,6 +476,7 @@ def fill_missing_columns(
         df: Input DataFrame from inference
         allowed_options: Dictionary of allowed options from options_lookup.tsv
         climate_zone: Optional climate zone from GeoJSON
+        state: Optional two-letter state abbreviation from GeoJSON weather file
         missing_parameters: List of parameters to add
         extra_cols_to_drop: Columns to remove
         write_literal_none: If True, convert all NA values to 'None' string
@@ -271,6 +486,11 @@ def fill_missing_columns(
     """
     missing_parameters = missing_parameters or MISSING_PARAMETERS
     extra_cols_to_drop = extra_cols_to_drop or EXTRA_COLS_TO_DROP
+    
+    # Get state-aware location defaults if state is provided
+    state_location_defaults = {}
+    if state:
+        state_location_defaults = get_state_aware_location_defaults(state, allowed_options)
     
     # Ensure 'Feature ID' first column (copy of 'Building')
     if "Building" not in df.columns:
@@ -288,7 +508,12 @@ def fill_missing_columns(
             continue
 
         allowed = allowed_options.get(param, [])
-        chosen = DEFAULT_FILL_VALUES.get(param, "")
+        
+        # Priority: state-aware location defaults > climate zone > DEFAULT_FILL_VALUES
+        if param in state_location_defaults:
+            chosen = state_location_defaults[param]
+        else:
+            chosen = DEFAULT_FILL_VALUES.get(param, "")
 
         # Prefer geojson climate zone for these fields
         if climate_zone and param in {
@@ -1079,12 +1304,17 @@ class USGPostProcessor:
         df = pd.read_csv(input_csv_path, dtype=str, keep_default_na=False)
         t.done(extra=f"[rows={len(df):,} cols={len(df.columns):,}]")
         
-        # Get climate zone from GeoJSON if provided
+        # Get climate zone and state from GeoJSON if provided
         climate_zone = None
+        state = None
         if geojson_path:
             log(f"Reading climate zone from GeoJSON: {geojson_path}")
             climate_zone = read_project_climate_zone(geojson_path)
             log(f"  Climate zone: {climate_zone}")
+            
+            log(f"Reading state from GeoJSON weather file...")
+            state = read_project_state(geojson_path)
+            log(f"  State: {state}")
         
         # Step 1: Fill missing columns
         log("\n=== Step 1: Fill Missing Columns ===")
@@ -1093,6 +1323,7 @@ class USGPostProcessor:
             df=df,
             allowed_options=self.allowed_options,
             climate_zone=climate_zone,
+            state=state,
         )
         t.done(extra=f"[cols now={len(df.columns):,}]")
         
