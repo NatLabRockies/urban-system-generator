@@ -1,79 +1,70 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
 
 [project]
 name = "urban-system-generator"
-version = "0.1.1"
-description = "Machine learning tool for completing building attributes in urban energy models with URBANopt-BuildStock post-processing"
+dynamic = ["version"]
+description = "Urban System Generator (USG): complete missing building characteristics for URBANopt with pretrained ResStock models, confidence reports and URBANopt-BuildStock post-processing"
 readme = "README.md"
-requires-python = ">=3.8"
-license = { file = "LICENSE" }
-authors = [
-  { name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }
-]
-maintainers = [
-  { name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }
-]
-keywords = ["urban", "energy", "buildings", "machine-learning", "artificial-intelligence", "GenAI", "data-completion", "URBANopt", "BuildStock"]
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }]
+maintainers = [{ name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }]
+keywords = ["urban", "energy", "buildings", "ResStock", "URBANopt", "imputation", "diffusion", "machine-learning"]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: Science/Research",
-  "License :: OSI Approved :: BSD License",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Scientific/Engineering",
 ]
 dependencies = [
-  "numpy>=1.21.0",
-  "pandas>=1.3.0",
-  "tensorflow>=2.10.0",
-  "scikit-learn>=1.0.0",
-  "click>=8.0.0",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "click>=8.1",
+  "torch>=2.2",
+  "safetensors>=0.4",
+  "platformdirs>=3",
+  "filelock>=3.12",
+  "packaging>=23",
 ]
-
-[project.scripts]
-usg = "usg.cli:cli"
-urban-system-generator = "usg.cli:cli"
 
 [project.optional-dependencies]
-dev = [
-  "pytest>=7.0.0",
-  "pytest-cov>=3.0.0",
-  "black>=22.0.0",
-  "flake8>=4.0.0",
-  "build",
-  "twine",
-]
-docs = [
-  "sphinx>=4.0.0",
-  "sphinx-rtd-theme>=1.0.0",
-]
+dev = ["pytest>=8", "pytest-cov", "ruff", "build", "twine"]
+
+[project.scripts]
+usg = "usg.cli:main"
+urban-system-generator = "usg.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/NatLabRockies/urban-system-generator" 
+Homepage = "https://github.com/NatLabRockies/urban-system-generator"
 Repository = "https://github.com/NatLabRockies/urban-system-generator"
-Documentation = "https://github.com/NatLabRockies/urban-system-generator#readme"
-"Bug Tracker" = "https://github.com/NatLabRockies/urban-system-generator/issues"
+Issues = "https://github.com/NatLabRockies/urban-system-generator/issues"
 
-[tool.setuptools]
-include-package-data = true
+[tool.hatch.version]
+path = "src/usg/__about__.py"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["usg*"]
-exclude = ["tests*", "docs*", "examples*"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/usg"]
+artifacts = ["src/usg/resources/bundles/**", "!src/usg/resources/bundles/*/.verified*"]
 
-[tool.setuptools.package-data]
-usg = [
-    "resources/pretrained_model/*.keras",
-    "resources/pretrained_model/*.pkl",
-    "resources/pretrained_model/*.json",
-    "resources/postprocessor/*.tsv",
-    "resources/postprocessor/*.json",
-    "resources/*.py",
+# `python -m build` builds the wheel from the sdist, so the sdist carries the embedded bundles too.
+[tool.hatch.build.targets.sdist]
+artifacts = ["src/usg/resources/bundles/**", "!src/usg/resources/bundles/*/.verified*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not network'"
+markers = [
+  "network: requires internet access (nightly only)",
+  "slow: long-running test",
 ]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

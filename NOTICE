@@ -1,0 +1,13 @@
+Urban System Generator (urban-system-generator)
+Copyright (c) 2025-2026 Alliance for Energy Innovation, LLC (National Laboratory of the Rockies, formerly NREL).
+NLR Software Record: SWR 25-36
+
+Version 1.0 is a rewrite of the 0.1.x releases. The post-processor, report generation, GeoJSON mapping and
+confidence-report code were carried forward from them.
+
+Model bundles distributed for this package are trained on NREL ResStock data
+(End-Use Load Profiles for the U.S. Building Stock, resstock_tmy3_release_2, 2024), licensed CC-BY-4.0.
+
+The packaged Census tract table (src/usg/resources/location/county_puma_tracts.npz) is derived from public-domain
+U.S. Census Bureau files: 2010 Census tract centers of population and the 2010 Census tract to 2010 PUMA
+relationship file.

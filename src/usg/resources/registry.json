@@ -1,0 +1,267 @@
+{
+  "registry_format": "usg-registry/v1",
+  "generated_at": "2026-09-14T03:37:54Z",
+  "data_release": "2024.2",
+  "vocab_hash": "sha256:729bd88199f89ce96b04f98ca0e4aae6ffc4ec33faa5b83413d5bbc2b7fc67df",
+  "default_model_type": {
+    "__default__": "gnn"
+  },
+  "champions": {
+    "national": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "AL": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "AR": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "AZ": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "CA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "CO": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "CT": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "DC": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "DE": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "FL": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "GA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "IA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "ID": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "IL": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "IN": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "KS": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "KY": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "LA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MD": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "ME": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MI": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MN": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MO": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MS": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "MT": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NC": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "ND": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NE": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NH": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NJ": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NM": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NV": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "NY": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "OH": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "OK": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "OR": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "PA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "RI": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "SC": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "SD": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "TN": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "TX": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "UT": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "VA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "VT": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "WA": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "WI": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "WV": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    },
+    "WY": {
+      "gnn": "gnn-national-2024.2-v1",
+      "tabddpm": "tabddpm-national-2024.2-v1"
+    }
+  },
+  "models": [
+    {
+      "model_id": "gnn-national-2024.2-v1",
+      "model_type": "gnn",
+      "region": "national",
+      "scope": "national",
+      "arch_version": 1,
+      "bundle_format": "usg-bundle/v1",
+      "schema_hash": "sha256:eb24b3a2b716b878e407dc99180606f9d451de19bcdea23b21628517f72718f2",
+      "release_tag": "models-2024.2-v1",
+      "url": "https://github.com/NatLabRockies/urban-system-generator/releases/download/models-2024.2-v1/gnn-national-2024.2-v1.tar.gz",
+      "sha256": "d703019818bd3839b302e3085dad026f9065192fbd205ee4266721d0f8270335",
+      "manifest_sha256": "ae5de0e6440a092320ed6082d8679ae30261546752aaac85b6b60073ba899f1b",
+      "size_bytes": 31200350,
+      "requires_usg": ">=1.0.0",
+      "headline": {
+        "protocol": "usg_geojson",
+        "accuracy": 0.7542049486699358,
+        "skill": 0.2771886040604831,
+        "macro_f1": 0.5287177755312249,
+        "top3_accuracy": 0.941248752267776,
+        "ece": 0.006024027779919364,
+        "baseline_majority_accuracy": 0.6469617264970964
+      },
+      "embedded": true,
+      "yanked": false
+    },
+    {
+      "model_id": "tabddpm-national-2024.2-v1",
+      "model_type": "tabddpm",
+      "region": "national",
+      "scope": "national",
+      "arch_version": 1,
+      "bundle_format": "usg-bundle/v1",
+      "schema_hash": "sha256:eb24b3a2b716b878e407dc99180606f9d451de19bcdea23b21628517f72718f2",
+      "release_tag": "models-2024.2-v1",
+      "url": "https://github.com/NatLabRockies/urban-system-generator/releases/download/models-2024.2-v1/tabddpm-national-2024.2-v1.tar.gz",
+      "sha256": "d4b77bad964410bed337447f2e4764b5d2bbae1fa160cd250b9f18b9b476fede",
+      "manifest_sha256": "3832eb3a8c5744a79f99ff1be32a8d8044f646b7fe7138c8fae2d993e91f41ce",
+      "size_bytes": 32488006,
+      "requires_usg": ">=1.0.0",
+      "headline": {
+        "protocol": "usg_geojson",
+        "accuracy": 0.7061224489795918,
+        "skill": 0.05852938859461151,
+        "accuracy_mode": 0.7339770408163265,
+        "skill_mode": 0.22320121977776347,
+        "macro_f1": 0.5357514990825861,
+        "top3_accuracy": 0.9259897959183674,
+        "ece": 0.04966270449140841,
+        "baseline_majority_accuracy": 0.6477193877551021
+      },
+      "embedded": true,
+      "yanked": false
+    }
+  ]
+}
