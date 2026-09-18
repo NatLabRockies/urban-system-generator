@@ -15,7 +15,8 @@ def test_download_verify_extract_and_reuse(gnn_bundle, http_server, helpers, tmp
     assert path == cache.path(entry.model_id)
     assert Bundle.open(path, verify="fast").model_id == entry.model_id
     assert (path / ".verified").exists()
-    assert (cache.dir / "locks" / f"{entry.model_id}.lock").exists()
+    assert (cache.dir / "locks").is_dir()  # the download took the locked path; filelock may delete the
+    # lock file itself on release (documented as not guaranteed on Windows), so do not assert the file
     assert not list((cache.dir / "tmp").glob("*.part"))
     assert progress and progress[-1][0] == entry.size_bytes
 
