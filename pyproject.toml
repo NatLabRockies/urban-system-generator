@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "urban-system-generator"
 dynamic = ["version"]
-description = "Generative AI and machine learning for characterization in urban energy models"
+description = "Generative AI and machine learning for urban energy model characterization and scenario generation"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "BSD-3-Clause"
