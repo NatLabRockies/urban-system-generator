@@ -12,7 +12,9 @@ license = "BSD-3-Clause"
 license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }]
 maintainers = [{ name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }]
-keywords = ["urban", "energy", "buildings", "ResStock", "URBANopt", "imputation", "diffusion", "machine-learning"]
+keywords = ["AI", "artificial-intelligence", "machine-learning", "generative-AI",
+            "deep-learning", "pytorch", "urban", "energy-modeling", "buildings",
+            "ResStock", "URBANopt", "imputation", "diffusion", "uncertainty"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Science/Research",
