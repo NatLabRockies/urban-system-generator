@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "urban-system-generator"
 dynamic = ["version"]
-description = "Urban System Generator (USG): complete missing building characteristics for URBANopt with pretrained ResStock models, confidence reports and URBANopt-BuildStock post-processing"
+description = "Generative AI and machine learning for characterization in urban energy models"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "BSD-3-Clause"
@@ -14,7 +14,7 @@ authors = [{ name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }]
 maintainers = [{ name = "Rawad El Kontar", email = "rawad.elkontar@nlr.gov" }]
 keywords = ["urban", "energy", "buildings", "ResStock", "URBANopt", "imputation", "diffusion", "machine-learning"]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
