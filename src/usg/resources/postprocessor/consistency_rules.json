@@ -263,7 +263,7 @@
      "value": "None"
     }
    ],
-   "note": "Hierarchy: equipment exists \u2192 fuel exists \u2192 efficiency exists. If no secondary heating equipment, fuel & efficiency must be None."
+   "note": "Hierarchy: equipment exists → fuel exists → efficiency exists. If no secondary heating equipment, fuel & efficiency must be None."
   },
   {
    "id": "secondary_heating_equipment_present_requires_fuel",
@@ -1198,7 +1198,7 @@
      "value": "None"
     }
    ],
-   "note": "Hierarchy: equipment exists \u2192 fuel exists \u2192 efficiency exists. If no primary heating equipment, set related fields to None."
+   "note": "Hierarchy: equipment exists → fuel exists → efficiency exists. If no primary heating equipment, set related fields to None."
   },
   {
    "id": "heating_fuel_none_implies_hvac_heating_fields_none",
@@ -1617,6 +1617,36 @@
     }
    ],
    "note": "A Void/blank dryer produces an HPXML element with no efficiency and fails validation."
+  },
+  {
+   "id": "vented_or_unvented_attic_requires_ceiling_insulation",
+   "severity": "error",
+   "when": {
+    "field": "Geometry Attic Type",
+    "op": "in",
+    "value": [
+     "Vented Attic",
+     "Unvented Attic"
+    ]
+   },
+   "then": [
+    {
+     "field": "Insulation Ceiling",
+     "op": "not_in",
+     "value": [
+      "None",
+      "Void"
+     ]
+    }
+   ],
+   "fix": [
+    {
+     "action": "set",
+     "field": "Insulation Ceiling",
+     "value": "R-30"
+    }
+   ],
+   "note": "A vented or unvented attic always has an insulated ceiling: across ResStock 2024.2, 'Insulation Ceiling = None' occurs 0 times in 216,171 vented-attic buildings and 0 times in 18,011 unvented-attic ones, while it is the only value for finished/cathedral ceilings and for buildings with no attic. An uninsulated ceiling under an attic reaches HPXML as AssemblyEffectiveRValue 0.0, which it rejects ('must be greater than 0'), failing the whole simulation. R-30 is the most common ceiling insulation for these attics."
   }
  ]
 }

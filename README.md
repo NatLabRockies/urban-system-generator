@@ -11,23 +11,31 @@ URBANopt GeoJSON, or a CSV with whatever you know about each building. It return
 URBANopt-BuildStock mapping CSV, with a confidence report for every predicted value and a report of everything
 post-processing changed.
 
-**Version 1.0** is a rewrite of the 0.1.x releases. The package name and the `usg` command are unchanged. See
-[upgrading from 0.1.x](docs/upgrading_to_1.0.md).
+**Version 1.1** ships new national models and restores the attributes they no longer predict. Output columns and
+the CLI are unchanged; see the [changelog](CHANGELOG.md). Upgrading from 0.1.x is covered
+[here](docs/upgrading_to_1.0.md).
 
 ## Features
 
 * **Two pretrained national models:**
-  * **G-NN** is fast and gives the most accurate value per building.
-  * **TabDDPM**, a tabular diffusion model, gives realistic variety across a building stock.
+  * **G-NN** gives the most accurate value per building, in one pass. It is the default.
+  * **TabDDPM**, a tabular diffusion model, draws complete buildings from the joint distribution. It is
+    considerably slower — see [choosing a model](docs/models.md).
 
   Both were trained on all 549,715 ResStock 2024.2 buildings and ship inside the package, so everything works
   offline.
+* **Choose how a prediction becomes a value** with `--decode`. `argmax` takes the most likely value, which is the
+  best guess for one building but repeats it across a district. `sample` draws in proportion to the predicted
+  probabilities, so a district keeps the stock's real mix of equipment and insulation.
 * **Location-aware.** The state comes from the weather filename, the climate zones from the Site Origin's nearest
   ResStock weather station, and County and PUMA from the Site Origin's nearest Census tract.
 * **GeoJSON mapping** of URBANopt building properties to ResStock parameters.
 * **Post-processing** to URBANopt-BuildStock:
-  * required columns the model does not predict are derived from ResStock, consistently with the known and predicted
-    attributes;
+  * what your own inputs already determine is filled before the model is asked, and a value that contradicts the
+    stock is reported rather than overwritten;
+  * attributes the models do not predict — constants, duplicates of another column, and exact functions of other
+    columns — are restored by table lookup, verified against every building in the release;
+  * remaining required columns are derived from ResStock, consistently with the known and predicted attributes;
   * values are validated against `options_lookup.tsv` and consistency rules are applied;
   * a report records every change.
 * **Confidence reports** (HTML/JSON) for every predicted value, calibrated on held-out ResStock buildings.
@@ -69,10 +77,10 @@ usg process -i completed.csv -o uo_buildstock_mapping.csv -g buildings.json
 
 ```
 Location: MD (weather file) · 4A (nearest station) · Mixed-Humid (from 4A) · South Atlantic (from state) · nearest station Baltimore Blt Washngtn IntL (16 km) · County and PUMA G2405100, G24000804 (Site Origin, nearest Census tract 0.2 km)
-Model: gnn-national-2024.2-v1 — state MD from weather file (USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw); model type gnn (default for MD); the national gnn model is the recommended model for MD; gnn-national-2024.2-v1 (embedded)
+Model: gnn-national-2024.2-v2 — state MD from weather file (USA_MD_Baltimore-Washington.Intl.AP.724060_TMY3.epw); model type gnn (default for MD); the national gnn model is the recommended model for MD; gnn-national-2024.2-v2 (embedded)
 Converted 77 residential building(s) from buildings.json
 ...
-Confidence: mean 0.76, expected accuracy 0.75 — 4399 high / 1345 medium / 1956 low predicted values
+Confidence: mean 0.65, expected accuracy 0.68 — 1652 high / 1230 medium / 1507 low predicted values
 ✓ Confidence report: confidence_report.html
 Post-processing changed 0 of 7,700 predicted values (0.0%) and 0 of your 924 input values; filled 0 empty cells and added 45 required columns the model does not predict
 ✓ Post-processing report: postprocess_report.html
@@ -95,8 +103,8 @@ Full reference: [docs/cli_usage.md](docs/cli_usage.md).
 
 | Model | `--model` | Best for |
 |---|---|---|
-| `gnn-national-2024.2-v1` (default) | `gnn` | the most accurate value for each building |
-| `tabddpm-national-2024.2-v1` | `tabddpm` | realistic variety across a building stock (draws from the joint distribution); use `--samples 32` |
+| `gnn-national-2024.2-v2` (default) | `gnn` | the most accurate value for each building |
+| `tabddpm-national-2024.2-v2` | `tabddpm` | draws from the joint distribution; ~3,200 network passes per building, so far slower than the G-NN. For variety across a district, `--decode sample` on the G-NN is usually the better trade |
 
 * **Training data:** all 549,715 ResStock 2024.2 baseline buildings (48 states + DC).
 * **Inputs:** the building's location (state, climate zones, census division), so one model serves every state.
@@ -122,7 +130,7 @@ costs well under a second per 100 buildings. See [docs/confidence_reports.md](do
 |---|---|
 | nothing | the default model (G-NN) recommended for the project's state |
 | `--model tabddpm` | that model type |
-| `--model-id tabddpm-national-2024.2-v1` | exactly that model |
+| `--model-id tabddpm-national-2024.2-v2` | exactly that model |
 | `--model-dir path/to/bundle` | that local bundle |
 
 The selected model and the reason are always printed and recorded in `run_manifest.json`. Details:

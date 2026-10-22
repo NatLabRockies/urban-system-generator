@@ -61,10 +61,14 @@ artifacts = ["src/usg/resources/bundles/**", "!src/usg/resources/bundles/*/.veri
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-m 'not network'"
+addopts = "-m 'not network and not urbanopt'"
 markers = [
   "network: requires internet access (nightly only)",
   "slow: long-running test",
+  # Anything needing URBANopt, OpenStudio or EnergyPlus is a local gate, never CI: those are large
+  # installs that CI does not have and should not grow. Run the acceptance script by hand before a
+  # release instead - see RELEASING.md.
+  "urbanopt: requires a local URBANopt + OpenStudio + EnergyPlus install (never run in CI)",
 ]
 
 [tool.ruff]

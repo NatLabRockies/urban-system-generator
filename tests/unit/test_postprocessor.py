@@ -201,3 +201,34 @@ def test_void_like_value_is_rewritten_to_the_spelling_the_lookup_accepts(process
     for col in affected:
         assert fixed.at[0, col] == "Void", col
         assert fixed.at[0, col] in allowed[col], f"{col} must end up with an option URBANopt accepts"
+
+
+def test_an_attic_always_has_an_insulated_ceiling(processor):
+    """An uninsulated ceiling under an attic reaches HPXML as R-0, which it refuses.
+
+    `AssemblyEffectiveRValue: The value '0.0' must be greater than '0'` fails the whole simulation. Across
+    ResStock 2024.2 the pairing never occurs: 0 of 216,171 vented-attic buildings and 0 of 18,011
+    unvented ones have `Insulation Ceiling = None`, while it is the only value for finished/cathedral
+    ceilings and for buildings with no attic. The TabDDPM model produced the invalid pairing on a real
+    district and lost one building to it.
+    """
+    df = pd.DataFrame([
+        {"Building": "bad", "Geometry Attic Type": "Vented Attic", "Insulation Ceiling": "None"},
+        {"Building": "bad2", "Geometry Attic Type": "Unvented Attic", "Insulation Ceiling": "None"},
+        {"Building": "keep1", "Geometry Attic Type": "Vented Attic", "Insulation Ceiling": "R-38"},
+        {"Building": "keep2", "Geometry Attic Type": "Finished Attic or Cathedral Ceilings",
+         "Insulation Ceiling": "None"},
+        {"Building": "keep3", "Geometry Attic Type": "None", "Insulation Ceiling": "None"},
+    ])
+    out, _issues, events = processor.process_dataframe(df.copy())
+
+    assert out.loc[out["Building"] == "bad", "Insulation Ceiling"].iloc[0] != "None"
+    assert out.loc[out["Building"] == "bad2", "Insulation Ceiling"].iloc[0] != "None"
+    # a ceiling that is legitimately uninsulated must be left alone
+    assert out.loc[out["Building"] == "keep1", "Insulation Ceiling"].iloc[0] == "R-38"
+    assert out.loc[out["Building"] == "keep2", "Insulation Ceiling"].iloc[0] == "None"
+    assert out.loc[out["Building"] == "keep3", "Insulation Ceiling"].iloc[0] == "None"
+
+    fixed = [e for e in events if "ceiling_insulation" in str(getattr(e, "rule_id", ""))
+             and getattr(e, "status", "") == "FIXED"]
+    assert len(fixed) == 2, "both invalid pairings should be repaired, and only those"

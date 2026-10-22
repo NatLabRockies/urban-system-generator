@@ -111,7 +111,11 @@ _MODEL_OPTIONS = [
     click.option("-d", "--model-dir", type=click.Path(exists=True, file_okay=False, path_type=Path), default=None,
                  help="Use this bundle directory (bypasses the registry)."),
     click.option("--samples", type=click.IntRange(min=1), default=None,
-                 help="Samples per building (default from the bundle; TabDDPM confidence wants >= 16)."),
+                 help="Draws per building used for the confidence report; it does not change the value "
+                      "written to the output (use --decode for that). TabDDPM confidence wants >= 16, and "
+                      "lowering it is the way to make TabDDPM faster: it denoises over 100 sequential "
+                      "steps per draw, so 32 draws cost 3,200 network passes per building against the "
+                      "G-NN's one. Default: the bundle's own setting."),
     click.option("--seed", type=int, default=0, show_default=True, help="Random seed."),
     click.option("--device", default="cpu", show_default=True, help="cpu, cuda, mps or auto."),
     click.option("--threads", type=click.IntRange(min=1), default=1, show_default=True,

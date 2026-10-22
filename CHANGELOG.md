@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.1.1
+
+### Fixed
+- **An attic always has an insulated ceiling.** A vented or unvented attic with
+  `Insulation Ceiling = None` reaches HPXML as an R-0 assembly, which it refuses
+  (`AssemblyEffectiveRValue: The value '0.0' must be greater than '0'`), failing that building's
+  simulation. The pairing does not occur in the stock — 0 of 216,171 vented-attic buildings and 0 of
+  18,011 unvented ones — so a consistency rule now repairs it. Found when the TabDDPM model produced it
+  on a real district and lost one building of 77.
+
+### Changed
+- `--samples` is documented for what it does: it sets the draws behind the confidence report and does
+  not change the value written to the output. Use `--decode` for that. It is also the way to make
+  TabDDPM faster, which matters more than the help text implied: TabDDPM denoises over 100 sequential
+  steps per draw, so 32 draws cost 3,200 network passes per building against the G-NN's one.
+- The README and docs refer to the models that actually ship (`-v2`), and the sample output matches a
+  real 1.1 run. `docs/models.md` gains a section on choosing between the two models and what each costs.
+- Tests needing URBANopt, OpenStudio or EnergyPlus carry a `urbanopt` marker and are excluded from the
+  default run, so CI never needs those installs. `RELEASING.md` records the checks a person has to make
+  instead, including running the acceptance script against **every** model — TabDDPM shipped in 1.1.0
+  having never reached URBANopt, which is how the ceiling defect got out.
+
 ## 1.1.0
 
 New national models and a post-processing step that restores the attributes they no longer predict. Output

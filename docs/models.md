@@ -1,5 +1,26 @@
 # Models, registry and selection
 
+## Choosing between the two models, and what each costs
+
+The G-NN is the default, and for most work it is the right choice: it is both more accurate and far
+cheaper to run. Measured on the attributes usg fills in, the G-NN is right 75.4% of the time against
+TabDDPM's 63.5% (same held-out buildings, same known inputs), and the gap holds across every attribute
+group.
+
+The cost difference is larger than the accuracy difference. The G-NN makes **one network pass per
+building**. TabDDPM is a diffusion model: it denoises from noise over `sample_steps` (100) sequential
+steps to produce one draw, repeats that `--samples` (32) times, and takes the medoid — **3,200 network
+passes per building**. The steps cannot be parallelised, because each one consumes the previous step's
+output. On a 77-building district that is the difference between seconds and roughly ten minutes.
+
+Lower `--samples` if you want TabDDPM faster; 8 draws is four times quicker than 32, at the cost of a
+noisier medoid and a less meaningful confidence report.
+
+Reach for TabDDPM when you specifically want a generative sampler over the joint distribution rather
+than a point prediction. If what you want is variety across a district, `--decode sample` on the G-NN
+gives you that for the price of one pass.
+
+
 ## Model types
 
 | Type | `--model` | What it is | Probabilities | Speed |
@@ -12,7 +33,7 @@ confidence scores.
 
 ## Regions
 
-The published models are **national**: `gnn-national-2024.2-v1` and `tabddpm-national-2024.2-v1`, trained on every
+The published models are **national**: `gnn-national-2024.2-v2` and `tabddpm-national-2024.2-v2`, trained on every
 ResStock 2024.2 baseline building (48 contiguous states + DC). Location enters as conditioning inputs, and the
 registry names the national model as the recommended model for every state. The registry format also supports
 per-state champions should regional models be published later. Alaska and Hawaii are not in ResStock; they use the
@@ -52,7 +73,7 @@ Fallbacks, each reported as a warning (and recorded in `run_manifest.json`):
 `--no-fallback` turns fallbacks into errors (exit code 3). The chosen model and the reason are always printed, e.g.
 
 ```
-Model: tabddpm-national-2024.2-v1 — state MD from weather file (USA_MD_Baltimore…epw); model type tabddpm (requested); the national tabddpm model is the recommended model for MD; tabddpm-national-2024.2-v1 (embedded)
+Model: tabddpm-national-2024.2-v2 — state MD from weather file (USA_MD_Baltimore…epw); model type tabddpm (requested); the national tabddpm model is the recommended model for MD; tabddpm-national-2024.2-v2 (embedded)
 ```
 
 **Mixed-state CSVs.** `usg complete` with `--state auto` and a `State` column holding several states resolves one
@@ -76,11 +97,11 @@ bundle's own file checksums before the bundle is moved into place.
 A wheel that embeds both national models works offline as is. Otherwise, for air-gapped machines:
 
 ```bash
-usg models download gnn-national-2024.2-v1 tabddpm-national-2024.2-v1
-usg models path gnn-national-2024.2-v1    # copy that directory, or the whole `usg models path` cache
+usg models download gnn-national-2024.2-v2 tabddpm-national-2024.2-v2
+usg models path gnn-national-2024.2-v2    # copy that directory, or the whole `usg models path` cache
 export USG_OFFLINE=1                       # never touch the network (same as --offline)
 usg workflow -i buildings.json            # uses embedded/cached models only
-usg workflow -i buildings.json --model-dir /shared/bundles/gnn-national-2024.2-v1   # or point at a bundle
+usg workflow -i buildings.json --model-dir /shared/bundles/gnn-national-2024.2-v2   # or point at a bundle
 ```
 
 ## `usg models`
@@ -107,20 +128,20 @@ The package ships `usg/resources/registry.json`. Point to another file or URL wi
   "vocab_hash": "sha256:…",
   "default_model_type": {"__default__": "gnn"},
   "champions": {
-    "MD": {"gnn": "gnn-national-2024.2-v1", "tabddpm": "tabddpm-national-2024.2-v1"},
-    "national": {"gnn": "gnn-national-2024.2-v1", "tabddpm": "tabddpm-national-2024.2-v1"}
+    "MD": {"gnn": "gnn-national-2024.2-v2", "tabddpm": "tabddpm-national-2024.2-v2"},
+    "national": {"gnn": "gnn-national-2024.2-v2", "tabddpm": "tabddpm-national-2024.2-v2"}
   },
   "models": [
     {
-      "model_id": "gnn-national-2024.2-v1",
+      "model_id": "gnn-national-2024.2-v2",
       "model_type": "gnn",
       "region": "national",
       "scope": "national",
       "arch_version": 1,
       "bundle_format": "usg-bundle/v1",
       "schema_hash": "sha256:…",
-      "release_tag": "models-2024.2-v1",
-      "url": "https://github.com/NatLabRockies/urban-system-generator/releases/download/models-2024.2-v1/gnn-national-2024.2-v1.tar.gz",
+      "release_tag": "models-2024.2-v2",
+      "url": "https://github.com/NatLabRockies/urban-system-generator/releases/download/models-2024.2-v2/gnn-national-2024.2-v2.tar.gz",
       "sha256": "<archive sha256>",
       "manifest_sha256": "<sha256 of manifest.json>",
       "size_bytes": 30900000,

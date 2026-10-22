@@ -24,7 +24,7 @@ usg [--version] COMMAND [OPTIONS]
 |---|---|---|
 | `--model [gnn\|tabddpm]` | registry default for the region | model type |
 | `--state XX\|national\|auto` | `auto` | region; `auto` = GeoJSON project state / CSV `State` column / national |
-| `--model-id ID` | | exact model, e.g. `tabddpm-national-2024.2-v1` |
+| `--model-id ID` | | exact model, e.g. `tabddpm-national-2024.2-v2` |
 | `-d, --model-dir DIR` | | use a local bundle directory (bypasses the registry) |
 | `--samples N` | bundle default | samples per building (TabDDPM) |
 | `--seed N` | `0` | random seed (runs are reproducible for a given seed, model and torch version) |
@@ -245,5 +245,5 @@ usg complete -i district_raw.csv -o district_completed.csv --model tabddpm --sam
 usg process -i district_completed.csv -o uo_buildstock_mapping.csv -g district.json
 
 # Reproducible, offline, pinned model
-usg workflow -i district.json --model-id gnn-national-2024.2-v1 --offline --seed 42
+usg workflow -i district.json --model-id gnn-national-2024.2-v2 --offline --seed 42
 ```
