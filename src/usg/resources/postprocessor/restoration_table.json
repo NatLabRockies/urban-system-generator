@@ -1,0 +1,518 @@
+{
+  "format": "usg-column-restoration/v1",
+  "n_buildings": 549715,
+  "separator": "\u001f",
+  "constants": {
+    "Dehumidifier": "None",
+    "Door Area": "20 ft^2",
+    "Doors": "Fiberglass",
+    "Eaves": "2 ft",
+    "HVAC Secondary Heating Efficiency": "None",
+    "HVAC Secondary Heating Fuel": "None",
+    "HVAC Secondary Heating Partial Space Conditioning": "None",
+    "HVAC System Is Faulted": "No",
+    "HVAC System Single Speed AC Airflow": "None",
+    "HVAC System Single Speed AC Charge": "None",
+    "HVAC System Single Speed ASHP Airflow": "None",
+    "HVAC System Single Speed ASHP Charge": "None",
+    "Holiday Lighting": "No Exterior Use",
+    "Hot Water Distribution": "Uninsulated",
+    "Interior Shading": "Summer = 0.7, Winter = 0.85",
+    "Lighting Interior Use": "100% Usage",
+    "Lighting Other Use": "100% Usage",
+    "Mechanical Ventilation": "None",
+    "Natural Ventilation": "Cooling Season, 7 days/wk",
+    "Overhangs": "None"
+  },
+  "rules": [
+    {
+      "column": "Clothes Dryer Usage Level",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100% Usage",
+        "High": "120% Usage",
+        "Low": "80% Usage"
+      }
+    },
+    {
+      "column": "Clothes Washer Presence",
+      "from": [
+        "Clothes Washer"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Standard": "Yes",
+        "EnergyStar": "Yes",
+        "None": "None"
+      }
+    },
+    {
+      "column": "Clothes Washer Usage Level",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100% Usage",
+        "High": "120% Usage",
+        "Low": "80% Usage"
+      }
+    },
+    {
+      "column": "Cooking Range Usage Level",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100% Usage",
+        "High": "120% Usage",
+        "Low": "80% Usage"
+      }
+    },
+    {
+      "column": "Cooling Setpoint Has Offset",
+      "from": [
+        "Cooling Setpoint Offset Magnitude"
+      ],
+      "n_keys": 4,
+      "map": {
+        "0F": "No",
+        "2F": "Yes",
+        "5F": "Yes",
+        "9F": "Yes"
+      }
+    },
+    {
+      "column": "Corridor",
+      "from": [
+        "Geometry Building Type ACS"
+      ],
+      "n_keys": 9,
+      "map": {
+        "Single-Family Detached": "Not Applicable",
+        "20 to 49 Unit": "Double-Loaded Interior",
+        "10 to 19 Unit": "Double-Loaded Interior",
+        "Single-Family Attached": "Not Applicable",
+        "50 or more Unit": "Double-Loaded Interior",
+        "2 Unit": "Double-Loaded Interior",
+        "Mobile Home": "Not Applicable",
+        "5 to 9 Unit": "Double-Loaded Interior",
+        "3 or 4 Unit": "Double-Loaded Interior"
+      }
+    },
+    {
+      "column": "Dishwasher Usage Level",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100% Usage",
+        "High": "120% Usage",
+        "Low": "80% Usage"
+      }
+    },
+    {
+      "column": "Geometry Building Type Height",
+      "from": [
+        "Geometry Building Type RECS",
+        "Geometry Stories"
+      ],
+      "n_keys": 29,
+      "map": {
+        "Single-Family Detached\u001f2": "Single-Family Detached",
+        "Single-Family Detached\u001f1": "Single-Family Detached",
+        "Multi-Family with 5+ Units\u001f4": "Multi-Family with 5+ Units, 4-7 Stories",
+        "Multi-Family with 5+ Units\u001f3": "Multi-Family with 5+ Units, 1-3 Stories",
+        "Single-Family Attached\u001f1": "Single-Family Attached",
+        "Multi-Family with 5+ Units\u001f1": "Multi-Family with 5+ Units, 1-3 Stories",
+        "Multi-Family with 2 - 4 Units\u001f2": "Multi-Family with 2 - 4 Units",
+        "Single-Family Attached\u001f2": "Single-Family Attached",
+        "Mobile Home\u001f1": "Mobile Home",
+        "Multi-Family with 5+ Units\u001f2": "Multi-Family with 5+ Units, 1-3 Stories",
+        "Single-Family Detached\u001f3": "Single-Family Detached",
+        "Single-Family Attached\u001f3": "Single-Family Attached",
+        "Multi-Family with 5+ Units\u001f5": "Multi-Family with 5+ Units, 4-7 Stories",
+        "Multi-Family with 5+ Units\u001f7": "Multi-Family with 5+ Units, 4-7 Stories",
+        "Multi-Family with 2 - 4 Units\u001f3": "Multi-Family with 2 - 4 Units",
+        "Multi-Family with 5+ Units\u001f21": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 2 - 4 Units\u001f4": "Multi-Family with 2 - 4 Units",
+        "Multi-Family with 5+ Units\u001f15": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f8": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f12": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 2 - 4 Units\u001f1": "Multi-Family with 2 - 4 Units",
+        "Multi-Family with 5+ Units\u001f35": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f6": "Multi-Family with 5+ Units, 4-7 Stories",
+        "Multi-Family with 5+ Units\u001f13": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f11": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f10": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f20": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f9": "Multi-Family with 5+ Units, 8+ Stories",
+        "Multi-Family with 5+ Units\u001f14": "Multi-Family with 5+ Units, 8+ Stories"
+      }
+    },
+    {
+      "column": "Geometry Floor Area Bin",
+      "from": [
+        "Geometry Floor Area"
+      ],
+      "n_keys": 9,
+      "map": {
+        "750-999": "0-1499",
+        "2000-2499": "1500-2499",
+        "1000-1499": "0-1499",
+        "0-499": "0-1499",
+        "2500-2999": "2500-3999",
+        "500-749": "0-1499",
+        "1500-1999": "1500-2499",
+        "3000-3999": "2500-3999",
+        "4000+": "4000+"
+      }
+    },
+    {
+      "column": "Geometry Space Combination",
+      "from": [
+        "Geometry Building Type RECS",
+        "Geometry Foundation Type",
+        "Geometry Attic Type",
+        "Geometry Garage",
+        "Geometry Building Level MF"
+      ],
+      "n_keys": 129,
+      "map": {
+        "Single-Family Detached\u001fSlab\u001fVented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Slab, Vented Attic, 1 Car Garage",
+        "Single-Family Detached\u001fAmbient\u001fVented Attic\u001fNone\u001fNone": "Single-Family Detached, Ambient, Vented Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fVented Crawlspace\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 5+ Units Middle Unit, Vented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fVented Attic\u001fNone\u001fNone": "Single-Family Detached, Slab, Vented Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Detached, Slab, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fNone\u001fNone\u001fNone": "Single-Family Detached, Slab, No Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fVented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Vented Attic, 1 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fVented Attic\u001fNone\u001fNone": "Single-Family Detached, Heated Basement, Vented Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fNone\u001f3 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, No Attic, 3 Car Garage",
+        "Multi-Family with 5+ Units\u001fSlab\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 5+ Units Middle Unit, Slab, No Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fVented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Slab, Vented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fNone\u001fNone\u001fNone": "Single-Family Detached, Vented Crawlspace, No Attic, No Garage",
+        "Single-Family Attached\u001fSlab\u001fNone\u001fNone\u001fNone": "Single-Family Attached, Slab, No Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fVented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Slab, Vented Attic, 3 Car Garage",
+        "Multi-Family with 5+ Units\u001fSlab\u001fNone\u001fNone\u001fBottom": "Multi-Family with 5+ Units Bottom Unit, Slab, No Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fNone\u001f2 Car\u001fNone": "Single-Family Detached, Heated Basement, No Attic, 2 Car Garage",
+        "Multi-Family with 5+ Units\u001fUnheated Basement\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 5+ Units Middle Unit, Unheated Basement, No Attic, No Garage",
+        "Multi-Family with 2 - 4 Units\u001fVented Crawlspace\u001fNone\u001fNone\u001fTop": "Multi-Family with 2 - 4 Units Top Unit, Vented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fVented Attic\u001fNone\u001fNone": "Single-Family Detached, Vented Crawlspace, Vented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fUnvented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Unheated Basement, Unvented Attic, 1 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fUnheated Basement\u001fNone\u001fNone\u001fBottom": "Multi-Family with 2 - 4 Units Bottom Unit, Unheated Basement, No Attic, No Garage",
+        "Single-Family Attached\u001fVented Crawlspace\u001fVented Attic\u001fNone\u001fNone": "Single-Family Attached, Vented Crawlspace, Vented Attic, No Garage",
+        "Single-Family Attached\u001fUnvented Crawlspace\u001fVented Attic\u001fNone\u001fNone": "Single-Family Attached, Unvented Crawlspace, Vented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fVented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Unheated Basement, Vented Attic, 1 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fNone\u001f1 Car\u001fNone": "Single-Family Detached, Heated Basement, No Attic, 1 Car Garage",
+        "Single-Family Attached\u001fUnheated Basement\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Attached, Unheated Basement, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fNone\u001f1 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, No Attic, 1 Car Garage",
+        "Mobile Home\u001fAmbient\u001fNone\u001fNone\u001fNone": "Mobile Home, Ambient, No Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Detached, Heated Basement, Finished Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fVented Crawlspace\u001fNone\u001fNone\u001fTop": "Multi-Family with 5+ Units Top Unit, Vented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fNone\u001fNone\u001fNone": "Single-Family Detached, Heated Basement, No Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fVented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Heated Basement, Vented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fNone\u001f2 Car\u001fNone": "Single-Family Detached, Unheated Basement, No Attic, 2 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fVented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Vented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fUnvented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Heated Basement, Unvented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fAmbient\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Detached, Ambient, Finished Attic, No Garage",
+        "Single-Family Detached\u001fAmbient\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Detached, Ambient, Unvented Attic, No Garage",
+        "Single-Family Attached\u001fUnheated Basement\u001fNone\u001fNone\u001fNone": "Single-Family Attached, Unheated Basement, No Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fUnheated Basement\u001fNone\u001fNone\u001fBottom": "Multi-Family with 5+ Units Bottom Unit, Unheated Basement, No Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fVented Crawlspace\u001fNone\u001fNone\u001fBottom": "Multi-Family with 5+ Units Bottom Unit, Vented Crawlspace, No Attic, No Garage",
+        "Single-Family Attached\u001fSlab\u001fVented Attic\u001fNone\u001fNone": "Single-Family Attached, Slab, Vented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fVented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Unheated Basement, Vented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fVented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Vented Attic, 2 Car Garage",
+        "Single-Family Attached\u001fVented Crawlspace\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Attached, Vented Crawlspace, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fNone\u001fNone\u001fNone": "Single-Family Detached, Unheated Basement, No Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fSlab\u001fNone\u001fNone\u001fTop": "Multi-Family with 5+ Units Top Unit, Slab, No Attic, No Garage",
+        "Single-Family Attached\u001fUnheated Basement\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Attached, Unheated Basement, Finished Attic, No Garage",
+        "Multi-Family with 2 - 4 Units\u001fVented Crawlspace\u001fNone\u001fNone\u001fBottom": "Multi-Family with 2 - 4 Units Bottom Unit, Vented Crawlspace, No Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 5+ Units Middle Unit, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fNone\u001f1 Car\u001fNone": "Single-Family Detached, Slab, No Attic, 1 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fNone\u001f2 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, No Attic, 2 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001f1 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Finished Attic, 1 Car Garage",
+        "Single-Family Attached\u001fHeated Basement\u001fVented Attic\u001fNone\u001fNone": "Single-Family Attached, Heated Basement, Vented Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fUnvented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Slab, Unvented Attic, 1 Car Garage",
+        "Single-Family Detached\u001fSlab\u001fUnvented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Slab, Unvented Attic, 2 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fSlab\u001fNone\u001fNone\u001fBottom": "Multi-Family with 2 - 4 Units Bottom Unit, Slab, No Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fVented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Heated Basement, Vented Attic, 1 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fUnheated Basement\u001fNone\u001fNone\u001fTop": "Multi-Family with 2 - 4 Units Top Unit, Unheated Basement, No Attic, No Garage",
+        "Single-Family Attached\u001fHeated Basement\u001fNone\u001fNone\u001fNone": "Single-Family Attached, Heated Basement, No Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Detached, Unheated Basement, Finished Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fVented Attic\u001fNone\u001fNone": "Single-Family Detached, Unheated Basement, Vented Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fBottom": "Multi-Family with 5+ Units Bottom Unit, Unvented Crawlspace, No Attic, No Garage",
+        "Multi-Family with 2 - 4 Units\u001fUnheated Basement\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 2 - 4 Units Middle Unit, Unheated Basement, No Attic, No Garage",
+        "Single-Family Attached\u001fVented Crawlspace\u001fNone\u001fNone\u001fNone": "Single-Family Attached, Vented Crawlspace, No Attic, No Garage",
+        "Multi-Family with 2 - 4 Units\u001fSlab\u001fNone\u001fNone\u001fTop": "Multi-Family with 2 - 4 Units Top Unit, Slab, No Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fNone\u001f2 Car\u001fNone": "Single-Family Detached, Slab, No Attic, 2 Car Garage",
+        "Multi-Family with 5+ Units\u001fUnheated Basement\u001fNone\u001fNone\u001fTop": "Multi-Family with 5+ Units Top Unit, Unheated Basement, No Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fNone\u001f3 Car\u001fNone": "Single-Family Detached, Slab, No Attic, 3 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Detached, Vented Crawlspace, Finished Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fVented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Heated Basement, Vented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fSlab\u001fFinished Attic or Cathedral Ceilings\u001f2 Car\u001fNone": "Single-Family Detached, Slab, Finished Attic, 2 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fVented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Vented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fAmbient\u001fNone\u001fNone\u001fNone": "Single-Family Detached, Ambient, No Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fUnvented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Unvented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fNone\u001f1 Car\u001fNone": "Single-Family Detached, Unheated Basement, No Attic, 1 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fUnvented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Heated Basement, Unvented Attic, 1 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fSlab\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 2 - 4 Units Middle Unit, Slab, No Attic, No Garage",
+        "Multi-Family with 5+ Units\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fTop": "Multi-Family with 5+ Units Top Unit, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001f3 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Finished Attic, 3 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fNone\u001f2 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, No Attic, 2 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fFinished Attic or Cathedral Ceilings\u001f1 Car\u001fNone": "Single-Family Detached, Heated Basement, Finished Attic, 1 Car Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Detached, Unheated Basement, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fFinished Attic or Cathedral Ceilings\u001f3 Car\u001fNone": "Single-Family Detached, Slab, Finished Attic, 3 Car Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fUnvented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Unvented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fSlab\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Detached, Slab, Finished Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Detached, Vented Crawlspace, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fFinished Attic or Cathedral Ceilings\u001f2 Car\u001fNone": "Single-Family Detached, Unheated Basement, Finished Attic, 2 Car Garage",
+        "Single-Family Attached\u001fSlab\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Attached, Slab, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fVented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Unheated Basement, Vented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fNone": "Single-Family Detached, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fNone\u001f3 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, No Attic, 3 Car Garage",
+        "Single-Family Attached\u001fVented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Attached, Vented Crawlspace, Finished Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fNone\u001f3 Car\u001fNone": "Single-Family Detached, Heated Basement, No Attic, 3 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fVented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Vented Attic, 3 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fBottom": "Multi-Family with 2 - 4 Units Bottom Unit, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fFinished Attic or Cathedral Ceilings\u001f1 Car\u001fNone": "Single-Family Detached, Unheated Basement, Finished Attic, 1 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001f2 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Finished Attic, 2 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Detached, Heated Basement, Unvented Attic, No Garage",
+        "Single-Family Attached\u001fHeated Basement\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Attached, Heated Basement, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fSlab\u001fFinished Attic or Cathedral Ceilings\u001f1 Car\u001fNone": "Single-Family Detached, Slab, Finished Attic, 1 Car Garage",
+        "Single-Family Attached\u001fHeated Basement\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Attached, Heated Basement, Finished Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fVented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Vented Attic, 1 Car Garage",
+        "Single-Family Attached\u001fUnheated Basement\u001fVented Attic\u001fNone\u001fNone": "Single-Family Attached, Unheated Basement, Vented Attic, No Garage",
+        "Multi-Family with 2 - 4 Units\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fTop": "Multi-Family with 2 - 4 Units Top Unit, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001f2 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Finished Attic, 2 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fVented Attic\u001fNone\u001fNone": "Single-Family Detached, Unvented Crawlspace, Vented Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fUnvented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Unvented Attic, 1 Car Garage",
+        "Single-Family Attached\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fNone": "Single-Family Attached, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fFinished Attic or Cathedral Ceilings\u001f2 Car\u001fNone": "Single-Family Detached, Heated Basement, Finished Attic, 2 Car Garage",
+        "Single-Family Attached\u001fSlab\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Attached, Slab, Finished Attic, No Garage",
+        "Single-Family Detached\u001fVented Crawlspace\u001fUnvented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Vented Crawlspace, Unvented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fUnvented Attic\u001f2 Car\u001fNone": "Single-Family Detached, Unheated Basement, Unvented Attic, 2 Car Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fNone\u001f3 Car\u001fNone": "Single-Family Detached, Unheated Basement, No Attic, 3 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fVented Crawlspace\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 2 - 4 Units Middle Unit, Vented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fNone\u001f1 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, No Attic, 1 Car Garage",
+        "Single-Family Detached\u001fSlab\u001fUnvented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Slab, Unvented Attic, 3 Car Garage",
+        "Single-Family Attached\u001fUnvented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Attached, Unvented Crawlspace, Finished Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001f3 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Finished Attic, 3 Car Garage",
+        "Single-Family Attached\u001fUnvented Crawlspace\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Attached, Unvented Crawlspace, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fUnvented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Unvented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001f1 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Finished Attic, 1 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fFinished Attic or Cathedral Ceilings\u001f3 Car\u001fNone": "Single-Family Detached, Heated Basement, Finished Attic, 3 Car Garage",
+        "Single-Family Detached\u001fHeated Basement\u001fUnvented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Heated Basement, Unvented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fUnvented Attic\u001f3 Car\u001fNone": "Single-Family Detached, Unheated Basement, Unvented Attic, 3 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fUnvented Attic\u001fNone\u001fNone": "Single-Family Detached, Unvented Crawlspace, Unvented Attic, No Garage",
+        "Single-Family Detached\u001fUnheated Basement\u001fFinished Attic or Cathedral Ceilings\u001f3 Car\u001fNone": "Single-Family Detached, Unheated Basement, Finished Attic, 3 Car Garage",
+        "Multi-Family with 2 - 4 Units\u001fUnvented Crawlspace\u001fNone\u001fNone\u001fMiddle": "Multi-Family with 2 - 4 Units Middle Unit, Unvented Crawlspace, No Attic, No Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fUnvented Attic\u001f1 Car\u001fNone": "Single-Family Detached, Unvented Crawlspace, Unvented Attic, 1 Car Garage",
+        "Single-Family Detached\u001fUnvented Crawlspace\u001fFinished Attic or Cathedral Ceilings\u001fNone\u001fNone": "Single-Family Detached, Unvented Crawlspace, Finished Attic, No Garage"
+      }
+    },
+    {
+      "column": "Geometry Stories Low Rise",
+      "from": [
+        "Geometry Stories"
+      ],
+      "n_keys": 18,
+      "map": {
+        "2": "2",
+        "1": "1",
+        "4": "4+",
+        "3": "3",
+        "5": "4+",
+        "7": "4+",
+        "21": "4+",
+        "15": "4+",
+        "8": "4+",
+        "12": "4+",
+        "35": "4+",
+        "6": "4+",
+        "13": "4+",
+        "11": "4+",
+        "10": "4+",
+        "20": "4+",
+        "9": "4+",
+        "14": "4+"
+      }
+    },
+    {
+      "column": "HVAC Has Ducts",
+      "from": [
+        "Duct Location"
+      ],
+      "n_keys": 7,
+      "map": {
+        "Attic": "Yes",
+        "None": "No",
+        "Living Space": "Yes",
+        "Crawlspace": "Yes",
+        "Heated Basement": "Yes",
+        "Unheated Basement": "Yes",
+        "Garage": "Yes"
+      }
+    },
+    {
+      "column": "HVAC Has Shared System",
+      "from": [
+        "HVAC Shared Efficiencies"
+      ],
+      "n_keys": 6,
+      "map": {
+        "None": "None",
+        "Boiler Baseboards Heating Only, Fuel": "Heating Only",
+        "Fan Coil Cooling Only": "Cooling Only",
+        "Fan Coil Heating and Cooling, Fuel": "Heating and Cooling",
+        "Boiler Baseboards Heating Only, Electricity": "Heating Only",
+        "Fan Coil Heating and Cooling, Electricity": "Heating and Cooling"
+      }
+    },
+    {
+      "column": "HVAC Has Zonal Electric Heating",
+      "from": [
+        "HVAC Heating Efficiency"
+      ],
+      "n_keys": 20,
+      "map": {
+        "Fuel Furnace, 80% AFUE": "No",
+        "Fuel Furnace, 92.5% AFUE": "No",
+        "Shared Heating": "No",
+        "ASHP, SEER 15, 8.5 HSPF": "No",
+        "Electric Furnace, 100% AFUE": "No",
+        "Fuel Wall/Floor Furnace, 68% AFUE": "No",
+        "ASHP, SEER 13, 7.7 HSPF": "No",
+        "None": "No",
+        "Fuel Furnace, 60% AFUE": "No",
+        "Fuel Boiler, 90% AFUE": "No",
+        "Fuel Furnace, 76% AFUE": "No",
+        "Fuel Wall/Floor Furnace, 60% AFUE": "No",
+        "Fuel Boiler, 80% AFUE": "No",
+        "Electric Baseboard, 100% Efficiency": "Yes",
+        "MSHP, SEER 14.5, 8.2 HSPF": "No",
+        "Electric Wall Furnace, 100% AFUE": "No",
+        "ASHP, SEER 10, 6.2 HSPF": "No",
+        "Fuel Boiler, 76% AFUE": "No",
+        "Electric Boiler, 100% AFUE": "No",
+        "MSHP, SEER 29.3, 14 HSPF": "No"
+      }
+    },
+    {
+      "column": "Heating Setpoint Has Offset",
+      "from": [
+        "Heating Setpoint Offset Magnitude"
+      ],
+      "n_keys": 4,
+      "map": {
+        "0F": "No",
+        "3F": "Yes",
+        "12F": "Yes",
+        "6F": "Yes"
+      }
+    },
+    {
+      "column": "Hot Water Fixtures",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100% Usage",
+        "High": "200% Usage",
+        "Low": "50% Usage"
+      }
+    },
+    {
+      "column": "Insulation Rim Joist",
+      "from": [
+        "Insulation Foundation Wall"
+      ],
+      "n_keys": 5,
+      "map": {
+        "None": "None",
+        "Uninsulated": "Uninsulated",
+        "Wall R-10, Exterior": "R-10, Exterior",
+        "Wall R-5, Exterior": "R-5, Exterior",
+        "Wall R-15, Exterior": "R-15, Exterior"
+      }
+    },
+    {
+      "column": "Misc Pool Pump",
+      "from": [
+        "Misc Pool"
+      ],
+      "n_keys": 2,
+      "map": {
+        "None": "None",
+        "Has Pool": "1.0 HP Pump"
+      }
+    },
+    {
+      "column": "Plug Load Diversity",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100%",
+        "High": "200%",
+        "Low": "50%"
+      }
+    },
+    {
+      "column": "Refrigerator Usage Level",
+      "from": [
+        "Usage Level"
+      ],
+      "n_keys": 3,
+      "map": {
+        "Medium": "100% Usage",
+        "High": "105% Usage",
+        "Low": "95% Usage"
+      }
+    },
+    {
+      "column": "Vintage ACS",
+      "from": [
+        "Vintage"
+      ],
+      "n_keys": 9,
+      "map": {
+        "1990s": "1980-99",
+        "2010s": "2010s",
+        "1960s": "1960-79",
+        "1970s": "1960-79",
+        "2000s": "2000-09",
+        "1950s": "1940-59",
+        "1940s": "1940-59",
+        "1980s": "1980-99",
+        "<1940": "<1940"
+      }
+    },
+    {
+      "column": "Water Heater In Unit",
+      "from": [
+        "Water Heater Location"
+      ],
+      "n_keys": 8,
+      "map": {
+        "Living Space": "Yes",
+        "Garage": "Yes",
+        "Attic": "Yes",
+        "Outside": "Yes",
+        "Heated Basement": "Yes",
+        "None": "No",
+        "Unheated Basement": "Yes",
+        "Crawlspace": "Yes"
+      }
+    }
+  ],
+  "unrestorable": [],
+  "n_constants": 20,
+  "n_rules": 22
+}

@@ -157,6 +157,7 @@ def predict_single(model, location, attributes, json_input, output, top_k, confi
     schema = imputer.schema
     result = imputer.impute(
         df, n_samples=model.samples, seed=model.seed, unknown=model.unknown_labels,
+        decode=model.decode,
         ignore_columns=[ID_COLUMN, *[c for c in df.columns if c not in schema]],
     )
     for issue in result.issues:
@@ -234,6 +235,7 @@ def _run_complete(model, input_csv, output_csv, id_col, confidence, report_dir, 
     result = run_complete(
         input_csv, output_csv, model.request(), id_col=id_col, registry=model.load_registry(), confidence=confidence,
         report_dir=report_dir, report_format=report_format, n_samples=model.samples, seed=model.seed,
+        decode=model.decode,
         unknown=model.unknown_labels, device=model.device, threads=model.threads, log=click.echo,
         location=(location or LocationArgs()).overrides(model.state),
     )
@@ -402,6 +404,7 @@ def workflow(model, location, geojson_file, output_csv, skip_postprocess, keep_i
         report_format=report_format,
         confidence=_confidence_options(confidence_report, confidence_method, n_passes, drop_prob, model.seed),
         n_samples=model.samples, seed=model.seed, unknown=model.unknown_labels, device=model.device,
+        decode=model.decode,
         threads=model.threads, verbose=verbose, log=click.echo, location=location.overrides(model.state),
     )
     _echo_run(result, verbose)

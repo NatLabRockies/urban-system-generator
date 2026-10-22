@@ -380,6 +380,22 @@ class GeoJSONProcessor:
         return _valid_option("Geometry Building Number Units SFA", str(int(number))) if number is not None else None
 
     @staticmethod
+    def map_units_mf(units, properties: dict) -> str | None:
+        """Geometry Building Number Units MF: the dwelling count for multifamily buildings.
+
+        ``number_of_residential_units`` describes attached *and* multifamily buildings, but ResStock splits
+        the count across two parameters. Sending it only to the SFA column threw the number away for every
+        multifamily project, leaving the model to guess a count it had been told.
+        """
+        btype = GeoJSONProcessor.map_building_type(properties.get("building_type"), properties)
+        if btype is None:
+            return None
+        if not str(btype).startswith("Multi-Family"):
+            return "None"
+        number = _to_number(units)
+        return _valid_option("Geometry Building Number Units MF", str(int(number))) if number is not None else None
+
+    @staticmethod
     def map_foundation_type(foundation_type: str) -> str | None:
         mapping = {
             "slab": "Slab",
@@ -484,6 +500,11 @@ class GeoJSONProcessor:
             "Bedrooms": self.map_bedrooms(props.get("number_of_bedrooms")),
             "Geometry Building Number Units SFA": (
                 self.map_units_sfa(props.get("number_of_residential_units"), props)
+                if props.get("number_of_residential_units") is not None
+                else None
+            ),
+            "Geometry Building Number Units MF": (
+                self.map_units_mf(props.get("number_of_residential_units"), props)
                 if props.get("number_of_residential_units") is not None
                 else None
             ),

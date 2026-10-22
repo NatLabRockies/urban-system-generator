@@ -36,8 +36,10 @@ def tiny_dataframe(n: int = 512, seed: int = 0, with_numeric: bool = True) -> pd
         [rng.choice(["Ducted Heat Pump", "Non-Ducted Heating"], size=n, p=[0.7, 0.3]), "None"],
         default="Ducted Heating",
     )
+    # the stock only ever samples a garage for Single-Family Detached; every other type is always "None",
+    # so anything else here would be a building that cannot occur and would be reported as a stock conflict
     garage = np.where(
-        btype == "Multi-Family with 5+ Units", "None", rng.choice(GARAGES, size=n, p=[0.3, 0.3, 0.1, 0.3])
+        btype == "Single-Family Detached", rng.choice(GARAGES, size=n, p=[0.3, 0.3, 0.1, 0.3]), "None"
     )
     bedrooms = np.where(
         btype == "Multi-Family with 5+ Units",

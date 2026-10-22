@@ -19,7 +19,12 @@ def _input(n=12, seed=4):
 
 def test_complete_with_imputer(gnn_imputer):
     df = _input()
-    df["Vintage ACS"] = "1980-99"  # required ResStock parameter outside the schema: passed through
+    # required ResStock parameter outside the schema: passed through. It must agree with each row's own
+    # Vintage, or the stock-conflict check rightly reports every row where the two contradict each other.
+    df["Vintage ACS"] = df["Vintage"].map(
+        {"<1940": "<1940", "1940s": "1940-59", "1950s": "1940-59", "1960s": "1960-79", "1970s": "1960-79",
+         "1980s": "1980-99", "1990s": "1980-99", "2000s": "2000-09", "2010s": "2010s"}
+    )
     df["Comment"] = "x"  # not a parameter: reported, dropped
     df.loc[3, "Vintage"] = "1890s"
     out = complete_dataframe(df, gnn_imputer, confidence=ConfidenceOptions(method="both", n_passes=4))

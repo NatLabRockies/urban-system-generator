@@ -1,0 +1,2238 @@
+{
+ "format": "usg-derivations-from-knowns/v1",
+ "release": "2024.2",
+ "n_buildings": 549715,
+ "min_support": 200,
+ "note": "values are canonical schema vocabulary",
+ "rules": [
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 338028
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 101069
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 32134
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 43992
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 34492
+  },
+  {
+   "when": {
+    "Vintage": "1990s"
+   },
+   "then": {
+    "Vintage ACS": "1980-99"
+   },
+   "support": 76346
+  },
+  {
+   "when": {
+    "Vintage": "2010s"
+   },
+   "then": {
+    "Vintage ACS": "2010s"
+   },
+   "support": 27331
+  },
+  {
+   "when": {
+    "Vintage": "1960s"
+   },
+   "then": {
+    "Vintage ACS": "1960-79"
+   },
+   "support": 58515
+  },
+  {
+   "when": {
+    "Vintage": "1970s"
+   },
+   "then": {
+    "Vintage ACS": "1960-79"
+   },
+   "support": 84421
+  },
+  {
+   "when": {
+    "Vintage": "2000s"
+   },
+   "then": {
+    "Vintage ACS": "2000-09"
+   },
+   "support": 75843
+  },
+  {
+   "when": {
+    "Vintage": "1950s"
+   },
+   "then": {
+    "Vintage ACS": "1940-59"
+   },
+   "support": 56541
+  },
+  {
+   "when": {
+    "Vintage": "1940s"
+   },
+   "then": {
+    "Vintage ACS": "1940-59"
+   },
+   "support": 26333
+  },
+  {
+   "when": {
+    "Vintage": "1980s"
+   },
+   "then": {
+    "Vintage ACS": "1980-99"
+   },
+   "support": 74416
+  },
+  {
+   "when": {
+    "Vintage": "<1940"
+   },
+   "then": {
+    "Vintage ACS": "<1940"
+   },
+   "support": 69969
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "750-999"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "0-1499"
+   },
+   "support": 80031
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "2000-2499"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "1500-2499"
+   },
+   "support": 68257
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "1000-1499"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "0-1499"
+   },
+   "support": 143596
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "0-499"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "0-1499"
+   },
+   "support": 17882
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "2500-2999"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "2500-3999"
+   },
+   "support": 36096
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "500-749"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "0-1499"
+   },
+   "support": 47397
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "1500-1999"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "1500-2499"
+   },
+   "support": 106028
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "3000-3999"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "2500-3999"
+   },
+   "support": 33827
+  },
+  {
+   "when": {
+    "Geometry Floor Area": "4000+"
+   },
+   "then": {
+    "Geometry Floor Area Bin": "4000+"
+   },
+   "support": 16601
+  },
+  {
+   "when": {
+    "Geometry Stories": "2"
+   },
+   "then": {
+    "Geometry Stories Low Rise": "2"
+   },
+   "support": 205867
+  },
+  {
+   "when": {
+    "Geometry Stories": "1"
+   },
+   "then": {
+    "Geometry Stories Low Rise": "1"
+   },
+   "support": 268801
+  },
+  {
+   "when": {
+    "Geometry Stories": "4"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 10862
+  },
+  {
+   "when": {
+    "Geometry Stories": "3"
+   },
+   "then": {
+    "Geometry Stories Low Rise": "3"
+   },
+   "support": 44047
+  },
+  {
+   "when": {
+    "Geometry Stories": "5"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 4302
+  },
+  {
+   "when": {
+    "Geometry Stories": "7"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 831
+  },
+  {
+   "when": {
+    "Geometry Stories": "21"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "50 or more Unit"
+   },
+   "support": 3563
+  },
+  {
+   "when": {
+    "Geometry Stories": "15"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 629
+  },
+  {
+   "when": {
+    "Geometry Stories": "8"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 889
+  },
+  {
+   "when": {
+    "Geometry Stories": "12"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 1020
+  },
+  {
+   "when": {
+    "Geometry Stories": "35"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 603
+  },
+  {
+   "when": {
+    "Geometry Stories": "6"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 3798
+  },
+  {
+   "when": {
+    "Geometry Stories": "13"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "50 or more Unit"
+   },
+   "support": 666
+  },
+  {
+   "when": {
+    "Geometry Stories": "11"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 495
+  },
+  {
+   "when": {
+    "Geometry Stories": "10"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 896
+  },
+  {
+   "when": {
+    "Geometry Stories": "20"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 1143
+  },
+  {
+   "when": {
+    "Geometry Stories": "9"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 719
+  },
+  {
+   "when": {
+    "Geometry Stories": "14"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "50 or more Unit"
+   },
+   "support": 584
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Geometry Stories": "2"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "2",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 125702
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Geometry Stories": "1"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 207553
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "4"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 9729
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "3"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 1-3 Stories",
+    "Geometry Stories Low Rise": "3",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 30820
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Geometry Stories": "1"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 13112
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "1"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "Bottom",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 1-3 Stories",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 6439
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Geometry Stories": "2"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Stories Low Rise": "2",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 29468
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Geometry Stories": "2"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "2",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 16754
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Geometry Stories": "1"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 34492
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "2"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 1-3 Stories",
+    "Geometry Stories Low Rise": "2",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 33943
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Geometry Stories": "3"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "3",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 4773
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Geometry Stories": "3"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "3",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 2268
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "5"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 4302
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "7"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 831
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Geometry Stories": "3"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Horizontal Location MF": "Not Applicable",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Number Units MF": "3",
+    "Geometry Stories Low Rise": "3",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "3 or 4 Unit"
+   },
+   "support": 6186
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "21"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "50 or more Unit"
+   },
+   "support": 3563
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Geometry Stories": "4"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Horizontal Location MF": "Not Applicable",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Number Units MF": "4",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "3 or 4 Unit"
+   },
+   "support": 1133
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "15"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 629
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "8"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 889
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "12"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 1020
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Geometry Stories": "1"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "Bottom",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 7205
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "35"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 603
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "6"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 4-7 Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 3798
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "13"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "50 or more Unit"
+   },
+   "support": 666
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "11"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 495
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "10"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 896
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "20"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 1143
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "9"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 719
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Geometry Stories": "14"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Window Areas": "F30 B30 L30 R30",
+    "Geometry Wall Type": "Steel Frame",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 5+ Units, 8+ Stories",
+    "Geometry Stories Low Rise": "4+",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Geometry Building Type ACS": "50 or more Unit"
+   },
+   "support": 584
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "1990s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "1980-99",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 43605
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "2010s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "2010s",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 15166
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "1960s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1960-79",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 11206
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "1960s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "1960-79",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 38701
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "1970s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "1960-79",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 46579
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "2000s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "2000-09",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 48070
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "1950s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "1940-59",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 44553
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "1940s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "1940-59",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 19679
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "1970s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1960-79",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 19267
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "1980s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "1980-99",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 38240
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "2000s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "2000-09",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 5630
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "1950s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1940-59",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 5582
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "<1940"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "<1940",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 11802
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Detached",
+    "Vintage": "<1940"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Vintage ACS": "<1940",
+    "Geometry Building Level MF": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Single-Family Detached",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Building Horizontal Location SFA": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Detached"
+   },
+   "support": 43435
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "1980s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "1980-99",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 5713
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "2010s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "2010s",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 1771
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "1990s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1980-99",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 9903
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "1990s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1980-99",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 14066
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "1970s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Insulation Floor": "Uninsulated",
+    "Vintage ACS": "1960-79",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 7156
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "2010s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "2010s",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 7725
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "<1940"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "<1940",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 4443
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "<1940"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "<1940",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 10201
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "2000s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "2000-09",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 13456
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "1980s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1980-99",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 16889
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "1970s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1960-79",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 6951
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "2010s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "2010s",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 1613
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "1970s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "1960-79",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 4468
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "1980s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1980-99",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 5769
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "1990s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1980-99",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 4214
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "1940s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "1940-59",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 1406
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 5+ Units",
+    "Vintage": "1940s"
+   },
+   "then": {
+    "Roof Material": "Asphalt Shingles, Medium",
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1940-59",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 2677
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "2000s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "2000-09",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 3176
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "2000s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "2000-09",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 5511
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "1960s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1960-79",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 4599
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "1940s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1940-59",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 2525
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "1980s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1980-99",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 7805
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "1950s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "1940-59",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 3900
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "1960s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "1960-79",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 2009
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "1950s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Insulation Floor": "Uninsulated",
+    "Vintage ACS": "1940-59",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 370
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Multi-Family with 2 - 4 Units",
+    "Vintage": "2010s"
+   },
+   "then": {
+    "Corridor": "Double-Loaded Interior",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Vintage ACS": "2010s",
+    "Misc Pool Pump": "None",
+    "Geometry Garage": "None",
+    "Geometry Attic Type": "None",
+    "Misc Pool Heater": "None",
+    "Misc Pool": "None",
+    "Geometry Building Type Height": "Multi-Family with 2 - 4 Units",
+    "Geometry Building Horizontal Location SFA": "None"
+   },
+   "support": 1056
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Mobile Home",
+    "Vintage": "1960s"
+   },
+   "then": {
+    "Geometry Foundation Type": "Ambient",
+    "Insulation Slab": "None",
+    "Geometry Space Combination": "Mobile Home, Ambient, No Attic, No Garage",
+    "Corridor": "Not Applicable",
+    "Geometry Stories": "1",
+    "Geometry Building Horizontal Location MF": "None",
+    "Neighbors": "Left/Right at 15ft",
+    "Geometry Building Number Units SFA": "None",
+    "Insulation Ceiling": "None",
+    "Insulation Floor": "Uninsulated",
+    "Vintage ACS": "1960-79",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Attic Type": "None",
+    "Water Heater In Unit": "Yes",
+    "Geometry Building Type Height": "Mobile Home",
+    "Geometry Building Number Units MF": "None",
+    "Geometry Stories Low Rise": "1",
+    "Geometry Building Horizontal Location SFA": "None",
+    "Insulation Rim Joist": "None",
+    "Insulation Foundation Wall": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Mobile Home"
+   },
+   "support": 2000
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "1990s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "1980-99",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 4558
+  },
+  {
+   "when": {
+    "Geometry Building Type RECS": "Single-Family Attached",
+    "Vintage": "1950s"
+   },
+   "then": {
+    "Corridor": "Not Applicable",
+    "Geometry Building Horizontal Location MF": "None",
+    "Vintage ACS": "1940-59",
+    "Geometry Garage": "None",
+    "Geometry Building Level MF": "None",
+    "Geometry Building Type Height": "Single-Family Attached",
+    "Geometry Building Number Units MF": "None",
+    "HVAC Has Shared System": "None",
+    "HVAC Shared Efficiencies": "None",
+    "Geometry Building Type ACS": "Single-Family Attached"
+   },
+   "support": 2136
+  }
+ ]
+}

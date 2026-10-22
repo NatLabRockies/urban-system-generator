@@ -72,10 +72,11 @@ class ModelArgs:
     no_fallback: bool
     registry: str | None
     unknown_labels: str
+    decode: str | None
 
     FIELDS = (
         "model_type", "state", "model_id", "model_dir", "samples", "seed", "device", "threads", "offline",
-        "no_fallback", "registry", "unknown_labels",
+        "no_fallback", "registry", "unknown_labels", "decode",
     )  # fmt: skip
 
     def request(self, context=None):
@@ -120,6 +121,12 @@ _MODEL_OPTIONS = [
     click.option("--registry", default=None, help="Registry file or URL ($USG_REGISTRY; default: packaged)."),
     click.option("--unknown-labels", type=click.Choice(["missing", "error"]), default="missing", show_default=True,
                  help="Treat values that are not valid options as missing, or fail."),
+    click.option("--decode", type=click.Choice(["argmax", "sample", "refine"]), default=None,
+                 help="How a predicted distribution becomes one value. 'argmax' takes the most likely value, "
+                      "which is the best guess for any single building but repeats it across a district and "
+                      "never produces rare options. 'sample' draws in proportion to the predicted "
+                      "probabilities, so a community keeps the stock's real mix at the cost of per-building "
+                      "accuracy. Default: the bundle's own setting."),
 ]  # fmt: skip
 
 

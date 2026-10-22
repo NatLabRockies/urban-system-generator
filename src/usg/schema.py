@@ -185,7 +185,7 @@ class InputIssue:
     row: int  # -1 for column-level issues
     column: str
     value: str
-    kind: Literal["unknown_label", "unknown_column", "not_numeric", "coerced"]
+    kind: Literal["unknown_label", "unknown_column", "not_numeric", "coerced", "stock_conflict"]
     action: str
 
 

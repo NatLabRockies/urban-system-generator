@@ -67,7 +67,10 @@ def test_workflow_produces_valid_buildstock_mapping(project, gnn_bundle, tmp_pat
     assert attrs["State"]["source"] == "project_context"
     assert attrs["Vintage"]["source"] == "user_provided"
     assert attrs["Heating Fuel"]["source"] == "user_provided"
-    assert attrs["Geometry Garage"]["source"].startswith("model_inferred")
+    # Geometry Garage is no longer guessed for these features: the stock only ever gives a garage to
+    # Single-Family Detached, so the user's own building type determines it and the model is not asked.
+    assert attrs["Geometry Garage"]["source"] == "user_provided"
+    assert attrs["HVAC Heating Type"]["source"].startswith("model_inferred")
     assert attrs["Windows"]["source"] == "postprocess_default"
     assert set(attrs) == set(final.columns) - {"Building"}
 
@@ -86,3 +89,41 @@ def test_workflow_skip_postprocess_with_tabddpm(project, tabddpm_bundle, tmp_pat
     assert (tmp_path / "buildings_intermediate.csv").exists()
     manifest = json.loads((tmp_path / "run_manifest.json").read_text())
     assert manifest["n_samples"] == 4 and manifest["seed"] == 7
+
+
+def test_every_output_cell_is_an_option_urbanopt_accepts(project, gnn_bundle, tmp_path):
+    """Direct membership check, deliberately not routed through ``validate_and_fix_schema``.
+
+    The existing conformance assertion calls the validator to judge the validator's own output. That is
+    circular, and it hid a real defect: a parameter offering the option ``Void`` made the validator treat
+    every void-like spelling as acceptable, so the literal string ``None`` was written through. URBANopt
+    matches option strings exactly and failed the whole simulation with "Could not find parameter
+    'Geometry Space Combination' and option 'None'" - while the test suite stayed green.
+
+    This asserts the invariant the energy model actually imposes: every cell equals one of the strings in
+    options_lookup.tsv, compared directly.
+    """
+    out = tmp_path / "run" / "uo_buildstock_mapping.csv"
+    result = CliRunner().invoke(
+        cli, ["workflow", "-i", str(project), "-o", str(out), "--model-dir", str(gnn_bundle)], env=ENV
+    )
+    assert result.exit_code == 0, result.output
+
+    final = pd.read_csv(out, dtype=str, keep_default_na=False, na_values=[])
+    allowed = load_allowed_options(options_lookup_path())
+    identifiers = {"Feature ID", "Building"}
+
+    violations = [
+        (col, row, value)
+        for col in final.columns
+        if col not in identifiers and col in allowed
+        for row, value in final[col].items()
+        if value not in set(allowed[col])
+    ]
+    assert not violations, (
+        f"{len(violations)} cell(s) are not options URBANopt accepts, e.g. "
+        + "; ".join(f"row {r} {c}={v!r}" for c, r, v in violations[:5])
+    )
+
+    unknown = [c for c in final.columns if c not in allowed and c not in identifiers]
+    assert not unknown, f"columns absent from options_lookup.tsv: {unknown}"

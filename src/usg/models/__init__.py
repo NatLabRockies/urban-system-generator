@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from usg.schema import Schema
 
 # model_type -> architecture versions this package can load
-SUPPORTED_ARCH: dict[str, tuple[int, ...]] = {"gnn": (1,), "tabddpm": (1,)}
+SUPPORTED_ARCH: dict[str, tuple[int, ...]] = {"gnn": (1, 2), "tabddpm": (1,)}
 
 
 def build_model(schema: Schema, config: dict) -> nn.Module:
@@ -36,10 +36,34 @@ def build_model(schema: Schema, config: dict) -> nn.Module:
     if model_type == "gnn":
         from usg.models.gnn import GNNImputerNet
 
-        return GNNImputerNet(*args)
+        return GNNImputerNet(*args, film_cols=_film_cols(schema, config, arch_version))
     from usg.models.tabddpm import TabDDPMDenoiser
 
     return TabDDPMDenoiser(*args)
+
+
+def _film_cols(schema: Schema, config: dict, arch_version: int) -> list[int]:
+    """Resolve ``arch.film_columns`` (column names) to positions among the categorical columns.
+
+    Names rather than indices, because a position depends on the column order of whichever schema the
+    bundle was built with. An unknown name is an error: silently dropping it would train or serve a model
+    that is quietly missing the conditioning it was configured for.
+    """
+    names = list(config.get("arch", {}).get("film_columns", ()))
+    if not names:
+        return []
+    if arch_version < 2:
+        raise CompatibilityError(
+            f"arch.film_columns needs gnn arch_version >= 2, got {arch_version}; "
+            "bump the bundle's arch_version or drop film_columns"
+        )
+    missing = [n for n in names if n not in schema]
+    if missing:
+        raise CompatibilityError(f"arch.film_columns names columns absent from the schema: {missing}")
+    not_cat = [n for n in names if schema.column(n).type != "categorical"]
+    if not_cat:
+        raise CompatibilityError(f"arch.film_columns must be categorical columns, got {not_cat}")
+    return [schema.cat_index(n) for n in names]
 
 
 def build_schedule(config: dict):

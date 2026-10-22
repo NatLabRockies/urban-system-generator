@@ -144,6 +144,7 @@ def complete_dataframe(
     Output columns: ``id_col``, every schema imputable column, conditioning inputs that post-processing requires
     (e.g. ``State``), and any other required ResStock parameter present in ``df`` (passed through unchanged).
     """
+    from usg.known_derivations import derive as derive_known
     from usg.postprocessor import load_required_columns
 
     if id_col not in df.columns:
@@ -176,6 +177,14 @@ def complete_dataframe(
             imputer = spec
         schema = imputer.schema
         sub = df.iloc[positions].reset_index(drop=True)
+        # Fill what the user's own inputs already determine, before the model is asked: the models treat a
+        # dependent as known whenever its determinant is, so predicting these puts them off-distribution.
+        sub, conflicts = derive_known(sub)
+        for c in conflicts:
+            issues.append(
+                InputIssue(row=int(positions[c.row]), column=c.column, value=c.given,
+                           kind="stock_conflict", action=f"kept; stock has {c.stock!r}")
+            )
         ignore = [id_col] + [c for c in sub.columns if c not in schema and c in parameters]
         result = imputer.impute(
             sub, n_samples=n_samples, seed=seed, batch_size=batch_size, unknown=unknown, decode=decode,

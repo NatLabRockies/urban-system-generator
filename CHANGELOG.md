@@ -1,5 +1,49 @@
 # Changelog
 
+## 1.1.0
+
+New national models and a post-processing step that restores the attributes they no longer predict. Output
+columns, file formats and the CLI are unchanged; existing commands keep working.
+
+### Added
+- **New national models**, `gnn-national-2024.2-v2` and `tabddpm-national-2024.2-v2`. Measured on the
+  attributes usg fills in for you, across 4,000 held-out buildings with the same known inputs, the G-NN
+  is right **75.4% of the time against the previous model's 72.9%**. Skill — the share of the achievable
+  gain over always guessing an attribute's most common value — improves from 0.238 to 0.285, with no
+  attribute group worse. The model is also a third the size: 5.5M parameters against 16.6M, and 20.8 MB
+  of weights against 66 MB.
+- **Restoration of non-predicted attributes.** The models no longer predict attributes that are constant
+  across the stock, duplicate another column, or are an exact function of other columns. Post-processing
+  puts all of them back by table lookup, verified single-valued on every building in the release, so the
+  URBANopt mapping CSV is complete as before. A combination the stock does not contain is reported rather
+  than guessed.
+- **`--decode argmax|sample|refine`** on `complete`, `workflow` and `predict-single`. `argmax` (the default)
+  takes each attribute's most likely value, which is the best guess for one building but repeats it across
+  a district. `sample` draws in proportion to the predicted probabilities, so a district keeps the stock's
+  real mix of equipment and insulation at some cost in per-building accuracy.
+- **Derivation from known inputs.** What a caller's own inputs already determine is filled before the model
+  is asked, and a value that contradicts the stock is reported in `*_input_issues.csv` and kept, not
+  overwritten.
+
+### Fixed
+- A value such as `None` is now rewritten to the spelling `options_lookup.tsv` actually contains (`Void`,
+  or `None` where that is the option). URBANopt matches option strings exactly and failed the simulation on
+  a mismatch; ten parameters were affected, including `Cooling Setpoint`, `Insulation Wall` and
+  `HVAC Has Ducts`.
+- Multi-family buildings no longer receive a garage, a garage duct location, or a single-family space
+  combination. The stock only ever gives a garage to single-family detached, which is now derived from the
+  caller's own building type.
+- `number_of_residential_units` from a GeoJSON now reaches `Geometry Building Number Units MF` for
+  multi-family buildings.
+
+### Changed
+- The per-model accuracy in `usg models list` is not comparable between v1 and v2, because the two are
+  scored over different attributes. v1's 0.754 covers 112 attributes including 20 that hold one value
+  across the whole stock and are free to predict; v2's 0.672 covers only the 73 it predicts, and excludes
+  the 42 it restores afterwards. Neither is the number a caller experiences. Measured over the attributes
+  usg actually fills in, accuracy went from 0.729 to 0.754.
+- The previous models stay listed and downloadable by id; they are no longer shipped inside the package.
+
 ## 1.0.0
 
 A rewrite of Urban System Generator. These stay the same: the PyPI name `urban-system-generator`, the `usg` command

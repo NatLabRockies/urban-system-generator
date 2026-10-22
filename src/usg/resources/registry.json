@@ -1,211 +1,211 @@
 {
   "registry_format": "usg-registry/v1",
-  "generated_at": "2026-09-14T03:37:54Z",
+  "generated_at": "2026-10-21T20:37:41Z",
   "data_release": "2024.2",
-  "vocab_hash": "sha256:729bd88199f89ce96b04f98ca0e4aae6ffc4ec33faa5b83413d5bbc2b7fc67df",
+  "vocab_hash": "sha256:f147504833095b12fff21448f1c052e3f3dbe05bd50cb28aa20340a840f7811c",
   "default_model_type": {
     "__default__": "gnn"
   },
   "champions": {
     "national": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "AL": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "AR": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "AZ": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "CA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "CO": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "CT": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "DC": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "DE": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "FL": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "GA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "IA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "ID": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "IL": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "IN": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "KS": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "KY": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "LA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MD": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "ME": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MI": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MN": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MO": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MS": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "MT": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NC": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "ND": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NE": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NH": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NJ": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NM": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NV": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "NY": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "OH": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "OK": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "OR": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "PA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "RI": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "SC": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "SD": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "TN": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "TX": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "UT": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "VA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "VT": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "WA": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "WI": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "WV": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     },
     "WY": {
-      "gnn": "gnn-national-2024.2-v1",
-      "tabddpm": "tabddpm-national-2024.2-v1"
+      "gnn": "gnn-national-2024.2-v2",
+      "tabddpm": "tabddpm-national-2024.2-v2"
     }
   },
   "models": [
@@ -231,6 +231,32 @@
         "top3_accuracy": 0.941248752267776,
         "ece": 0.006024027779919364,
         "baseline_majority_accuracy": 0.6469617264970964
+      },
+      "embedded": false,
+      "yanked": false
+    },
+    {
+      "model_id": "gnn-national-2024.2-v2",
+      "model_type": "gnn",
+      "region": "national",
+      "scope": "national",
+      "arch_version": 1,
+      "bundle_format": "usg-bundle/v1",
+      "schema_hash": "sha256:09af5fb8e7f4fcd81cf8bf49f3823232b47c902939b4212412dd9025dd15f702",
+      "release_tag": "models-2024.2-v2",
+      "url": "https://github.com/NatLabRockies/urban-system-generator/releases/download/models-2024.2-v2/gnn-national-2024.2-v2.tar.gz",
+      "sha256": "56ee73db578804e70ae5a844f8be127bca15c9187703507da516c30dae9c5018",
+      "manifest_sha256": "442e5572786bce92a8606b895f30504f347fac79d75497611a5084d2375fd955",
+      "size_bytes": 10486582,
+      "requires_usg": ">=1.0.0",
+      "headline": {
+        "protocol": "usg_geojson",
+        "accuracy": 0.6723837291670207,
+        "skill": 0.2838499647435995,
+        "macro_f1": 0.3750405635502046,
+        "top3_accuracy": 0.8945912174223493,
+        "ece": 0.005095162942559372,
+        "baseline_majority_accuracy": 0.5293013266237114
       },
       "embedded": true,
       "yanked": false
@@ -259,6 +285,34 @@
         "top3_accuracy": 0.9259897959183674,
         "ece": 0.04966270449140841,
         "baseline_majority_accuracy": 0.6477193877551021
+      },
+      "embedded": false,
+      "yanked": false
+    },
+    {
+      "model_id": "tabddpm-national-2024.2-v2",
+      "model_type": "tabddpm",
+      "region": "national",
+      "scope": "national",
+      "arch_version": 1,
+      "bundle_format": "usg-bundle/v1",
+      "schema_hash": "sha256:09af5fb8e7f4fcd81cf8bf49f3823232b47c902939b4212412dd9025dd15f702",
+      "release_tag": "models-2024.2-v2",
+      "url": "https://github.com/NatLabRockies/urban-system-generator/releases/download/models-2024.2-v2/tabddpm-national-2024.2-v2.tar.gz",
+      "sha256": "8e0f3baf4553c58704bf0fa77cc3ec041923190cb748b47c38db38e8eeb4f066",
+      "manifest_sha256": "140d70918e51fa31e8ef563bbfafbd7b2ddefc89dcd7e280e26a632251d15dcd",
+      "size_bytes": 14960409,
+      "requires_usg": ">=1.0.0",
+      "headline": {
+        "protocol": "usg_geojson",
+        "accuracy": 0.6025833333333332,
+        "skill": 0.03293555539004327,
+        "accuracy_mode": 0.6457738095238096,
+        "skill_mode": 0.23009195685745776,
+        "macro_f1": 0.3768352660055469,
+        "top3_accuracy": 0.867095238095238,
+        "ece": 0.061508204480499915,
+        "baseline_majority_accuracy": 0.5304365079365079
       },
       "embedded": true,
       "yanked": false

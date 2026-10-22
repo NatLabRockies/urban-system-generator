@@ -704,7 +704,11 @@ def validate_and_fix_schema(
         exact_allowed, ci_map = allowed_sets[col]
         allowed_list = allowed_options.get(col, [])
 
-        void_allowed = any(opt.strip().lower() in {"none", "void", "null"} for opt in allowed_list)
+        # The spelling matters. A parameter may accept "Void" while rejecting "None": they are different
+        # strings to URBANopt, which fails the whole simulation on an option it cannot find. Keeping the
+        # accepted spelling lets a void-like value be normalised to it instead of passed through.
+        void_option = next((o for o in allowed_list if o.strip().lower() in {"none", "void", "null"}), None)
+        void_allowed = void_option is not None
         default_fix = pick_default_value(col, allowed_list, default_value_overrides)
 
         for idx, raw in df[col].items():
@@ -712,6 +716,27 @@ def validate_and_fix_schema(
             s = norm_str(raw)
 
             if is_void_like(s, void_like):
+                if void_allowed and s != void_option:
+                    # e.g. "None" where the parameter only offers "Void" - URBANopt rejects the literal
+                    # string, so rewrite it to the spelling the lookup actually contains
+                    fixed_to = ""
+                    if fix_invalid_values:
+                        fixed_df.at[idx, col] = void_option
+                        fixed_to = void_option
+                    issues.append(
+                        ValidationIssue(
+                            row_index=int(idx),
+                            feature_id=str(fid) if fid is not None else None,
+                            column=col,
+                            value=s,
+                            issue_type="VOID_SPELLING",
+                            message=f"'{col}' accepts {void_option!r}, not {s!r}; URBANopt matches the "
+                                    f"option string exactly.",
+                            allowed_options=" | ".join(allowed_list[:50]),
+                            fixed_to_default_value=fixed_to,
+                        )
+                    )
+                    continue
                 if not void_allowed:
                     fixed_to = ""
                     if fix_invalid_values and default_fix:
@@ -1022,7 +1047,8 @@ def run_consistency_engine(
 
 
 class USGPostProcessor:
-    """Fill missing columns -> validate against options_lookup.tsv -> enforce consistency rules."""
+    """Restore dropped columns -> fill missing columns -> validate against options_lookup.tsv -> enforce
+    consistency rules."""
 
     def __init__(
         self,
@@ -1051,6 +1077,7 @@ class USGPostProcessor:
         self.execution = rules_obj.get("execution", {})
         t.done(extra=f"[rules={len(self.rules):,}]")
         self.last_report = None  # postprocess_report.PostprocessReport of the last process() call
+        self.last_restore_report = None  # column_restoration.Report of the last process() call
         self.last_report_paths: list[str] = []
         from usg.postprocess_derivations import load_derivations
 
@@ -1062,14 +1089,36 @@ class USGPostProcessor:
     ) -> tuple[pd.DataFrame, list[ValidationIssue], list[AuditEvent]]:
         verbose = self.verbose
         context = context or ProjectContext()
-        log("=== Step 1: Fill Missing Columns ===", verbose)
+        log("=== Step 1: Restore Dropped Columns ===", verbose)
+        t = Timer("Restore dropped columns", verbose)
+        # Before the generic fill: a restored column is the stock's own value by verified lookup, while
+        # fill_missing_columns can only offer a default or a derivation. Running this first stops a weaker
+        # guess from pre-empting an exact answer.
+        from usg.column_restoration import restore as restore_dropped
+
+        self.last_fill_log = {}
+        df, self.last_restore_report = restore_dropped(df)
+        rr = self.last_restore_report
+        # record provenance in the same log the change report reads, so a restored column is never shown
+        # as having appeared from nowhere
+        for cell in rr.filled:
+            label = "restored (stock constant)" if cell.source == "constant" else f"restored from {cell.source}"
+            self.last_fill_log.setdefault(cell.column, {})[label] = (
+                self.last_fill_log.get(cell.column, {}).get(label, 0) + 1
+            )
+        t.done(extra=f"[filled={len(rr.filled):,} unmapped={len(rr.unmapped):,} cols now={len(df.columns):,}]")
+        if rr.unmapped:
+            log(f"  {len(rr.unmapped)} cell(s) had no entry in the restoration table; left for Step 2", verbose)
+        if rr.missing_sources:
+            log(f"  rules skipped, source column(s) absent: {', '.join(rr.missing_sources)}", verbose)
+
+        log("=== Step 2: Fill Missing Columns ===", verbose)
         t = Timer("Fill missing columns", verbose)
         # Location columns the input lacks take the project's resolved values (e.g. Building America Climate Zone)
         # instead of generic defaults.
         location = {c: v for c, v in context.conditioning_values().items() if c not in df.columns}
         from usg.postprocess_derivations import WEATHER_STATION
 
-        self.last_fill_log = {}
         df = fill_missing_columns(
             df=df,
             allowed_options=self.allowed_options,
@@ -1086,12 +1135,12 @@ class USGPostProcessor:
                 df[column] = value
         t.done(extra=f"[cols now={len(df.columns):,}]")
 
-        log("=== Step 2: Schema Validation ===", verbose)
+        log("=== Step 3: Schema Validation ===", verbose)
         t = Timer("Schema validation", verbose)
         df, schema_issues = validate_and_fix_schema(df=df, allowed_options=self.allowed_options, fix_invalid_values=True)
         t.done(extra=f"[issues={len(schema_issues):,}]")
 
-        log("=== Step 3: Consistency Processing ===", verbose)
+        log("=== Step 4: Consistency Processing ===", verbose)
         t = Timer("Consistency processing", verbose)
         df, audit_events = run_consistency_engine(
             df=df,

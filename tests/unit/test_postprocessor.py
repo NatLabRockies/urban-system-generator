@@ -83,7 +83,11 @@ def test_schema_validation_fixes(allowed):
     df = pd.DataFrame({"Feature ID": ["a", "b"], "Vintage": ["1890s", "None"], "Geometry Garage": ["none", "2 Car"]})
     fixed, issues = validate_and_fix_schema(df, allowed)
     kinds = {(i.column, i.issue_type) for i in issues}
-    assert kinds == {("Vintage", "NOT_IN_ALLOWED_OPTIONS"), ("Vintage", "VOID_NOT_ALLOWED")}
+    # lowercase "none" is not the option string URBANopt matches against, so it is normalised to "None"
+    # rather than written through as given
+    assert kinds == {("Vintage", "NOT_IN_ALLOWED_OPTIONS"), ("Vintage", "VOID_NOT_ALLOWED"),
+                     ("Geometry Garage", "VOID_SPELLING")}
+    assert fixed.at[0, "Geometry Garage"] == "None"
     assert fixed["Vintage"].tolist() == ["1980s", "1980s"]
     _, remaining = validate_and_fix_schema(fixed, allowed, fix_invalid_values=False)
     assert remaining == []
@@ -171,3 +175,29 @@ def test_change_report_lists_remaining_violations():
                                           "note": "garages only on detached homes", "buildings": 1, "examples": ["a"]}]
     assert s["n_changed"] == 0 and s["verdict"] == "ok" and not s["provenance"]
     assert "1 rule violation(s) remain" in report.headline
+
+
+def test_void_like_value_is_rewritten_to_the_spelling_the_lookup_accepts(processor):
+    """URBANopt matches option strings exactly: a parameter offering 'Void' rejects 'None'.
+
+    Ten parameters in options_lookup.tsv accept 'Void' and no 'None' - among them Cooling Setpoint,
+    Insulation Wall, HVAC Has Ducts and Geometry Space Combination. Passing 'None' through made
+    BuildResidentialModel fail with "Could not find parameter ... and option 'None'", and the validator
+    did not catch it because it treated the presence of any void-like option as permission for every
+    void-like spelling.
+    """
+    from usg.postprocessor import load_allowed_options, options_lookup_path, validate_and_fix_schema
+
+    allowed = load_allowed_options(options_lookup_path())
+    affected = [c for c, opts in allowed.items()
+                if "None" not in opts and any(o.strip().lower() == "void" for o in opts)]
+    assert affected, "expected parameters that accept 'Void' but not 'None'"
+
+    df = pd.DataFrame([{"Building": "1", **{c: "None" for c in affected}}])
+    fixed, issues = validate_and_fix_schema(df=df, allowed_options=allowed, fix_invalid_values=True)
+
+    assert {i.issue_type for i in issues} == {"VOID_SPELLING"}
+    assert len(issues) == len(affected)
+    for col in affected:
+        assert fixed.at[0, col] == "Void", col
+        assert fixed.at[0, col] in allowed[col], f"{col} must end up with an option URBANopt accepts"

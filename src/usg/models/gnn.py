@@ -7,6 +7,8 @@ numeric ones). Trained with cross-entropy on hidden columns only, under randomly
 
 from __future__ import annotations
 
+import math
+
 import torch
 from torch import nn
 
@@ -18,7 +20,7 @@ from usg.models.layers import (
     masked_log_softmax,
 )
 
-ARCH_VERSION = 1
+ARCH_VERSION = 2
 
 DEFAULT_ARCH = {
     "d_small": 16,
@@ -29,7 +31,43 @@ DEFAULT_ARCH = {
     "n_blocks": 4,
     "expansion": 2,
     "dropout": 0.1,
+    "d_film_embed": 32,
+    "d_cond": 128,
+    "film_columns": [],
 }
+
+
+class ConditionEncoder(nn.Module):
+    """Encodes a few categorical columns into one vector that modulates every backbone block (FiLM).
+
+    A conditioning column entered through :class:`ColumnEmbedder` is one slice of a wide concatenation, so
+    the backbone has to learn to use it additively. Routing it here instead lets it rescale the whole
+    computation, which is what location does in the stock: the same floor area means different equipment in
+    different places.
+
+    Each column owns ``K + 1`` rows; row ``K`` is its "not provided" vector, so a column the caller left
+    blank degrades to a learned default rather than a wrong value.
+    """
+
+    def __init__(self, cardinalities: list[int], cols: list[int], d_embed: int, d_cond: int):
+        super().__init__()
+        self.register_buffer("cols", torch.tensor(cols, dtype=torch.long), persistent=False)
+        self.register_buffer(
+            "unknown", torch.tensor([cardinalities[i] for i in cols], dtype=torch.long), persistent=False
+        )
+        self.tables = nn.ModuleList()
+        for i in cols:
+            table = nn.Embedding(cardinalities[i] + 1, d_embed)
+            nn.init.normal_(table.weight, std=1.0 / math.sqrt(d_embed))
+            self.tables.append(table)
+        self.mlp = nn.Sequential(nn.Linear(len(cols) * d_embed, d_cond), nn.GELU(), nn.Linear(d_cond, d_cond))
+        self.out_dim = d_cond
+
+    def forward(self, cat_codes: torch.Tensor, cat_use_value: torch.Tensor) -> torch.Tensor:
+        known = cat_use_value[:, self.cols]
+        codes = torch.where(known, cat_codes[:, self.cols].clamp(min=0), self.unknown.expand(known.shape[0], -1))
+        parts = [table(codes[:, j]) for j, table in enumerate(self.tables)]
+        return self.mlp(torch.cat(parts, dim=-1).to(self.mlp[0].weight.dtype))
 
 
 class GNNImputerNet(nn.Module):
@@ -40,6 +78,7 @@ class GNNImputerNet(nn.Module):
         cat_head_mask: list[bool],
         num_head_mask: list[bool],
         arch: dict | None = None,
+        film_cols: list[int] | None = None,
     ):
         super().__init__()
         a = {**DEFAULT_ARCH, **(arch or {})}
@@ -54,7 +93,13 @@ class GNNImputerNet(nn.Module):
             d_numeric=a["d_numeric"],
             n_flag_sets=1,
         )
-        self.backbone = ResMLP(self.embed.out_dim, a["hidden"], a["n_blocks"], a["expansion"], a["dropout"])
+        self.cond = None
+        if film_cols:
+            self.cond = ConditionEncoder(cardinalities, list(film_cols), a["d_film_embed"], a["d_cond"])
+        cond_dim = self.cond.out_dim if self.cond is not None else None
+        self.backbone = ResMLP(
+            self.embed.out_dim, a["hidden"], a["n_blocks"], a["expansion"], a["dropout"], cond_dim
+        )
         self.cat_heads = CategoricalHeads(a["hidden"], cardinalities, cat_head_mask)
         self.register_buffer("num_head_mask", torch.tensor(num_head_mask, dtype=torch.bool), persistent=False)
         self.num_head = nn.Linear(a["hidden"], 2 * n_numeric) if n_numeric else None
@@ -69,7 +114,7 @@ class GNNImputerNet(nn.Module):
         dtype = self.backbone.inp.weight.dtype
         flags = torch.cat([cat_known, num_known], dim=1).to(dtype)
         x = self.embed(cat, cat_known, num.to(dtype), num_known, [flags])
-        h = self.backbone(x)
+        h = self.backbone(x, self.cond(cat, cat_known) if self.cond is not None else None)
         out = {"cat_logits": self.cat_heads(h)}
         if self.num_head is not None:
             mean, logvar = self.num_head(h).chunk(2, dim=-1)
