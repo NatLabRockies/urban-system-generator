@@ -91,3 +91,45 @@ def test_fill_missing_columns_derives_first_then_prefers_neutral_static_defaults
     assert out.at[0, "Geometry Story Bin"] == "<8" and log["Geometry Story Bin"] == {"derived from Geometry Stories": 1}
     assert out.at[0, "HVAC Cooling Autosizing Factor"] == "None"  # not "40% Oversized"
     assert log["HVAC Cooling Autosizing Factor"] == {"static default": 1}
+
+
+def test_a_column_restored_for_some_rows_can_still_be_filled_for_the_rest():
+    """The fill log is shared with Step 1, which writes plain dicts into it.
+
+    ``Geometry Space Combination`` on a mixed neighbourhood is the real case: the restoration table
+    covered 42 of 46 buildings and the remaining four fell through to the national mode. Accumulating
+    that second label with ``+=`` on the plain dict Step 1 left behind raised ``KeyError``, which
+    killed the whole run after the model had already done its work.
+    """
+    log = {"Geometry Space Combination": {"restored from Geometry Building Type RECS": 42}}
+    df = pd.DataFrame({"Geometry Space Combination": ["", "", "", ""]})
+    table = {
+        "format": "usg-postprocess-derivations/v1",
+        "derive_purity": 0.99,
+        "key_separator": "\t",
+        "order": ["Geometry Space Combination"],
+        "columns": {"Geometry Space Combination": {"kind": "derived", "mode": "Attic", "levels": []}},
+    }
+
+    out = apply_derivations(df, table, log=log)
+
+    assert list(out["Geometry Space Combination"]) == ["Attic"] * 4
+    assert log["Geometry Space Combination"] == {
+        "restored from Geometry Building Type RECS": 42, "most common nationally": 4}
+
+
+def test_the_fill_log_accumulates_repeated_labels():
+    log: dict = {}
+    df = pd.DataFrame({"County": ["", ""]})
+    table = {
+        "format": "usg-postprocess-derivations/v1",
+        "derive_purity": 0.99,
+        "key_separator": "\t",
+        "order": ["County"],
+        "columns": {"County": {"kind": "derived", "mode": "MD, Baltimore County", "levels": []}},
+    }
+
+    apply_derivations(df, table, log=log)
+    apply_derivations(pd.DataFrame({"County": [""]}), table, log=log)
+
+    assert log["County"] == {"most common nationally": 3}

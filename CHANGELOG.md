@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.2
+
+### Fixed
+- **A mixed neighbourhood no longer dies in post-processing.** Filling a district with more than one
+  building type could raise `KeyError: 'most common nationally'` after the model had already done its
+  work, losing the whole run. Step 1 (restoring dropped columns) and Step 2 (filling missing ones)
+  share a fill log, and Step 1 writes plain dicts into it while Step 2 accumulated with `+=` on a
+  `Counter` it assumed was there — so any column restored for *some* buildings and defaulted for the
+  rest crashed on the first new label. `Geometry Space Combination` on a 46-building district is the
+  case that found it: restored for 42 homes from their building type, foundation, attic and garage, and
+  defaulted for the remaining four. A single-type project never triggers it, which is why both example
+  districts and the 77-building acceptance run passed.
+
 ## 1.1.1
 
 ### Fixed

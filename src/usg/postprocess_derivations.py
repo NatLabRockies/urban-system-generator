@@ -18,7 +18,6 @@ overwritten, and values that are not valid options are skipped.
 from __future__ import annotations
 
 import json
-from collections import Counter
 from pathlib import Path
 
 import pandas as pd
@@ -53,8 +52,15 @@ def describe_level(level: dict, derive_purity: float) -> str:
 
 
 def _log(log: dict | None, column: str, label: str, n: int) -> None:
+    """Record ``n`` cells filled by ``label``, accumulating into whatever the caller already has.
+
+    The log is shared with the restoration step, which writes plain dicts into it, so a column that was
+    restored for some rows and then filled here is a dict and not a Counter. Reaching for ``+=`` on a
+    plain dict raises ``KeyError`` on the first new label, which is why this adds through ``get``.
+    """
     if log is not None and n:
-        log.setdefault(column, Counter())[label] += int(n)
+        entry = log.setdefault(column, {})
+        entry[label] = entry.get(label, 0) + int(n)
 
 
 def apply_derivations(
@@ -69,7 +75,7 @@ def apply_derivations(
 
     ``context`` holds project-wide values (location columns, ``Weather Station``) used when a row has none.
     ``allowed`` (options_lookup) rejects values that are not valid options. ``log`` collects
-    ``{column: Counter(method -> cells)}``.
+    ``{column: {method: cells}}``.
     """
     if not table:
         return df
