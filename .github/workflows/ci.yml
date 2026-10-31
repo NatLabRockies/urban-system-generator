@@ -14,7 +14,9 @@ jobs:
         os: [ubuntu-latest]
         python: ["3.10", "3.11", "3.12", "3.13"]
         include:
-          - os: macos-14
+          # macos-latest rather than a pinned image: macos-14 was retired on 2026-11-02, and the
+          # brownout cancelled the job -- which cancels the run, which skips `package` entirely.
+          - os: macos-latest
             python: "3.12"
           - os: windows-latest
             python: "3.12"
